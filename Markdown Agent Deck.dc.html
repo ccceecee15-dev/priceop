@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/deeproot-theme.css">
+<style>
+body{margin:0;background:#14110F}
+.dr, .dr *, .dr *::before, .dr *::after{box-sizing:border-box}
+a{color:var(--dr-copper-700);text-decoration:none}
+a:hover{color:var(--dr-copper-800)}
+</style>
+<script type="application/json" id="speaker-notes">
+["Frame the ask: this is the Phase 1 design for the markdown agent, plus three requirements added after the last review.","Three additions. Confidence bucketing, EOL producing a plan, and a review cadence the agent sets. Everything after this is one of those three.","The trigger is unchanged. What changes is what the agent does first: it plans the whole window before it prices anything.","Nine steps. Two are new this round. Step 8 is the one that never changes.","This is the artefact the planner signs off. Four store clusters, five review weeks, the stage each cluster is in each week.","The conflict to raise with Stan. Five weeks and five stages means a Hold week costs the slowest stores their MD4.","Cadence is agent-set with a hard weekly floor. Note the consequence: at 14 days MD4 becomes unreachable.","Confidence measures evidence, not risk. A deep markdown on a well-observed store can be High; a hold on a dead store is Low.","The routing is the point. High is bulk-approvable, Low never is. That is what makes 55 stores reviewable in one sitting.","MD1 and MD2 are the margin-protecting stages. Both floors are hard; neither is ever waived.","MD3 and MD4 are where the unit of pricing changes and the floor gives way. This is where relaxation first bites.","The envelope binds all four stages. One relaxation definition, used by MD3 and MD4 together.","Four decisions we need from you, and the two numbers that are still placeholders."]
+</script>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <section class="dr" data-label="Cover" data-screen-label="01" data-speaker-notes="Frame the ask: Phase 1 design for the markdown agent, plus three requirements added after the last review." style="background:var(--dr-shell);color:var(--dr-on-shell);padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden">
+    <i class="dr-hexwatermark" style="opacity:.55"></i>
+    <img src="assets/deeproot-logo.png" alt="deeproot.ai" style="width:300px;height:auto;position:relative">
+    <div style="position:relative">
+      <div style="font-family:var(--dr-font-body);font-size:26px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--dr-copper-400);margin-bottom:26px">Phase 1 · Design review</div>
+      <h1 style="font-family:var(--dr-font-display);font-size:104px;font-weight:600;line-height:1.02;letter-spacing:-.025em;margin:0;color:#fff;max-width:1350px">Markdown Optimization Agent</h1>
+      <p style="font-family:var(--dr-font-body);font-size:33px;line-height:1.5;color:var(--dr-on-shell-2);margin:34px 0 0;max-width:1180px">The agentic workflow, the screens that operate it, and three requirements added since the last review.</p>
+    </div>
+    <div style="position:relative;display:flex;gap:56px;align-items:flex-end;font-family:var(--dr-font-body);font-size:25px;color:var(--dr-on-shell-2)">
+      <div><div style="color:var(--dr-copper-400);font-weight:600;margin-bottom:6px">Scope</div>Halloween 2026 · 8 styles · 110 stores</div>
+      <div><div style="color:var(--dr-copper-400);font-weight:600;margin-bottom:6px">Exit date</div>14 Nov 2026 — hard</div>
+      <div><div style="color:var(--dr-copper-400);font-weight:600;margin-bottom:6px">Autonomy</div>None — approval on every action</div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="What changed" data-screen-label="02" data-speaker-notes="Three additions: confidence bucketing, EOL producing a plan, and an agent-set review cadence." style="background:var(--dr-canvas);color:var(--dr-ink);padding:96px 120px;display:flex;flex-direction:column">
+    <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dr-copper-700)">Added since the last review</div>
+    <h2 style="font-family:var(--dr-font-display);font-size:66px;font-weight:600;letter-spacing:-.02em;margin:18px 0 54px">Three requirements, three screens</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;flex:1">
+      <div class="dr-card" style="padding:44px 40px;display:flex;flex-direction:column">
+        <div style="font-family:var(--dr-font-display);font-size:88px;font-weight:600;line-height:.9;color:var(--dr-copper-500)">09</div>
+        <h3 style="font-family:var(--dr-font-display);font-size:36px;font-weight:600;line-height:1.2;margin:22px 0 16px">Bucket every recommendation by confidence</h3>
+        <p style="font-family:var(--dr-font-body);font-size:26px;line-height:1.55;color:var(--dr-ink-2);margin:0">High, Medium or Low — derived from evidence density, not from the size of the markdown.</p>
+        <div style="margin-top:auto;padding-top:26px"><span class="dr-badge dr-badge--brand" style="font-size:24px;padding:10px 18px">Recommendations · Queue</span></div>
+      </div>
+      <div class="dr-card" style="padding:44px 40px;display:flex;flex-direction:column">
+        <div style="font-family:var(--dr-font-display);font-size:88px;font-weight:600;line-height:.9;color:var(--dr-copper-500)">10</div>
+        <h3 style="font-family:var(--dr-font-display);font-size:36px;font-weight:600;line-height:1.2;margin:22px 0 16px">The first run after EOL produces a plan, not a price</h3>
+        <p style="font-family:var(--dr-font-body);font-size:26px;line-height:1.55;color:var(--dr-ink-2);margin:0">The whole window scheduled, costed and dated. Every later run reviews against it.</p>
+        <div style="margin-top:auto;padding-top:26px"><span class="dr-badge dr-badge--brand" style="font-size:24px;padding:10px 18px">Plan</span></div>
+      </div>
+      <div class="dr-card" style="padding:44px 40px;display:flex;flex-direction:column">
+        <div style="font-family:var(--dr-font-display);font-size:88px;font-weight:600;line-height:.9;color:var(--dr-copper-500)">11</div>
+        <h3 style="font-family:var(--dr-font-display);font-size:36px;font-weight:600;line-height:1.2;margin:22px 0 16px">Review periodicity is set by the agent, capped at weekly</h3>
+        <p style="font-family:var(--dr-font-body);font-size:26px;line-height:1.55;color:var(--dr-ink-2);margin:0">The agent may lengthen the interval. Nobody may shorten it below seven days.</p>
+        <div style="margin-top:auto;padding-top:26px"><span class="dr-badge dr-badge--brand" style="font-size:24px;padding:10px 18px">Overview · Plan · Guardrails</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Trigger" data-screen-label="03" data-speaker-notes="The trigger is unchanged. What changes is what the agent does first." style="background:var(--dr-canvas);color:var(--dr-ink);padding:96px 120px;display:flex;flex-direction:column;justify-content:center">
+    <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dr-copper-700);margin-bottom:22px">Requirement 10 · Trigger and entry</div>
+    <h2 style="font-family:var(--dr-font-display);font-size:80px;font-weight:600;line-height:1.1;letter-spacing:-.022em;margin:0 0 44px;max-width:1500px">Setting EOL is the trigger. The agent's first act is a plan, not a price.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px">
+      <div class="dr-card" style="padding:40px">
+        <div class="dr-field-label" style="font-size:24px">Before</div>
+        <p style="font-family:var(--dr-font-body);font-size:29px;line-height:1.55;margin:14px 0 0;color:var(--dr-ink-2)">The agent wakes on EOL and proposes this week's markdown. Cycle two proposes the next one. Nobody can see where the event is heading until it is nearly over.</p>
+      </div>
+      <div class="dr-card" style="padding:40px;background:var(--dr-copper-050);border-color:var(--dr-copper-200)">
+        <div class="dr-field-label" style="font-size:24px;color:var(--dr-copper-800)">Now</div>
+        <p style="font-family:var(--dr-font-body);font-size:29px;line-height:1.55;margin:14px 0 0;color:var(--dr-ink)">The first run emits the full Hold → MD4 schedule for every store, with expected residual and margin at the exit date. The planner signs off a plan. Later runs report <strong>deviation from plan</strong>, not deviation from last week.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Workflow" data-screen-label="04" data-speaker-notes="Nine steps. Two are new. Step 8 never changes — nothing executes without a person." style="background:var(--dr-canvas);color:var(--dr-ink);padding:78px 100px;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:baseline;gap:24px;margin-bottom:30px">
+      <h2 style="font-family:var(--dr-font-display);font-size:56px;font-weight:600;letter-spacing:-.02em;margin:0">The agentic workflow</h2>
+      <span style="font-family:var(--dr-font-body);font-size:26px;color:var(--dr-ink-2)">The orchestrator chains capabilities and carries context between them</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:20px;flex:1">
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column">
+        <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">01</div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Scope &amp; sync data</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Reads the EOL flag from Aptos; pulls cost, retail, on-hand and prior-year sales.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column">
+        <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">02</div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Inventory &amp; demand signal</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Rate of sale, weeks of supply and stores selling, per SKU × store.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column">
+        <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">03</div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Trajectory check</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Will this store clear by the exit date at its current rate? If yes, hold.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column">
+        <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">04</div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Pricing &amp; governance</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Stage and depth per store, tested against the floor and the relaxation rule.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column;background:var(--dr-copper-050);border-color:var(--dr-copper-200)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div class="dr-hex" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">05</div>
+          <span class="dr-badge dr-badge--brand" style="font-size:24px;padding:8px 14px">NEW</span>
+        </div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Plan or re-plan</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">First run builds the whole schedule. Later runs diff against it.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column">
+        <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">06</div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Reason</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Assembles the why and how a buyer reads before approving.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column;background:var(--dr-copper-050);border-color:var(--dr-copper-200)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div class="dr-hex" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">07</div>
+          <span class="dr-badge dr-badge--brand" style="font-size:24px;padding:8px 14px">NEW</span>
+        </div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Confidence bucketing</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Scores evidence density and elasticity fit; buckets High, Medium or Low.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">08</div>
+          <span class="dr-badge dr-badge--ok" style="font-size:24px;padding:8px 14px">HUMAN</span>
+        </div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Persist for buyer review</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Queues by bucket. Nothing executes without a named approval.</div>
+      </div>
+      <div class="dr-card" style="padding:24px 28px;display:flex;flex-direction:column">
+        <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">09</div>
+        <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.2;margin-top:14px">Report &amp; notify</div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.45;color:var(--dr-ink-2);margin-top:8px">Exit compliance, first-attempt rate and exposure at risk.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Plan" data-screen-label="05" data-speaker-notes="The artefact the planner signs off: four clusters, five review weeks, a stage per week." style="background:var(--dr-canvas);color:var(--dr-ink);padding:76px 100px;display:flex;flex-direction:column">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:26px">
+      <div>
+        <div style="font-family:var(--dr-font-body);font-size:24px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dr-copper-700)">Requirement 10 · The plan</div>
+        <h2 style="font-family:var(--dr-font-display);font-size:56px;font-weight:600;letter-spacing:-.02em;margin:12px 0 0">Stage transition schedule</h2>
+      </div>
+      <div style="display:flex;gap:24px;font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2);align-items:center">
+        <span style="display:inline-flex;align-items:center;gap:9px"><i style="width:20px;height:20px;display:inline-block;border-radius:3px;background:var(--dr-surface-2);border:1px solid var(--dr-line)"></i>Hold</span>
+        <span style="display:inline-flex;align-items:center;gap:9px"><i style="width:20px;height:20px;display:inline-block;border-radius:3px;background:var(--dr-copper-100)"></i>MD1</span>
+        <span style="display:inline-flex;align-items:center;gap:9px"><i style="width:20px;height:20px;display:inline-block;border-radius:3px;background:var(--dr-copper-300)"></i>MD2</span>
+        <span style="display:inline-flex;align-items:center;gap:9px"><i style="width:20px;height:20px;display:inline-block;border-radius:3px;background:var(--dr-copper-600)"></i>MD3</span>
+        <span style="display:inline-flex;align-items:center;gap:9px"><i style="width:20px;height:20px;display:inline-block;border-radius:3px;background:var(--dr-action)"></i>MD4</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:400px repeat(5,1fr);gap:10px;align-items:end;margin-bottom:10px">
+      <div></div>
+      <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.3;color:var(--dr-ink-2);padding-bottom:10px;border-bottom:2px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600;color:var(--dr-ink)">Wk 1</div>17–23 Oct</div>
+      <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.3;color:var(--dr-ink-2);padding-bottom:10px;border-bottom:2px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600;color:var(--dr-ink)">Wk 2</div>24–30 Oct</div>
+      <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.3;color:var(--dr-ink-2);padding-bottom:10px;border-bottom:2px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600;color:var(--dr-ink)">Wk 3</div>31 Oct – 6 Nov</div>
+      <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.3;color:var(--dr-ink-2);padding-bottom:10px;border-bottom:2px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600;color:var(--dr-ink)">Wk 4</div>7–13 Nov</div>
+      <div style="font-family:var(--dr-font-body);font-size:24px;line-height:1.3;color:var(--dr-ink-2);padding-bottom:10px;border-bottom:2px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600;color:var(--dr-ink)">Wk 5</div>Exit 14 Nov</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;flex:1">
+      <div style="display:grid;grid-template-columns:400px repeat(5,1fr);gap:10px;flex:1">
+        <div style="padding-right:20px;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.15">Cluster A — clearing</div>
+          <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2);margin-top:4px">18 stores · 0 units left at exit</div>
+        </div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-surface-2);color:var(--dr-ink-2);border:1px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">Hold</div><div style="font-family:var(--dr-font-body);font-size:24px">No change</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-surface-2);color:var(--dr-ink-2);border:1px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">Hold</div><div style="font-family:var(--dr-font-body);font-size:24px">No change</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-surface-2);color:var(--dr-ink-2);border:1px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">Hold</div><div style="font-family:var(--dr-font-body);font-size:24px">No change</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-100);color:var(--dr-copper-900);border:1px solid var(--dr-copper-200)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD1</div><div style="font-family:var(--dr-font-body);font-size:24px">−30%</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-100);color:var(--dr-copper-900);border:1px solid var(--dr-copper-200)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD1</div><div style="font-family:var(--dr-font-body);font-size:24px">−30%</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:400px repeat(5,1fr);gap:10px;flex:1">
+        <div style="padding-right:20px;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.15">Cluster B — on plan</div>
+          <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2);margin-top:4px">31 stores · 0 units left at exit</div>
+        </div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-surface-2);color:var(--dr-ink-2);border:1px solid var(--dr-line)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">Hold</div><div style="font-family:var(--dr-font-body);font-size:24px">No change</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-100);color:var(--dr-copper-900);border:1px solid var(--dr-copper-200)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD1</div><div style="font-family:var(--dr-font-body);font-size:24px">−30%</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-100);color:var(--dr-copper-900);border:1px solid var(--dr-copper-200)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD1</div><div style="font-family:var(--dr-font-body);font-size:24px">−30%</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-300);color:#3A1F14;border:1px solid var(--dr-copper-300)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD2</div><div style="font-family:var(--dr-font-body);font-size:24px">−50%</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-300);color:#3A1F14;border:1px solid var(--dr-copper-300)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD2</div><div style="font-family:var(--dr-font-body);font-size:24px">−50%</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:400px repeat(5,1fr);gap:10px;flex:1">
+        <div style="padding-right:20px;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.15">Cluster C — slow, high cover</div>
+          <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2);margin-top:4px">44 stores · Hold skipped · 2% residual</div>
+        </div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-100);color:var(--dr-copper-900);border:1px solid var(--dr-copper-200)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD1</div><div style="font-family:var(--dr-font-body);font-size:24px">−30% early</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-100);color:var(--dr-copper-900);border:1px solid var(--dr-copper-200)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD1</div><div style="font-family:var(--dr-font-body);font-size:24px">−30%</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-300);color:#3A1F14;border:1px solid var(--dr-copper-300)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD2</div><div style="font-family:var(--dr-font-body);font-size:24px">−50%</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-600);color:#fff;border:1px solid var(--dr-copper-600)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD3</div><div style="font-family:var(--dr-font-body);font-size:24px">Basket $1.75</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-600);color:#fff;border:1px solid var(--dr-copper-600)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD3</div><div style="font-family:var(--dr-font-body);font-size:24px">Basket $1.75</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:400px repeat(5,1fr);gap:10px;flex:1">
+        <div style="padding-right:20px;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:var(--dr-font-display);font-size:29px;font-weight:600;line-height:1.15">Cluster D — no sale recorded</div>
+          <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2);margin-top:4px">17 stores · zero sales in 9 weeks · 9% residual</div>
+        </div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-100);color:var(--dr-copper-900);border:1px solid var(--dr-copper-200)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD1</div><div style="font-family:var(--dr-font-body);font-size:24px">−30% early</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-300);color:#3A1F14;border:1px solid var(--dr-copper-300)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD2</div><div style="font-family:var(--dr-font-body);font-size:24px">−50%</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-copper-600);color:#fff;border:1px solid var(--dr-copper-600)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD3</div><div style="font-family:var(--dr-font-body);font-size:24px">Basket $1.75</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-action);color:#fff;border:1px solid var(--dr-action)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD4</div><div style="font-family:var(--dr-font-body);font-size:24px">$1.00 final</div></div>
+        <div style="padding:12px 18px;border-radius:6px;display:flex;flex-direction:column;justify-content:center;background:var(--dr-action);color:#fff;border:1px solid var(--dr-action)"><div style="font-family:var(--dr-font-display);font-size:28px;font-weight:600">MD4</div><div style="font-family:var(--dr-font-body);font-size:24px">$1.00 final</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Conflict" data-screen-label="06" data-speaker-notes="The conflict to raise with Stan: five weeks, five stages, so a Hold week costs the slowest stores their MD4." style="background:var(--dr-shell);color:var(--dr-on-shell);padding:110px 120px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden">
+    <i class="dr-hexwatermark" style="opacity:.4"></i>
+    <div style="position:relative;max-width:1560px">
+      <span class="dr-badge dr-badge--warn" style="font-size:24px;padding:11px 20px">Plan conflict — decision required</span>
+      <h2 style="font-family:var(--dr-font-display);font-size:78px;font-weight:600;line-height:1.12;letter-spacing:-.022em;margin:34px 0 0;color:#fff">Five review weeks. Five stages. A Hold week costs the slowest stores their MD4.</h2>
+      <p style="font-family:var(--dr-font-body);font-size:31px;line-height:1.55;color:var(--dr-on-shell-2);margin:36px 0 0;max-width:1420px">EOL is set 17 Oct against a hard exit of 14 Nov, and no store may take more than one price change a week. Spending week 1 on Hold leaves four slots, so a store needing the full ladder reaches MD3 and no further. The plan therefore skips Hold for the 61 slowest stores and opens them at MD1 in week 1.</p>
+      <div style="display:flex;gap:20px;margin-top:48px;flex-wrap:wrap">
+        <div style="padding:20px 28px;border:1px solid var(--dr-copper-500);background:rgba(192,120,96,.16);border-radius:var(--dr-r);font-family:var(--dr-font-body);font-size:26px;font-weight:600;color:#fff">Skip Hold for clusters C &amp; D</div>
+        <div style="padding:20px 28px;border:1px solid var(--dr-shell-line);border-radius:var(--dr-r);font-family:var(--dr-font-body);font-size:26px;color:var(--dr-on-shell-2)">Hold everywhere, accept MD3 max</div>
+        <div style="padding:20px 28px;border:1px solid var(--dr-shell-line);border-radius:var(--dr-r);font-family:var(--dr-font-body);font-size:26px;color:var(--dr-on-shell-2)">Extend the exit date</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Cadence" data-screen-label="07" data-speaker-notes="Cadence is agent-set with a hard weekly floor. At 14 days MD4 becomes unreachable." style="background:var(--dr-canvas);color:var(--dr-ink);padding:96px 120px;display:flex;flex-direction:column">
+    <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dr-copper-700)">Requirement 11 · Review periodicity</div>
+    <h2 style="font-family:var(--dr-font-display);font-size:66px;font-weight:600;letter-spacing:-.02em;margin:18px 0 16px">The agent sets the interval. The floor is not negotiable.</h2>
+    <p style="font-family:var(--dr-font-body);font-size:29px;line-height:1.5;color:var(--dr-ink-2);margin:0 0 46px;max-width:1400px">One price change per store per week is a store-execution constraint, so it is coded as a floor rather than a setting. The agent may lengthen the interval; the planner may lengthen it further; nobody may go below seven days.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;flex:1">
+      <div class="dr-card" style="padding:36px 34px;display:flex;flex-direction:column;background:var(--dr-copper-050);border-color:var(--dr-copper-200)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-family:var(--dr-font-display);font-size:52px;font-weight:600">7 days</div>
+          <span class="dr-badge dr-badge--brand" style="font-size:24px;padding:8px 14px">Agent choice</span>
+        </div>
+        <div style="font-family:var(--dr-font-display);font-size:33px;font-weight:600;margin-top:22px">All five stages reachable</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin-top:10px">The shortest legal interval, and the only one that gets a slow store all the way to MD4 before the exit date.</div>
+      </div>
+      <div class="dr-card" style="padding:36px 34px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-family:var(--dr-font-display);font-size:52px;font-weight:600">10 days</div>
+          <span class="dr-badge dr-badge--neutral" style="font-size:24px;padding:8px 14px">Permitted</span>
+        </div>
+        <div style="font-family:var(--dr-font-display);font-size:33px;font-weight:600;margin-top:22px">MD4 unreachable</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin-top:10px">Halves the load on store teams but drops a decision point. Proposed only when prior-year variance is low.</div>
+      </div>
+      <div class="dr-card" style="padding:36px 34px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-family:var(--dr-font-display);font-size:52px;font-weight:600">14 days</div>
+          <span class="dr-badge dr-badge--warn" style="font-size:24px;padding:8px 14px">Flagged unsafe</span>
+        </div>
+        <div style="font-family:var(--dr-font-display);font-size:33px;font-weight:600;margin-top:22px">Two stages after Hold</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin-top:10px">Suits long clearance windows. Against a 14 Nov exit the agent flags it as unsafe for this event.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Confidence" data-screen-label="08" data-speaker-notes="Confidence measures evidence, not risk. A deep markdown on a well-observed store can be High." style="background:var(--dr-canvas);color:var(--dr-ink);padding:88px 110px;display:flex;flex-direction:column">
+    <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dr-copper-700)">Requirement 09 · Confidence</div>
+    <h2 style="font-family:var(--dr-font-display);font-size:66px;font-weight:600;letter-spacing:-.02em;margin:18px 0 14px">Confidence measures the evidence, not the risk</h2>
+    <p style="font-family:var(--dr-font-body);font-size:28px;line-height:1.5;color:var(--dr-ink-2);margin:0 0 40px;max-width:1480px">A 65% markdown on a well-observed store can be High confidence. A hold on a store with no recorded sales is Low. That distinction is what makes the bucket useful for routing approvals.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;flex:1">
+      <div class="dr-card" style="padding:34px 32px;display:flex;flex-direction:column;background:var(--dr-copper-050);border-color:var(--dr-copper-200)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+          <div style="font-family:var(--dr-font-display);font-size:40px;font-weight:600;color:var(--dr-copper-800)">High</div>
+          <div style="font-family:var(--dr-font-display);font-size:44px;font-weight:600;color:var(--dr-ink-2)">412</div>
+        </div>
+        <div class="dr-meter" style="margin:22px 0 24px;height:10px"><div class="dr-meter__fill" style="width:92%;background:linear-gradient(90deg,var(--dr-copper-500),var(--dr-copper-700))"></div></div>
+        <div class="dr-field-label" style="font-size:24px">Qualifies when</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin:8px 0 22px">Twelve weeks or more of store-level sales, a prior-year comparator, elasticity fit above threshold, and no floor breach.</div>
+        <div class="dr-field-label" style="font-size:24px;margin-top:auto">Routing</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;font-weight:600;margin-top:8px">Bulk-approvable by stage or by store cluster.</div>
+      </div>
+      <div class="dr-card" style="padding:34px 32px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+          <div style="font-family:var(--dr-font-display);font-size:40px;font-weight:600">Medium</div>
+          <div style="font-family:var(--dr-font-display);font-size:44px;font-weight:600;color:var(--dr-ink-2)">283</div>
+        </div>
+        <div class="dr-meter" style="margin:22px 0 24px;height:10px"><div class="dr-meter__fill" style="width:68%;background:linear-gradient(90deg,var(--dr-copper-500),var(--dr-copper-700))"></div></div>
+        <div class="dr-field-label" style="font-size:24px">Qualifies when</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin:8px 0 22px">Category-borrowed elasticity, a single-year comparator, or a floor breach that conditional relaxation permits.</div>
+        <div class="dr-field-label" style="font-size:24px;margin-top:auto">Routing</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;font-weight:600;margin-top:8px">Individual approval; the breach reason shows inline.</div>
+      </div>
+      <div class="dr-card" style="padding:34px 32px;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+          <div style="font-family:var(--dr-font-display);font-size:40px;font-weight:600">Low</div>
+          <div style="font-family:var(--dr-font-display);font-size:44px;font-weight:600;color:var(--dr-ink-2)">83</div>
+        </div>
+        <div class="dr-meter" style="margin:22px 0 24px;height:10px"><div class="dr-meter__fill" style="width:34%;background:linear-gradient(90deg,var(--dr-copper-500),var(--dr-copper-700))"></div></div>
+        <div class="dr-field-label" style="font-size:24px">Qualifies when</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin:8px 0 22px">Below the observation threshold, first year ranged, or a store with no recorded sales at all.</div>
+        <div class="dr-field-label" style="font-size:24px;margin-top:auto">Routing</div>
+        <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;font-weight:600;margin-top:8px">Individual approval only — never bulk, never automatic.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Queue" data-screen-label="09" data-speaker-notes="The routing is the point: High is bulk-approvable, Low never is." style="background:var(--dr-canvas);color:var(--dr-ink);padding:88px 110px;display:flex;flex-direction:column">
+    <h2 style="font-family:var(--dr-font-display);font-size:62px;font-weight:600;letter-spacing:-.02em;margin:0 0 14px">55 stores, reviewable in one sitting</h2>
+    <p style="font-family:var(--dr-font-body);font-size:28px;line-height:1.5;color:var(--dr-ink-2);margin:0 0 40px;max-width:1480px">The queue is tabbed by confidence bucket. Rows collapse to a summary and expand to the agent's reasoning, so a buyer reads only what needs reading.</p>
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:44px;flex:1;align-items:start">
+      <div class="dr-card" style="overflow:hidden">
+        <div class="dr-card__head" style="padding:24px 30px;display:flex;gap:26px;align-items:center">
+          <span style="font-family:var(--dr-font-display);font-size:27px;font-weight:600;color:var(--dr-copper-700);border-bottom:3px solid var(--dr-copper-500);padding-bottom:6px">High 31</span>
+          <span style="font-family:var(--dr-font-body);font-size:26px;color:var(--dr-ink-2)">Medium 16</span>
+          <span style="font-family:var(--dr-font-body);font-size:26px;color:var(--dr-ink-2)">Low 8</span>
+          <span class="dr-btn dr-btn--primary" style="margin-left:auto;font-size:24px;padding:13px 20px">Approve all 31</span>
+        </div>
+        <div class="dr-card__body" style="padding:24px 30px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:20px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--dr-line)">
+            <div style="flex:1;min-width:0">
+              <div style="font-family:var(--dr-font-display);font-size:27px;font-weight:600">Penn Station</div>
+              <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2)">12 units · WOS 2.4</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:600">Hold at MD1</div>
+              <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2)">$3.49 held</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--dr-line)">
+            <div style="flex:1;min-width:0">
+              <div style="font-family:var(--dr-font-display);font-size:27px;font-weight:600">JFK T4 Airside</div>
+              <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2)">3 units · WOS 0.0</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:600">Advance to MD2</div>
+              <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2)">$3.49 → $2.49</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:center">
+            <div style="flex:1;min-width:0">
+              <div style="font-family:var(--dr-font-display);font-size:27px;font-weight:600">Union Station Chicago</div>
+              <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2)">27 units · WOS 13.5</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:600">Hold at MD2</div>
+              <div style="font-family:var(--dr-font-body);font-size:24px;color:var(--dr-ink-2)">$2.49 held</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:26px">
+        <div style="display:flex;gap:20px;align-items:flex-start">
+          <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">1</div>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25">Grouped, not sorted</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin-top:6px">Three tabs, one per bucket. A buyer clears High in a single action and spends their attention on the 24 that need it.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start">
+          <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">2</div>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25">Collapsed by default</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin-top:6px">Store, position, stage, recommendation, guardrail state and the two decisions — one row deep.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start">
+          <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">3</div>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25">Expanded on demand</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin-top:6px">Why, how, the confidence reading, and every guardrail check with its limit and actual value.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start">
+          <div class="dr-hex dr-hex--soft" style="--hex-size:44px;font-family:var(--dr-font-display);font-size:24px;font-weight:700">4</div>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25">Nothing auto-executes</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.5;color:var(--dr-ink-2);margin-top:6px">Bulk approval is still a person pressing a button. Phase 1 has no autonomous path to the price file.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Guardrails MD1–MD2" data-screen-label="10" data-speaker-notes="MD1 and MD2 are the margin-protecting stages. Both floors are hard; neither is ever waived." style="background:var(--dr-canvas);color:var(--dr-ink);padding:88px 110px;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:baseline;gap:24px;margin-bottom:12px">
+      <h2 style="font-family:var(--dr-font-display);font-size:58px;font-weight:600;letter-spacing:-.02em;margin:0">Guardrails — the margin stages</h2>
+      <span class="dr-badge dr-badge--neutral" style="font-size:24px;padding:9px 16px">Both floors hard</span>
+    </div>
+    <p style="font-family:var(--dr-font-body);font-size:28px;line-height:1.5;color:var(--dr-ink-2);margin:0 0 40px;max-width:1480px">Every stage answers three questions: when it starts, what it prices at, and how low it may go. The numbers are the only thing the planner sets.</p>
+    <div style="display:flex;flex-direction:column;gap:26px;flex:1">
+      <div class="dr-card" style="padding:34px 38px;display:flex;flex-direction:column;flex:1">
+        <div style="display:flex;gap:20px;align-items:center">
+          <div class="dr-hex" style="--hex-size:68px;background:linear-gradient(155deg,var(--dr-copper-300),var(--dr-copper-500));font-family:var(--dr-font-display);font-size:24px;font-weight:700">MD1</div>
+          <div style="font-family:var(--dr-font-display);font-size:36px;font-weight:600;flex:1">Open the ladder</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;color:var(--dr-ink-2);max-width:640px;text-align:right">One depth everywhere, so the price is defensible and the ticket prints in a single pass.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:28px">
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Starts when</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">7 days after EOL</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">and only where the store will not clear by 14 Nov at its current rate.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Price</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">30% off retail</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">uniform across every eligible store, rounded onto a .49 or .99 ending.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Floor</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">1.40 × cost</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">never waived. A store that cannot clear it stays at Hold.</div>
+          </div>
+        </div>
+      </div>
+      <div class="dr-card" style="padding:34px 38px;display:flex;flex-direction:column;flex:1">
+        <div style="display:flex;gap:20px;align-items:center">
+          <div class="dr-hex" style="--hex-size:68px;background:linear-gradient(155deg,var(--dr-copper-400),var(--dr-copper-600));font-family:var(--dr-font-display);font-size:24px;font-weight:700">MD2</div>
+          <div style="font-family:var(--dr-font-display);font-size:36px;font-weight:600;flex:1">Differentiate</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;color:var(--dr-ink-2);max-width:640px;text-align:right">Depth in proportion to how overstocked the store is — a flat second cut wastes margin.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:28px">
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Starts when</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">7 days at MD1</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">and still behind the rate that clears it. Responders hold at MD1.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Price</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">40 / 50 / 60%</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">by weeks of cover left: under 6, 6 to 12, or over 12.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Floor</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">1.30 × cost</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">and if it leaves under a 15% cut, the store skips to MD3.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Guardrails MD3–MD4" data-screen-label="11" data-speaker-notes="MD3 and MD4 are where the unit of pricing changes and the floor gives way." style="background:var(--dr-canvas);color:var(--dr-ink);padding:88px 110px;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:baseline;gap:24px;margin-bottom:12px">
+      <h2 style="font-family:var(--dr-font-display);font-size:58px;font-weight:600;letter-spacing:-.02em;margin:0">Guardrails — the disposal stages</h2>
+      <span class="dr-badge dr-badge--brand" style="font-size:24px;padding:9px 16px">Floor relaxable</span>
+    </div>
+    <p style="font-family:var(--dr-font-body);font-size:28px;line-height:1.5;color:var(--dr-ink-2);margin:0 0 40px;max-width:1480px">Two things change here. The unit of pricing moves from the item to the fixture, and the margin floor gives way when the residual is small enough to justify it.</p>
+    <div style="display:flex;flex-direction:column;gap:26px;flex:1">
+      <div class="dr-card" style="padding:34px 38px;display:flex;flex-direction:column;flex:1;background:var(--dr-copper-050);border-color:var(--dr-copper-200)">
+        <div style="display:flex;gap:20px;align-items:center">
+          <div class="dr-hex" style="--hex-size:68px;background:linear-gradient(155deg,var(--dr-copper-600),var(--dr-copper-800));font-family:var(--dr-font-display);font-size:24px;font-weight:700">MD3</div>
+          <div style="font-family:var(--dr-font-display);font-size:36px;font-weight:600;flex:1">Clear the fixture</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;color:var(--dr-ink-2);max-width:640px;text-align:right">One price governs the whole clearance area, so a buyer approves 12 baskets rather than 96 rows.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:28px">
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Starts when</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">2 weeks, no sale</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">at MD2, or cover still exceeding the window by over 8 weeks.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Price</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">$1.75 basket</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">item tickets stop here; signage carries the price.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Floor</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">1.00 × cost</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">break even, waived when the residual meets the relaxation trigger.</div>
+          </div>
+        </div>
+      </div>
+      <div class="dr-card" style="padding:34px 38px;display:flex;flex-direction:column;flex:1">
+        <div style="display:flex;gap:20px;align-items:center">
+          <div class="dr-hex" style="--hex-size:68px;background:var(--dr-action);font-family:var(--dr-font-display);font-size:24px;font-weight:700">MD4</div>
+          <div style="font-family:var(--dr-font-display);font-size:36px;font-weight:600;flex:1">Dispose</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;color:var(--dr-ink-2);max-width:640px;text-align:right">The question is no longer margin, but whether the residual is worth more than moving it out.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:28px">
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Starts when</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">7 days from exit</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">fires on the calendar, whatever the store has done.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Price</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">$1.00 final</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">the terminal price for the event. No depth is calculated.</div>
+          </div>
+          <div>
+            <div class="dr-field-label" style="font-size:24px">Floor</div>
+            <div style="font-family:var(--dr-font-display);font-size:32px;font-weight:600;margin-top:8px">0.80 × cost</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:6px">a 20% loss. Past it, a person decides the write-off.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Envelope" data-screen-label="12" data-speaker-notes="The envelope binds all four stages. One relaxation definition, used by MD3 and MD4 together." style="background:var(--dr-canvas);color:var(--dr-ink);padding:80px 120px;display:flex;flex-direction:column">
+    <h2 style="font-family:var(--dr-font-display);font-size:60px;font-weight:600;letter-spacing:-.02em;margin:0 0 12px">The operating envelope</h2>
+    <p style="font-family:var(--dr-font-body);font-size:28px;line-height:1.5;color:var(--dr-ink-2);margin:0 0 34px;max-width:1420px">Five rules bind all four stages. No stage setting can widen them, and they are the reason a correct recommendation sometimes shows as "no action this week".</p>
+    <div style="display:flex;flex-direction:column;gap:18px;flex:1">
+      <div class="dr-card" style="padding:22px 34px;display:grid;grid-template-columns:170px 1fr;gap:34px;align-items:center;flex:1">
+        <div style="font-family:var(--dr-font-display);font-size:46px;font-weight:600;color:var(--dr-copper-700);text-align:right">4</div>
+        <div>
+          <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600">Price changes per item per store</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:4px">Across the whole event, whatever the stages recommend. On a five-week window the calendar binds first.</div>
+        </div>
+      </div>
+      <div class="dr-card" style="padding:22px 34px;display:grid;grid-template-columns:170px 1fr;gap:34px;align-items:center;flex:1">
+        <div style="font-family:var(--dr-font-display);font-size:46px;font-weight:600;color:var(--dr-copper-700);text-align:right">7</div>
+        <div>
+          <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600">Days minimum between price changes</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:4px">A store-execution constraint, so it is coded as a floor rather than a setting.</div>
+        </div>
+      </div>
+      <div class="dr-card" style="padding:22px 34px;display:grid;grid-template-columns:170px 1fr;gap:34px;align-items:center;flex:1">
+        <div style="font-family:var(--dr-font-display);font-size:46px;font-weight:600;color:var(--dr-copper-700);text-align:right">≤5</div>
+        <div>
+          <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600">Units that waive the margin floor</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:4px">Of the item, in that store. Used by MD3 and MD4 — one definition, both stages.</div>
+        </div>
+      </div>
+      <div class="dr-card" style="padding:22px 34px;display:grid;grid-template-columns:170px 1fr;gap:34px;align-items:center;flex:1">
+        <div style="font-family:var(--dr-font-display);font-size:46px;font-weight:600;color:var(--dr-copper-700);text-align:right">&lt;50</div>
+        <div>
+          <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600">Or total in-scope units per store</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:4px">Everything in scope, all styles. Either threshold waives the floor.</div>
+        </div>
+      </div>
+      <div class="dr-card" style="padding:22px 34px;display:grid;grid-template-columns:170px 1fr;gap:34px;align-items:center;flex:1;background:var(--dr-copper-050);border-color:var(--dr-copper-200)">
+        <div style="font-family:var(--dr-font-display);font-size:46px;font-weight:600;color:var(--dr-copper-700);text-align:right">off</div>
+        <div>
+          <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600">Automatic execution</div>
+          <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-ink-2);margin-top:4px">Nothing reaches the price file without a named approval. High confidence is bulk-approvable by a person, never automatic.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dr" data-label="Decisions" data-screen-label="13" data-speaker-notes="Four decisions we need, and the two numbers that are still placeholders." style="background:var(--dr-shell);color:var(--dr-on-shell);padding:96px 120px;display:flex;flex-direction:column;position:relative;overflow:hidden">
+    <i class="dr-hexwatermark" style="opacity:.4"></i>
+    <div style="position:relative">
+      <div style="font-family:var(--dr-font-body);font-size:25px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dr-copper-400)">What we need from you</div>
+      <h2 style="font-family:var(--dr-font-display);font-size:64px;font-weight:600;letter-spacing:-.02em;margin:18px 0 40px;color:#fff">Four decisions, two placeholders</h2>
+    </div>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:24px 40px;flex:1;align-content:start">
+      <div style="padding:24px 28px;border-radius:var(--dr-r);border:1px solid var(--dr-shell-line);background:var(--dr-shell-2)">
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:var(--dr-font-display);font-size:26px;font-weight:700;color:var(--dr-copper-400)">01</span>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25;color:#fff">Approve the Hold skip, or extend the exit date</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-on-shell-2);margin-top:7px">61 stores cannot reach MD4 if week 1 is spent on Hold. The plan assumes the skip.</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:24px 28px;border-radius:var(--dr-r);border:1px solid var(--dr-shell-line);background:var(--dr-shell-2)">
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:var(--dr-font-display);font-size:26px;font-weight:700;color:var(--dr-copper-400)">02</span>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25;color:#fff">Who signs the plan off</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-on-shell-2);margin-top:7px">The weekly recommendations have an approver. The plan itself does not yet.</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:24px 28px;border-radius:var(--dr-r);border:1px solid var(--dr-shell-line);background:var(--dr-shell-2)">
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:var(--dr-font-display);font-size:26px;font-weight:700;color:var(--dr-copper-400)">03</span>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25;color:#fff">Is a week the execution limit or a policy choice</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-on-shell-2);margin-top:7px">If ticketing could run twice a week, the plan gains two stages.</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:24px 28px;border-radius:var(--dr-r);border:1px solid var(--dr-shell-line);background:var(--dr-shell-2)">
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:var(--dr-font-display);font-size:26px;font-weight:700;color:var(--dr-copper-400)">04</span>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25;color:#fff">Auto-approval of High confidence in Phase 2</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-on-shell-2);margin-top:7px">And at what proven bucket accuracy would you be willing to turn it on.</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:24px 28px;border-radius:var(--dr-r);border:1px solid var(--dr-warn-line);background:rgba(163,106,9,.16)">
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:var(--dr-font-display);font-size:26px;font-weight:700;color:var(--dr-copper-400)">05</span>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25;color:#fff">MD2 depth tiers are placeholders</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-on-shell-2);margin-top:7px">40 / 50 / 60% by cover band needs Stan's real numbers before a customer sees it.</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:24px 28px;border-radius:var(--dr-r);border:1px solid var(--dr-warn-line);background:rgba(163,106,9,.16)">
+        <div style="display:flex;gap:16px;align-items:baseline">
+          <span style="font-family:var(--dr-font-display);font-size:26px;font-weight:700;color:var(--dr-copper-400)">06</span>
+          <div>
+            <div style="font-family:var(--dr-font-display);font-size:30px;font-weight:600;line-height:1.25;color:#fff">Basket and final price points are placeholders</div>
+            <div style="font-family:var(--dr-font-body);font-size:25px;line-height:1.45;color:var(--dr-on-shell-2);margin-top:7px">$1.75 and $1.00 are illustrative. So is every dollar figure in this deck.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</x-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>

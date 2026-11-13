@@ -1,0 +1,19 @@
+      <!-- SETUP · STEP 6 · PRICING STRATEGY SETTINGS -->
+      <sc-if value="{{ showS6 }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Pricing timeline settings" class="dr-card">
+          <div class="dr-card__body" style="display:flex;gap:16px 28px;flex-wrap:wrap;align-items:flex-start">
+            <div style="flex:0 1 300px;min-width:220px">
+              <label class="dr-field-label" for="wz-switch">Switch to clearance from</label>
+              <select id="wz-switch" class="dr-input" style="cursor:pointer" value="{{ swVal }}" onChange="{{ setSwitch }}"><sc-for list="{{ swOpts }}" as="o" hint-placeholder-count="6"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select>
+              <div style="font-size:12px;line-height:1.5;color:var(--dr-ink-3);margin-top:6px;text-wrap:pretty">{{ swHelp }}</div>
+            </div>
+            <sc-if value="{{ hasLyDiff }}" hint-placeholder-val="{{ true }}">
+              <div style="flex:1 1 420px;min-width:0">
+                <div class="dr-stat__label">Last comparable event · {{ lyName }} · actual vs AI-optimized</div>
+                <sc-for list="{{ lyDiff }}" as="b" hint-placeholder-count="3"><div style="display:flex;gap:8px;align-items:flex-start;margin-top:6px;font-size:12.5px;line-height:1.5;color:var(--dr-ink-2)"><svg style="width:14px;height:14px;flex:none;margin-top:2px;color:var(--dr-copper-600)"><use href="#i-spark"></use></svg><span style="text-wrap:pretty">{{ b }}</span></div></sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </section>
+      </sc-if>
+

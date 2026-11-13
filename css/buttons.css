@@ -1,0 +1,59 @@
+/* ==========================================================================
+   4. Buttons
+   ========================================================================== */
+.dr-btn {
+  font-family: var(--dr-font-body);
+  font-size: 13.5px; font-weight: 600; line-height: 1;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 16px;
+  border-radius: var(--dr-r-sm);
+  border: 1px solid transparent;
+  cursor: pointer; white-space: nowrap;
+  transition: background var(--dr-t), border-color var(--dr-t), color var(--dr-t);
+}
+.dr-btn svg { width: 15px; height: 15px; }
+/* Commit actions are achromatic — this is the fix for the hue collision */
+.dr-btn--primary { background: var(--dr-action); color: #fff; }
+.dr-btn--primary:hover  { background: var(--dr-action-h); }
+.dr-btn--primary:active { background: var(--dr-action-a); }
+.dr-btn--secondary {
+  background: var(--dr-surface); color: var(--dr-ink);
+  border-color: var(--dr-line-2); box-shadow: var(--dr-shadow-1);
+}
+.dr-btn--secondary:hover { background: var(--dr-surface-2); border-color: var(--dr-line-2); }
+.dr-btn--ghost { background: transparent; color: var(--dr-copper-700); }
+.dr-btn--ghost:hover { background: var(--dr-copper-050); }
+.dr-btn--danger { background: var(--dr-danger); color: #fff; }
+.dr-btn--danger:hover { background: #86291F; }
+.dr-btn[disabled], .dr-btn--disabled {
+  background: var(--dr-surface-2); color: var(--dr-ink-4);
+  border-color: var(--dr-line); cursor: not-allowed; box-shadow: none;
+}
+.dr-btn--block { width: 100%; justify-content: center; }
+.dr-btn--sm { padding: 7px 11px; font-size: 12.5px; }
+
+.dr-icon-btn {
+  width: 32px; height: 32px; flex: none;
+  display: grid; place-items: center;
+  border-radius: var(--dr-r-sm);
+  border: 1px solid var(--dr-line-2);
+  background: var(--dr-surface); color: var(--dr-ink-2);
+  cursor: pointer; transition: all var(--dr-t);
+}
+.dr-icon-btn:hover { border-color: var(--dr-copper-400); color: var(--dr-copper-700); background: var(--dr-copper-050); }
+.dr-icon-btn svg { width: 15px; height: 15px; }
+
+.dr-sso {
+  display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%;
+  padding: 11px; font-size: 13.5px; font-weight: 600; font-family: var(--dr-font-body);
+  background: var(--dr-surface); color: var(--dr-ink);
+  border: 1px solid var(--dr-line-2); border-radius: var(--dr-r-sm);
+  cursor: pointer; transition: all var(--dr-t);
+}
+.dr-sso:hover { border-color: var(--dr-copper-400); background: var(--dr-copper-050); }
+.dr-sso svg { width: 16px; height: 16px; }
+
+.dr-divider { display: flex; align-items: center; gap: 12px; color: var(--dr-ink-3); font-size: 11.5px; }
+.dr-divider::before, .dr-divider::after { content: ''; flex: 1; height: 1px; background: var(--dr-line); }
+
+/* ==========================================================================

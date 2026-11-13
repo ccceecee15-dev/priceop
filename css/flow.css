@@ -1,0 +1,30 @@
+/* ==========================================================================
+   12. Workflow spine — the product IS a sequence, so show position in it
+   ========================================================================== */
+.dr-flow {
+  display: flex; align-items: center;
+  background: var(--dr-surface); border: 1px solid var(--dr-line);
+  border-radius: var(--dr-r); padding: 10px 14px; overflow-x: auto;
+}
+.dr-flow__step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 500; color: var(--dr-ink-3);
+  padding: 4px 10px; border-radius: var(--dr-r-sm);
+  white-space: nowrap; cursor: pointer; transition: background var(--dr-t);
+}
+.dr-flow__step:hover { background: var(--dr-surface-2); }
+.dr-flow__step--done { color: var(--dr-ink-2); }
+.dr-flow__step--now {
+  background: var(--dr-copper-050); color: var(--dr-copper-800); font-weight: 600;
+  box-shadow: inset 0 0 0 1px var(--dr-copper-200);
+}
+.dr-flow__num {
+  width: 18px; height: 18px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; font-size: 10px; font-weight: 700;
+  background: var(--dr-surface-3); color: var(--dr-ink-3);
+}
+.dr-flow__step--done .dr-flow__num { background: var(--dr-ok); color: #fff; }
+.dr-flow__step--now  .dr-flow__num { background: var(--dr-copper-600); color: #fff; }
+.dr-flow__sep { width: 18px; height: 1px; background: var(--dr-line-2); flex: none; }
+
+/* ==========================================================================

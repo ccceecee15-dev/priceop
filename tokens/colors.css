@@ -1,0 +1,98 @@
+/* DeepRoot design system — colour tokens
+   Every value is sampled from the DeepRoot logo artwork or derived from it.
+   Do not edit a value here without updating readme.md. */
+
+/* SCHEME A — GRAPHITE & COPPER
+   Copper sits at hue 15deg, between amber and red. Using it for primary
+   actions put "commit" in the same hue band as "alarm": under deuteranopia
+   an Approve button and a risk badge separated by only 39 (confusable below
+   40). Commit actions are therefore achromatic graphite, and copper is
+   reserved for identity and selection.
+
+     Commit action ..... graphite   buttons, send, approve, focus, meters
+     Identity .......... copper     logo, hexagons, headline scores, watermark
+     Selection ......... copper tint  tabs, pills, segments, nav, links
+     Status ............ semantic   ok / warn / risk only
+
+   Warn and risk are separated by LUMINANCE, not hue — under CVD hue
+   separation collapses and luminance survives. Worst-case separation across
+   all status pairs is 53, up from 29. */
+
+:root {
+
+  /* Copper ramp — the single action colour */
+  --dr-copper-050: #FBF1EC;
+  --dr-copper-100: #F4E1D8;
+  --dr-copper-200: #E9C6B6;
+  --dr-copper-300: #E0A890;   /* accents on dark          9.08:1 on ink  */
+  --dr-copper-400: #D8A088;   /* "root" on dark           8.30:1 on ink  */
+  --dr-copper-500: #C07860;   /* BRAND CORE               5.44:1 on ink  */
+  --dr-copper-600: #B87058;   /* fill hover                              */
+  --dr-copper-700: #9E5942;   /* text + links on light    5.30:1 on #fff */
+  --dr-copper-800: #8C4C36;   /* pressed / strong text    6.56:1 on #fff */
+  --dr-copper-900: #7C4230;
+
+  /* Graphite — every committing action. Achromatic on purpose. */
+  --dr-action:     #2A2522;   /* primary fill        15.15:1 on #fff */
+  --dr-action-h:   #1C1917;   /* hover                              */
+  --dr-action-a:   #14110F;   /* pressed                            */
+
+  /* Warm neutrals */
+  --dr-ink:        #1C1917;
+  --dr-ink-2:      #57504A;   /* 7.35:1 */
+  --dr-ink-3:      #77706A;   /* 4.58:1 */
+  --dr-ink-4:      #A39B94;   /* LARGE / decorative only */
+
+  --dr-canvas:     #FAF8F6;
+  --dr-surface:    #FFFFFF;
+  --dr-surface-2:  #F6F4F1;
+  --dr-surface-3:  #EFEBE7;
+  --dr-line:       #E4DFDA;
+  --dr-line-2:     #D6CEC7;
+
+  /* Dark shell — nav rail, sign-in panel */
+  --dr-shell:      #1C1917;
+  --dr-shell-2:    #26211E;
+  --dr-shell-3:    #322B27;
+  --dr-shell-line: #3A322E;
+  --dr-on-shell:   #F5F1ED;   /* 15.9:1 */
+  --dr-on-shell-2: #BDB4AD;
+  --dr-on-shell-3: #8C837C;   /* LARGE / labels only */
+
+  /* Semantic — hue-shifted warm so they sit beside copper */
+  --dr-ok:          #1F6B4C;  /*  6.43:1 */
+  --dr-ok-bg:       #E7F0EB;
+  --dr-ok-line:     #C6DED2;
+  --dr-warn:        #A36A09;  /*  4.54:1 — deliberately LIGHT */
+  --dr-warn-bg:     #F8EFDC;
+  --dr-warn-line:   #E8D5AC;
+  --dr-danger:      #8E2F1C;  /*  8.16:1 — deliberately DARK  */
+  --dr-danger-bg:   #F7E8E4;
+  --dr-danger-line: #E9CBC3;
+}
+
+/* Optional dark workspace: <html data-dr-theme="dark">.
+   The nav rail is dark in both themes. */
+[data-dr-theme="dark"] {
+
+  --dr-canvas:    #141110;
+  --dr-surface:   #1C1917;
+  --dr-surface-2: #26211E;
+  --dr-surface-3: #322B27;
+  --dr-line:      #322B27;
+  --dr-line-2:    #443B36;
+  --dr-action:    #EFEAE5;   /* inverts: light fill on dark */
+  --dr-action-h:  #FFFFFF;
+  --dr-action-a:  #DDD6D0;
+  --dr-ink:       #F5F1ED;
+  --dr-ink-2:     #BDB4AD;
+  --dr-ink-3:     #A39B94;
+  --dr-ink-4:     #8C837C;
+  --dr-copper-700: #D8A088;
+  --dr-copper-800: #E0A890;
+  --dr-copper-050: rgba(192,120,96,.10);
+  --dr-copper-100: rgba(192,120,96,.18);
+  --dr-ok: #5FBF93;     --dr-ok-bg: rgba(31,107,76,.16);
+  --dr-warn: #EFC20E;   --dr-warn-bg: rgba(163,106,9,.20);
+  --dr-danger: #D6503B; --dr-danger-bg: rgba(142,47,28,.22);
+}

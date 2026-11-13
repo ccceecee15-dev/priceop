@@ -1,0 +1,18 @@
+/* DeepRoot design system — type tokens
+   Every value is sampled from the DeepRoot logo artwork or derived from it.
+   Do not edit a value here without updating readme.md. */
+
+/* Poppins for display and brand, Inter for all UI text, JetBrains Mono for
+   identifiers and tabular figures. Loaded in fonts.css. */
+
+:root {
+
+  /* Type */
+  --dr-font-display: 'Poppins', system-ui, sans-serif;
+  --dr-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --dr-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+}
+
+/* Tabular figures. Any numeric cell in a column carries this so the column
+   aligns — KPI values, table cells, deltas, meter readouts. */
+.dr-num { font-variant-numeric: tabular-nums; }

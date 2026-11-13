@@ -1,0 +1,28 @@
+/* ==========================================================================
+   5. Form controls
+   ========================================================================== */
+.dr-input, .dr-select, .dr-textarea {
+  font-family: var(--dr-font-body); font-size: 13.5px;
+  width: 100%; padding: 10px 12px;
+  color: var(--dr-ink); background: var(--dr-surface);
+  border: 1px solid var(--dr-line-2); border-radius: var(--dr-r-sm);
+  transition: border-color var(--dr-t), box-shadow var(--dr-t);
+}
+.dr-input::placeholder, .dr-textarea::placeholder { color: var(--dr-ink-4); }
+.dr-input:focus, .dr-select:focus, .dr-textarea:focus {
+  outline: none; border-color: var(--dr-action); box-shadow: var(--dr-ring);
+}
+.dr-textarea { resize: vertical; min-height: 88px; line-height: 1.55; }
+.dr-field-label {
+  display: block; font-size: 11px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--dr-ink-3); margin-bottom: 7px;
+}
+.dr-search { position: relative; }
+.dr-search > svg {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  width: 15px; height: 15px; color: var(--dr-ink-4); pointer-events: none;
+}
+.dr-search .dr-input { padding-left: 34px; }
+
+/* ==========================================================================

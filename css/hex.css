@@ -1,0 +1,25 @@
+/* ==========================================================================
+   3. Signature: the hexagon tile
+   The logo mark is a hexagon, so object icons echo it rather than the
+   generic rounded square.
+   ========================================================================== */
+.dr-hex {
+  --hex-size: 40px;
+  width: var(--hex-size);
+  height: calc(var(--hex-size) * 1.08);
+  flex: none;
+  display: grid; place-items: center;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(155deg, var(--dr-copper-500), var(--dr-copper-700));
+  color: #fff;
+}
+.dr-hex--soft    { background: var(--dr-copper-100); color: var(--dr-copper-800); }
+.dr-hex--outline { background: var(--dr-copper-050); color: var(--dr-copper-700); }
+.dr-hex svg { width: 55%; height: 55%; }
+
+.dr-hexwatermark {
+  position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M30 2 L58 18 L58 50 L30 66 L2 50 L2 18 Z' fill='none' stroke='%23C07860' stroke-opacity='.16' stroke-width='1.5'/%3E%3Cpath d='M90 52 L118 68 L118 100 L90 116 L62 100 L62 68 Z' fill='none' stroke='%23C07860' stroke-opacity='.10' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================

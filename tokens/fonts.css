@@ -1,0 +1,11 @@
+/* DeepRoot design system — webfonts
+   Every value is sampled from the DeepRoot logo artwork or derived from it.
+   Do not edit a value here without updating readme.md. */
+
+/* SUBSTITUTION FLAGGED: the source materials reference these three families
+   by name but ship no font binaries, so they are loaded from Google Fonts.
+   INTEGRATION.md says "self-host for enterprise deployments" — drop the
+   woff2 files into assets/fonts/ and replace this @import with @font-face
+   rules when you have them. */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');

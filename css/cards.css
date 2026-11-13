@@ -1,0 +1,71 @@
+/* ==========================================================================
+   7. Cards & panels
+   ========================================================================== */
+.dr-card {
+  background: var(--dr-surface);
+  border: 1px solid var(--dr-line);
+  border-radius: var(--dr-r-lg);
+  box-shadow: var(--dr-shadow-1);
+  transition: border-color var(--dr-t), box-shadow var(--dr-t);
+}
+.dr-card--interactive { cursor: pointer; }
+.dr-card--interactive:hover { border-color: var(--dr-copper-300); box-shadow: var(--dr-shadow-2); }
+.dr-card--selected {
+  border-color: var(--dr-copper-500);
+  box-shadow: var(--dr-ring);
+  background: var(--dr-copper-050);
+}
+.dr-card--selected.dr-card--interactive:hover { border-color: var(--dr-copper-600); background: var(--dr-copper-100); }
+.dr-card__head { padding: 16px 18px; border-bottom: 1px solid var(--dr-line); }
+.dr-card__body { padding: 18px; }
+.dr-card__foot {
+  padding: 12px 18px; border-top: 1px solid var(--dr-line);
+  background: var(--dr-surface-2);
+  border-radius: 0 0 var(--dr-r-lg) var(--dr-r-lg);
+}
+
+.dr-stat__label { font-size: 12px; font-weight: 600; color: var(--dr-ink-3); }
+.dr-stat__value, .dr-kpi__value {
+  font-family: var(--dr-font-display); font-size: 32px; font-weight: 600;
+  color: var(--dr-ink); font-variant-numeric: tabular-nums; line-height: 1.05;
+}
+.dr-delta { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.dr-delta--up   { color: var(--dr-ok); }
+.dr-delta--down { color: var(--dr-danger); }
+.dr-bench {
+  font-size: 11.5px; color: var(--dr-ink-3); line-height: 1.6;
+  padding-top: 8px; margin-top: 8px; border-top: 1px dashed var(--dr-line-2);
+}
+.dr-impact { font-size: 12px; color: var(--dr-ok); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.dr-sec { display: flex; align-items: baseline; gap: 10px; margin-bottom: 13px; }
+.dr-sec h3 { font-size: 15px; font-weight: 600; }
+.dr-sec__count { font-size: 12px; color: var(--dr-ink-3); }
+
+.dr-empty {
+  border: 1px dashed var(--dr-line-2); border-radius: var(--dr-r);
+  background: var(--dr-surface-2); padding: 32px 22px; text-align: center;
+  color: var(--dr-ink-3); font-size: 13px; line-height: 1.5;
+}
+
+.dr-callout {
+  display: flex; gap: 11px;
+  padding: 14px 16px; border-radius: var(--dr-r);
+  background: var(--dr-copper-050);
+  border: 1px solid var(--dr-copper-200);
+  border-left: 3px solid var(--dr-copper-500);
+  font-size: 13px; color: var(--dr-ink-2); line-height: 1.55;
+}
+.dr-callout strong { color: var(--dr-copper-800); }
+
+/* Guardrail / rule check — proof, not a promise */
+.dr-rule {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 12.5px; padding: 8px 11px;
+  background: var(--dr-ok-bg); border: 1px solid var(--dr-ok-line);
+  border-radius: var(--dr-r-sm); color: var(--dr-ok);
+}
+.dr-rule--fail { background: var(--dr-danger-bg); border-color: var(--dr-danger-line); color: var(--dr-danger); }
+.dr-rule strong { font-weight: 600; }
+
+/* ==========================================================================

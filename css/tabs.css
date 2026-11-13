@@ -1,0 +1,36 @@
+/* ==========================================================================
+   9. Tabs & segmented control
+   ========================================================================== */
+.dr-tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--dr-line); }
+.dr-tab {
+  font-family: var(--dr-font-body);
+  font-size: 13.5px; font-weight: 500; color: var(--dr-ink-3);
+  padding: 12px 1px; background: none;
+  border: 0; border-bottom: 2px solid transparent;
+  cursor: pointer; transition: color var(--dr-t), border-color var(--dr-t);
+}
+.dr-tab:hover { color: var(--dr-ink); }
+.dr-tab--active { color: var(--dr-copper-700); border-bottom-color: var(--dr-copper-500); font-weight: 600; }
+.dr-tab--active:hover { color: var(--dr-copper-800); }
+
+.dr-seg {
+  display: inline-flex; padding: 4px; gap: 2px;
+  background: var(--dr-surface-2);
+  border: 1px solid var(--dr-line);
+  border-radius: var(--dr-r);
+}
+.dr-seg__item {
+  font-family: var(--dr-font-body);
+  font-size: 13px; font-weight: 500; color: var(--dr-ink-2);
+  padding: 8px 16px; border-radius: var(--dr-r-sm);
+  border: 0; background: transparent; cursor: pointer;
+  white-space: nowrap; transition: all var(--dr-t);
+}
+.dr-seg__item:hover { color: var(--dr-ink); }
+.dr-seg__item--active {
+  background: var(--dr-surface); color: var(--dr-copper-800); font-weight: 600;
+  box-shadow: var(--dr-shadow-1), inset 0 0 0 1px var(--dr-copper-200);
+}
+.dr-seg__item--active:hover { background: var(--dr-copper-050); color: var(--dr-copper-800); }
+
+/* ==========================================================================

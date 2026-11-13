@@ -1,0 +1,12 @@
+/* ==========================================================================
+   15. Scrollbars & motion
+   ========================================================================== */
+.dr ::-webkit-scrollbar { width: 10px; height: 10px; }
+.dr ::-webkit-scrollbar-track { background: var(--dr-surface-2); }
+.dr ::-webkit-scrollbar-thumb { background: var(--dr-line-2); border-radius: 999px; border: 2px solid var(--dr-surface-2); }
+.dr ::-webkit-scrollbar-thumb:hover { background: var(--dr-copper-300); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dr *, .dr *::before, .dr *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .dr-overlay, .dr-modal, .dr-menu { animation: none; }
+}

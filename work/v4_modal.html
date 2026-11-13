@@ -1,0 +1,13 @@
+      <sc-if value="{{ showOvrModal }}" hint-placeholder-val="{{ false }}">
+        <div class="dr-overlay" onClick="{{ closeOvr }}">
+          <div class="dr-modal" role="dialog" aria-modal="true" aria-labelledby="ovr-title" onClick="{{ stop }}" style="max-width:500px">
+            <div class="dr-modal__head"><div><h3 id="ovr-title" style="margin:0;font-size:17px;font-weight:600">{{ ovrM.title }}</h3><p style="margin:4px 0 0;font-size:13px;line-height:1.55;color:var(--dr-ink-2);text-wrap:pretty">{{ ovrM.body }}</p></div></div>
+            <div style="padding:0 22px 16px;display:flex;flex-direction:column;gap:10px">
+              <div style="font-size:12.5px;line-height:1.5;color:var(--dr-ink);font-weight:500;text-wrap:pretty">{{ ovrM.names }}</div>
+              <div role="radiogroup" aria-label="Reason" style="display:flex;flex-direction:column;gap:6px"><sc-for list="{{ ovrM.reasons }}" as="o" hint-placeholder-count="4"><button role="radio" aria-checked="{{ o.pressed }}" onClick="{{ o.pick }}" style="{{ o.style }}"><span style="{{ o.dotStyle }}"></span><span style="font-size:13px;font-weight:500;color:var(--dr-ink)">{{ o.label }}</span></button></sc-for></div>
+              <div><label class="dr-field-label" for="ovr-note">Note (optional)</label><textarea id="ovr-note" class="dr-input" rows="2" style="resize:vertical;font:inherit" value="{{ ovrM.note }}" onChange="{{ ovrM.setNote }}"></textarea></div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:8px;padding:14px 22px;border-top:1px solid var(--dr-line);background:var(--dr-surface-2)"><button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ closeOvr }}">Cancel</button><button class="{{ ovrM.okCls }}" onClick="{{ ovrM.ok }}">{{ ovrM.okT }}</button></div>
+          </div>
+        </div>
+      </sc-if>

@@ -1,0 +1,18 @@
+/* ==========================================================================
+   2. Base
+   ========================================================================== */
+.dr, .dr-app {
+  font-family: var(--dr-font-body);
+  color: var(--dr-ink);
+  background: var(--dr-canvas);
+  -webkit-font-smoothing: antialiased;
+}
+.dr h1, .dr h2, .dr h3, .dr h4, .dr-display {
+  font-family: var(--dr-font-display);
+  letter-spacing: -.015em;
+  color: var(--dr-ink);
+}
+.dr :focus-visible { outline: none; box-shadow: var(--dr-ring); border-radius: var(--dr-r-sm); }
+.dr-num { font-variant-numeric: tabular-nums; }
+
+/* ==========================================================================

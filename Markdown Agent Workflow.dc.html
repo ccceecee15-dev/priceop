@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail" data-bg-color="#1C1917">
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#1C1917"></rect>
+  <path d="M200 80 L246 107 L246 161 L200 188 L154 161 L154 107 Z" fill="#C07860"></path>
+  <text x="200" y="147" text-anchor="middle" font-family="Poppins, sans-serif" font-size="40" font-weight="600" fill="#1C1917">MD</text>
+</svg>
+</template>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/deeproot-theme.css">
+<style>
+body{margin:0;background:var(--dr-canvas)}
+a{color:var(--dr-copper-700);text-decoration:none;font-weight:500}
+a:hover{color:var(--dr-copper-800);text-decoration:underline}
+.dr, .dr *, .dr *::before, .dr *::after{box-sizing:border-box}
+.dr .dr-input{min-width:0}
+.dr svg{width:16px;height:16px}
+.dr-nav__item svg{width:17px;height:17px}
+.dr-btn svg{width:15px;height:15px}
+</style>
+</helmet>
+
+<div class="dr dr-app" style="display:flex;min-height:100vh;align-items:stretch">
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M8 8h8v4a4 4 0 0 1-8 0zM12 16v6"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM13.4 10.6 19 5M20.5 17a9.5 9.5 0 1 0-17 0"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 13v2M15 13v2"/></symbol>
+  <symbol id="i-node" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-2h14v2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5.5-5.5 2 2-5.5z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.9 15.5a2 2 0 0 0 .4 2.2 1.9 1.9 0 1 1-2.6 2.6 2 2 0 0 0-2.2-.4 2 2 0 0 0-1.2 1.8 1.9 1.9 0 1 1-3.8 0 2 2 0 0 0-1.3-1.8 2 2 0 0 0-2.2.4 1.9 1.9 0 1 1-2.6-2.6 2 2 0 0 0 .4-2.2 2 2 0 0 0-1.8-1.2 1.9 1.9 0 1 1 0-3.8 2 2 0 0 0 1.8-1.3 2 2 0 0 0-.4-2.2 1.9 1.9 0 1 1 2.6-2.6 2 2 0 0 0 2.2.4h.1a2 2 0 0 0 1.2-1.8 1.9 1.9 0 1 1 3.8 0 2 2 0 0 0 1.2 1.8 2 2 0 0 0 2.2-.4 1.9 1.9 0 1 1 2.6 2.6 2 2 0 0 0-.4 2.2v.1a2 2 0 0 0 1.8 1.2 1.9 1.9 0 1 1 0 3.8 2 2 0 0 0-1.8 1.2z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 9 5-5 5 5"/><path d="m7 15 5 5 5-5"/></symbol>
+  <symbol id="i-sort-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 9 5-5 5 5" opacity="1"/><path d="m7 15 5 5 5-5" opacity=".25"/></symbol>
+  <symbol id="i-sort-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 9 5-5 5 5" opacity=".25"/><path d="m7 15 5 5 5-5" opacity="1"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.2 11.2 3.9 3.9 0 0 0 6.5 19z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.4 8.4 0 0 1-3.8-.9L3 20.5l1.5-4.7A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="12" cy="19" r="1.7"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></symbol>
+  <symbol id="i-checkc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.7 2.7L16 9.5"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="m8.3 10.8 7.4-4.3M8.3 13.2l7.4 4.3"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M9 16l4-4-4-4M13 12H3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4 6v6c0 5 3.4 8.4 8 9.5 4.6-1.1 8-4.5 8-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M17 3l3 3-2.5 2.5"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20z"/><path d="M12 9v5M12 17h.01"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l14 8-14 8z"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5A2.5 2.5 0 0 0 12.5 8h-1a2.5 2.5 0 0 0 0 5h1a2.5 2.5 0 0 1 0 5h-1A2.5 2.5 0 0 1 9 14.5M12 6v2M12 16v2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-cmd" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3z"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="7.5" r="1.2"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 1 4 3 3 0 0 0 3 5 3 3 0 0 0 3-2V3zM15 3a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-1 4 3 3 0 0 1-3 5 3 3 0 0 1-3-2V3z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-usercheck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 11.5-5.4M16 18l2 2 4-4"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V4.5a1.5 1.5 0 0 1 3 0V11m0 0V3.5a1.5 1.5 0 0 1 3 0V11m0 0V5.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7v-2.5a1.5 1.5 0 0 1 3 0V14"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+  <symbol id="i-branch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+  <symbol id="i-barrier" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="8" rx="1"/><path d="M17 14v7M7 14v7M17 3v3M7 3v3M10 14 2.3 6.3M14 6l7.7 7.7M8 6l8 8"/></symbol>
+  <symbol id="i-slash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></symbol>
+</svg>
+
+  <aside class="dr-nav" style="width:214px;flex:none;display:flex;flex-direction:column;padding:16px 0 4px">
+    <div style="padding:2px 18px 16px">
+      <img src="assets/deeproot-logo.png" alt="deeproot.ai" style="width:138px;height:auto;display:block">
+    </div>
+
+    <div style="padding:0 12px 12px">
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--dr-shell-line);border-radius:var(--dr-r-sm);background:var(--dr-shell-2)">
+        <svg style="width:14px;height:14px;flex:none;color:var(--dr-on-shell-3)"><use href="#i-search"></use></svg>
+        <span style="font-size:13px;color:var(--dr-on-shell-3);flex:1">Search</span>
+        <span class="dr-kbd" style="background:var(--dr-shell-3);border-color:var(--dr-shell-line);color:var(--dr-on-shell-2)">⌘K</span>
+      </div>
+    </div>
+
+    <nav style="display:flex;flex-direction:column">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="8">
+        <div class="{{ n.cls }}">
+          <svg><use href="#{{ n.icon }}"></use></svg>
+          <span style="flex:1">{{ n.label }}</span>
+          <span class="{{ n.badgeCls }}">{{ n.badge }}</span>
+        </div>
+      </sc-for>
+    </nav>
+
+    <div class="dr-usercard" style="margin-top:auto">
+      <div class="dr-avatar dr-avatar--sm">JK</div>
+      <div style="min-width:0;flex:1">
+        <div style="font-size:12.5px;font-weight:600;color:var(--dr-on-shell)">Joonil Kim</div>
+        <div style="font-size:10.5px;color:var(--dr-on-shell-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">joonil.kim@whs…</div>
+      </div>
+      <span class="dr-badge dr-badge--brand" style="font-size:9.5px;padding:3px 6px">ADMIN</span>
+    </div>
+  </aside>
+
+  <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+
+    <header class="dr-topbar">
+      <div class="dr-topbar__title" style="flex:1;min-width:0">Markdown Optimization Agent</div>
+      <span class="dr-badge dr-badge--neutral">Retail · v1.2.0</span>
+      <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ noop }}">Disable</button>
+      <button class="dr-btn dr-btn--primary dr-btn--sm" onClick="{{ goPlan }}">
+        <svg><use href="#i-play"></use></svg>Run now</button>
+    </header>
+
+    <div style="padding:18px 26px 0">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div class="dr-flow" style="flex:1 1 auto;min-width:0;flex-wrap:wrap;overflow-x:visible;row-gap:4px">
+          <sc-for list="{{ flow }}" as="s" hint-placeholder-count="5">
+            <div class="{{ s.cls }}"><span class="dr-flow__num">{{ s.num }}</span>{{ s.label }}</div>
+            <i class="dr-flow__sep" style="{{ s.sepStyle }}"></i>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:16px 26px 0">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--dr-line)">
+      <div class="dr-tabs" style="flex:1 1 auto;min-width:0;border-bottom:0">
+        <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="5">
+          <button class="{{ tab.cls }}" onClick="{{ tab.go }}">{{ tab.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex:none;padding:6px 0">
+        <span id="ds-label" style="font-size:12.5px;color:var(--dr-ink-3)">Data source</span>
+        <div style="position:relative">
+          <div style="display:flex;align-items:center;width:230px;height:36px;border:1px solid var(--dr-line-2);border-radius:var(--dr-r-sm);background:var(--dr-surface)">
+            <button aria-labelledby="ds-label" aria-haspopup="listbox" aria-expanded="{{ dsExpanded }}" onClick="{{ toggleDs }}" style="flex:1;min-width:0;height:100%;display:flex;align-items:center;gap:8px;padding:0 4px 0 10px;border:0;background:transparent;font:inherit;cursor:pointer;text-align:left" style-focus="outline:2px solid var(--dr-copper-500);outline-offset:1px">
+              <svg style="width:15px;height:15px;flex:none;color:var(--dr-ink-3)"><use href="#i-file"></use></svg>
+              <span style="{{ dsTextStyle }}">{{ dsLabel }}</span>
+            </button>
+            <sc-if value="{{ hasDs }}" hint-placeholder-val="{{ true }}">
+              <button aria-label="Clear data source" onClick="{{ clearDs }}" style="width:26px;height:26px;flex:none;display:grid;place-items:center;border:0;border-radius:4px;background:transparent;color:var(--dr-ink-3);cursor:pointer" style-hover="background:var(--dr-surface-2);color:var(--dr-ink)"><svg style="width:12px;height:12px"><use href="#i-x"></use></svg></button>
+            </sc-if>
+            <button aria-label="Open data sources" tabindex="-1" onClick="{{ toggleDs }}" style="width:28px;height:100%;flex:none;display:grid;place-items:center;border:0;background:transparent;color:var(--dr-ink-3);cursor:pointer"><svg style="width:14px;height:14px"><use href="#i-chev"></use></svg></button>
+          </div>
+          <sc-if value="{{ dsOpen }}" hint-placeholder-val="{{ false }}">
+            <div role="listbox" aria-labelledby="ds-label" style="position:absolute;top:calc(100% + 4px);right:0;z-index:30;width:300px;padding:4px;border:1px solid var(--dr-line);border-radius:var(--dr-r);background:var(--dr-surface);box-shadow:var(--dr-shadow-2)">
+              <sc-for list="{{ dsOptions }}" as="o" hint-placeholder-count="3">
+                <button role="option" aria-selected="{{ o.selected }}" onClick="{{ o.pick }}" style="{{ o.style }}" style-hover="background:var(--dr-surface-2)">
+                  <svg style="width:15px;height:15px;flex:none;margin-top:1px;color:var(--dr-ink-3)"><use href="#i-file"></use></svg>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:block;font-size:13px;font-weight:500;color:var(--dr-ink)">{{ o.label }}</span>
+                    <span style="display:block;font-size:11.5px;color:var(--dr-ink-3);margin-top:1px">{{ o.meta }}</span>
+                  </span>
+                  <sc-if value="{{ o.selected }}" hint-placeholder-val="{{ false }}"><svg style="width:14px;height:14px;flex:none;margin-top:2px;color:var(--dr-copper-700)"><use href="#i-check"></use></svg></sc-if>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div style="flex:1;padding:22px 26px 60px;min-width:0">
+
+      <!-- ============ OVERVIEW ============ -->
+      <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:22px">
+
+        <div class="dr-callout">
+          <svg style="width:17px;height:17px;flex:none;margin-top:1px;color:var(--dr-copper-600)"><use href="#i-info"></use></svg>
+          <div><strong>Setting EOL is the only trigger.</strong> The agent's first act is a plan for the whole clearance window, not a price. Every run after that reviews stores against the plan, at a cadence the agent sets and no human may shorten below a week.</div>
+        </div>
+
+        <section>
+          <div class="dr-sec"><h3>Performance</h3><span class="dr-sec__count">17 runs since 12 Aug</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:14px">
+            <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="5">
+              <div class="dr-card" style="padding:16px 18px">
+                <div class="dr-stat__label">{{ k.label }}</div>
+                <div class="dr-kpi__value" style="margin-top:5px">{{ k.value }}</div>
+                <div class="{{ k.deltaCls }}" style="margin-top:3px">{{ k.delta }}</div>
+                <div class="dr-bench">{{ k.bench }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="border:1px solid var(--dr-copper-200);border-radius:var(--dr-r-lg);background:linear-gradient(160deg,var(--dr-copper-050) 0%,var(--dr-surface) 70%);padding:18px 20px 16px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="dr-hex" style="--hex-size:32px;color:#fff"><svg style="width:16px;height:16px"><use href="#i-spark"></use></svg></div>
+            <h3 style="margin:0;font-family:var(--dr-font-display);font-size:18px;font-weight:600">Agentic Workflow</h3>
+          </div>
+          <div style="overflow-x:auto;padding:6px 0 2px" role="img" aria-label="Seven-step agentic workflow diagram">
+            <div style="display:flex;align-items:flex-start;min-width:860px;cursor:default;user-select:none">
+              <sc-for list="{{ steps }}" as="s" hint-placeholder-count="7">
+                <div style="flex:1 1 0;min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:0 8px">
+                  <sc-if value="{{ s.nextSolid }}" hint-placeholder-val="{{ true }}">
+                    <div style="position:absolute;top:24px;left:calc(50% + 30px);right:calc(-50% + 30px);height:0;border-top:1.5px solid var(--dr-copper-300)"></div>
+                    <svg style="position:absolute;top:19px;right:calc(-50% + 26px);width:10px;height:10px;color:var(--dr-copper-400)" viewBox="0 0 10 10"><path d="M1 1l6 4-6 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </sc-if>
+                  <sc-if value="{{ s.nextSoon }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:24px;left:calc(50% + 30px);right:calc(-50% + 30px);height:0;border-top:1.5px dashed var(--dr-warn-line)"></div>
+                    <svg style="position:absolute;top:19px;right:calc(-50% + 26px);width:10px;height:10px;color:var(--dr-warn)" viewBox="0 0 10 10"><path d="M1 1l6 4-6 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </sc-if>
+                  <sc-if value="{{ s.isPlain }}" hint-placeholder-val="{{ true }}">
+                    <div style="position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--dr-copper-050);border:1.5px solid var(--dr-copper-300);display:grid;place-items:center;color:var(--dr-copper-700)"><svg style="width:20px;height:20px"><use href="#{{ s.icon }}"></use></svg></div>
+                    <div style="font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--dr-ink-3)">STEP {{ s.num }}</div>
+                    <div style="font-family:var(--dr-font-display);font-size:14px;font-weight:600;line-height:1.35;color:var(--dr-ink);text-wrap:balance;margin-top:-6px">{{ s.name }}</div>
+                  </sc-if>
+                  <sc-if value="{{ s.isHuman }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:var(--dr-copper-100);border:1.5px solid var(--dr-copper-600);display:grid;place-items:center;color:var(--dr-copper-800)"><svg style="width:20px;height:20px"><use href="#{{ s.icon }}"></use></svg></div>
+                    <div style="font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--dr-copper-700)">STEP {{ s.num }}</div>
+                    <div style="font-family:var(--dr-font-display);font-size:14px;font-weight:600;line-height:1.35;color:var(--dr-copper-800);text-wrap:balance;margin-top:-6px">{{ s.name }}</div>
+                    <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--dr-copper-800)"><svg style="width:12px;height:12px"><use href="#i-hand"></use></svg>Human in the loop</span>
+                  </sc-if>
+                  <sc-if value="{{ s.isSoon }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:relative;z-index:1;width:48px;height:48px;border-radius:50%;background:transparent;border:1.5px dashed var(--dr-warn);display:grid;place-items:center;color:var(--dr-warn)"><svg style="width:20px;height:20px"><use href="#{{ s.icon }}"></use></svg></div>
+                    <div style="font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--dr-warn)">STEP {{ s.num }}</div>
+                    <div style="font-family:var(--dr-font-display);font-size:14px;font-weight:600;line-height:1.35;color:var(--dr-ink-2);text-wrap:balance;margin-top:-6px">{{ s.name }}</div>
+                    <span style="font-size:11px;font-weight:500;color:var(--dr-warn)">Coming soon</span>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--dr-copper-100);padding-top:14px">
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border:1px solid var(--dr-line);border-radius:var(--dr-r);background:var(--dr-surface);font-size:13px;line-height:1.6;color:var(--dr-ink-2)">
+              <svg style="width:16px;height:16px;flex:none;margin-top:2px;color:var(--dr-copper-600)"><use href="#i-bot"></use></svg>
+              <div>The orchestrator autonomously coordinates these <strong style="color:var(--dr-ink);font-weight:600">7 analysis steps</strong>. It dynamically chains capabilities, passing context between models to ensure precise results.</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+      </sc-if>
+
+      <!-- ============ METAPROMPT ============ -->
+      <sc-if value="{{ isPlan }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:18px">
+
+        <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
+          <div style="flex:1;min-width:300px">
+            <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+              <h2 style="font-size:21px;font-weight:600;margin:0">Config — Halloween 2026 clearance</h2>
+              <span class="dr-badge dr-badge--brand">Step 1 · boundary conditions</span>
+              <span class="dr-badge dr-badge--warn">Draft — not yet generated</span>
+            </div>
+            <p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:var(--dr-ink-2);max-width:840px">Everything the agent is allowed to do, in one place. Scope and evidence decide how the pairs cluster; the calendar and the priority split decide how fast the ladder moves; the price envelope is the wall no recommendation may cross. Generate plan turns these into clusters and a stage schedule.</p>
+          </div>
+          <div style="display:flex;gap:8px;padding-top:6px">
+            <button class="dr-btn dr-btn--secondary" onClick="{{ noop }}">Export config</button>
+            <button class="dr-btn dr-btn--primary" onClick="{{ goClusters }}">
+              <svg><use href="#i-spark"></use></svg>Generate plan</button>
+          </div>
+        </div>
+
+        <!-- 1 · SCOPE -->
+        <section class="dr-card">
+          <div class="dr-card__head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap">
+            <div>
+              <div class="dr-stat__label" style="font-size:10px">01 · Scope</div>
+              <h3 style="font-size:15px;font-weight:600;margin:3px 0 0">Event and merchandise hierarchy</h3>
+              <p style="margin:3px 0 0;font-size:12.5px;line-height:1.55;color:var(--dr-ink-2);max-width:760px">The hierarchy decides which SKUs the agent may price. Pick it down to the lowest level; everything outside it is out of reach for this event.</p>
+            </div>
+            <span class="dr-badge dr-badge--neutral">Required before Generate plan</span>
+          </div>
+          <div class="dr-card__body" style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 220px;min-width:0;max-width:340px">
+                <label class="dr-field-label">Event</label>
+                <select class="dr-input" style="cursor:pointer"><option value="Halloween">Halloween</option><option value="Christmas">Christmas</option><option value="Easter">Easter</option><option value="Back to School">Back to School</option></select>
+              </div>
+              <div style="flex:1 1 220px;min-width:0;max-width:340px">
+                <label class="dr-field-label">Format</label>
+                <select class="dr-input" style="cursor:pointer"><option value="Travel Essentials">Travel Essentials</option><option value="High Street">High Street</option></select>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:8px">Merchandise hierarchy</div>
+              <div style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);background:var(--dr-surface-2)">
+                <div style="flex:1 1 150px;min-width:0">
+                  <label class="dr-field-label">Category</label>
+                  <select class="dr-input" style="cursor:pointer"><option value="Consumables">Consumables</option><option value="General Merchandise">General Merchandise</option><option value="News &amp; Books">News &amp; Books</option></select>
+                </div>
+                <svg style="width:14px;height:14px;flex:none;align-self:flex-end;margin-bottom:11px;color:var(--dr-ink-4)"><use href="#i-right"></use></svg>
+                <div style="flex:1 1 150px;min-width:0">
+                  <label class="dr-field-label">Sub category</label>
+                  <select class="dr-input" style="cursor:pointer"><option value="Candy">Candy</option><option value="Snacks">Snacks</option><option value="Drinks">Drinks</option></select>
+                </div>
+                <svg style="width:14px;height:14px;flex:none;align-self:flex-end;margin-bottom:11px;color:var(--dr-ink-4)"><use href="#i-right"></use></svg>
+                <div style="flex:1 1 150px;min-width:0">
+                  <label class="dr-field-label">Merch area</label>
+                  <select class="dr-input" style="cursor:pointer"><option value="Specialty Candy">Specialty Candy</option><option value="Everyday Candy">Everyday Candy</option><option value="Gum &amp; Mints">Gum &amp; Mints</option></select>
+                </div>
+                <svg style="width:14px;height:14px;flex:none;align-self:flex-end;margin-bottom:11px;color:var(--dr-ink-4)"><use href="#i-right"></use></svg>
+                <div style="flex:1 1 150px;min-width:0">
+                  <label class="dr-field-label">Planning group</label>
+                  <select class="dr-input" style="cursor:pointer"><option value="Packaged Candy">Packaged Candy</option><option value="Pick &amp; Mix">Pick &amp; Mix</option><option value="Gifting">Gifting</option></select>
+                </div>
+                <svg style="width:14px;height:14px;flex:none;align-self:flex-end;margin-bottom:11px;color:var(--dr-ink-4)"><use href="#i-right"></use></svg>
+                <div style="flex:1 1 150px;min-width:0">
+                  <label class="dr-field-label">Sub planning group</label>
+                  <select class="dr-input" style="cursor:pointer"><option value="Seasonal">Seasonal</option><option value="Core">Core</option><option value="Promotional">Promotional</option></select>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <svg style="width:16px;height:16px;flex:none;color:var(--dr-copper-600)"><use href="#i-info"></use></svg>
+              <div style="flex:1 1 280px;min-width:0;font-size:12.5px;line-height:1.55;color:var(--dr-ink-2)"><strong style="color:var(--dr-ink);font-weight:600">Consumables › Candy › Specialty Candy › Packaged Candy › Seasonal</strong> in Travel Essentials. Next, choose which SKUs in this segment join the Halloween event.</div>
+              <button class="dr-btn dr-btn--secondary" onClick="{{ noop }}">Select SKUs<svg><use href="#i-right"></use></svg></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 1 · WINDOW + INPUTS -->
+        <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px">
+          <div class="dr-card">
+            <div class="dr-card__head">
+              <div class="dr-stat__label" style="font-size:10px">02 · Window</div>
+              <h3 style="font-size:15px;font-weight:600;margin:3px 0 0">Dates and review cadence</h3>
+              <p style="margin:3px 0 0;font-size:12.5px;line-height:1.55;color:var(--dr-ink-2)">The window and the cadence together decide how many stages the ladder can reach.</p>
+            </div>
+            <div class="dr-card__body">
+              <div style="display:flex;gap:14px;flex-wrap:wrap">
+                <div style="flex:1;min-width:150px">
+                  <label class="dr-field-label">EOL conversion — plan starts</label>
+                  <input class="dr-input" type="date" value="2026-10-17" onChange="{{ noop }}">
+                </div>
+                <div style="flex:1;min-width:150px">
+                  <label class="dr-field-label">Hard exit — nothing priced after</label>
+                  <input class="dr-input" type="date" value="{{ exitVal }}" onChange="{{ setExit }}">
+                </div>
+              </div>
+              <table class="dr-table" style="margin-top:16px">
+                <tbody>
+                  <tr><td style="color:var(--dr-ink-2);padding:9px 0">Review cadence in days</td><td class="dr-num" style="text-align:right;padding:9px 0">7</td></tr>
+                  <tr><td style="color:var(--dr-ink-2);padding:9px 0">Reviews remaining</td><td style="text-align:right;padding:9px 0">{{ reviewsLeft }}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="dr-card">
+            <div class="dr-card__head">
+              <div class="dr-stat__label" style="font-size:10px">03 · Clustering inputs</div>
+              <h3 style="font-size:15px;font-weight:600;margin:3px 0 0">Evidence and floor waivers</h3>
+              <p style="margin:3px 0 0;font-size:12.5px;line-height:1.55;color:var(--dr-ink-2)">Clusters are cut on rate of sale and weeks of cover; these decide how much history feeds the cut and how many groups come out of it.</p>
+            </div>
+            <div class="dr-card__body" style="padding-top:2px">
+            <sc-for list="{{ inputFields }}" as="f" hint-placeholder-count="3">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) 116px;gap:4px 14px;align-items:center;padding:11px 0;border-top:1px solid var(--dr-line)">
+                <div style="min-width:0">
+                  <div style="font-size:13px;font-weight:500;line-height:1.35">{{ f.label }}</div>
+                  <div style="font-size:11.5px;color:var(--dr-ink-3);line-height:1.5;margin-top:2px">{{ f.help }}</div>
+                </div>
+                <div>
+                  <input class="dr-input dr-num" style="padding:6px 9px;text-align:center" value="{{ f.value }}">
+                  <div style="font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--dr-ink-3);text-align:center;margin-top:3px">{{ f.unit }}</div>
+                </div>
+              </div>
+            </sc-for>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 · PRIORITY WEIGHTING -->
+        <section class="dr-card">
+          <div class="dr-card__head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap">
+            <div>
+              <div class="dr-stat__label" style="font-size:10px">04 · Priorities</div>
+              <h3 style="font-size:15px;font-weight:600;margin:3px 0 0">Objective weighting — MD1 to MD4</h3>
+              <div style="font-size:12px;color:var(--dr-ink-3);margin-top:2px">Two objectives pull against each other. Drag each stage to say how the agent should split them when it prices that stage.</div>
+            </div>
+            <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ resetWeights }}">
+              <svg><use href="#i-refresh"></use></svg>Agent default</button>
+          </div>
+          <div class="dr-card__body">
+            <div style="display:grid;grid-template-columns:150px minmax(0,1fr) 108px;gap:16px;align-items:end;padding-bottom:7px">
+              <div></div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink)">
+                <span style="display:inline-flex;align-items:center;gap:6px"><i style="width:10px;height:10px;border-radius:2px;background:var(--dr-copper-600);display:inline-block"></i>Maximize profit</span>
+                <span style="display:inline-flex;align-items:center;gap:6px">Clear inventory<i style="width:10px;height:10px;border-radius:2px;background:var(--dr-ok);display:inline-block"></i></span>
+              </div>
+              <div></div>
+            </div>
+            <sc-for list="{{ weightRows }}" as="w" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:150px minmax(0,1fr) 108px;gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--dr-line)">
+                <div>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                    <span style="{{ w.chipStyle }}">{{ w.stage }}</span>
+                    <span class="dr-num" style="font-size:11.5px;color:var(--dr-ink-3)">{{ w.depth }}</span>
+                  </div>
+                  <div style="font-size:11.5px;color:var(--dr-ink-3);margin-top:5px;line-height:1.4">{{ w.note }}</div>
+                </div>
+                <div onMouseDown="{{ w.onDown }}" style="position:relative;height:36px;border-radius:var(--dr-r-sm);background:var(--dr-surface-2);border:1px solid var(--dr-line);cursor:ew-resize;overflow:hidden;user-select:none">
+                  <div style="{{ w.fillStyle }}"></div>
+                  <div style="{{ w.clearStyle }}"></div>
+                  <div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(0,0,0,.13) 0 1px,transparent 1px 10%)"></div>
+                  <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(0,0,0,.26);pointer-events:none"></div>
+                  <div style="{{ w.handleStyle }}">
+                    <i style="width:1.5px;height:13px;background:var(--dr-ink-3);border-radius:1px"></i>
+                    <i style="width:1.5px;height:13px;background:var(--dr-ink-3);border-radius:1px"></i>
+                    <i style="width:1.5px;height:13px;background:var(--dr-ink-3);border-radius:1px"></i>
+                  </div>
+                </div>
+                <div style="text-align:right">
+                  <div class="dr-num" style="font-family:var(--dr-font-display);font-size:16px;font-weight:700;line-height:1.1">{{ w.pair }}</div>
+                  <div style="font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--dr-ink-3)">PROFIT / CLEAR</div>
+                </div>
+              </div>
+            </sc-for>
+            <div class="dr-callout" style="margin-top:16px">
+              <svg style="width:17px;height:17px;flex:none;margin-top:1px;color:var(--dr-copper-600)"><use href="#i-info"></use></svg>
+              <div>{{ weightSummary }}</div>
+            </div>
+            <sc-if value="{{ nonMonotonic }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:9px;align-items:flex-start;margin-top:10px">
+                <svg style="width:16px;height:16px;flex:none;margin-top:2px;color:var(--dr-warn)"><use href="#i-alert"></use></svg>
+                <div style="font-size:12.5px;line-height:1.55;color:var(--dr-ink-2)">A later stage now protects more margin than an earlier one. The agent will honour it, but the ladder no longer gets more aggressive as the exit date approaches.</div>
+              </div>
+            </sc-if>
+          </div>
+        </section>
+
+        <!-- 4 · PRICE ENVELOPE (merged guardrails) -->
+        <section class="dr-card">
+          <div class="dr-card__head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap">
+            <div>
+              <div class="dr-stat__label" style="font-size:10px">05 · Price envelope</div>
+              <h3 style="font-size:15px;font-weight:600;margin:3px 0 0">The markdown ladder</h3>
+              <div style="font-size:12px;color:var(--dr-ink-3);margin-top:2px">Each stage answers three questions: when it opens, what it prices at, how low it may go. No recommendation may cross these.</div>
+            </div>
+            <span class="dr-badge dr-badge--neutral">Hard bounds · agent cannot widen</span>
+          </div>
+          <div class="dr-card__body" style="overflow-x:auto">
+            <div style="min-width:540px">
+              <div style="display:grid;grid-template-columns:108px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:12px;padding-bottom:7px;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3)">
+                <div>Stage</div><div>Opens when</div><div>Price</div><div>Floor</div>
+              </div>
+              <sc-for list="{{ ladderRows }}" as="g" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:108px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start;padding:13px 0;border-top:1px solid var(--dr-line)">
+                  <div>
+                    <span style="{{ g.chipStyle }}">{{ g.stage }}</span>
+                    <div style="font-size:11.5px;color:var(--dr-ink-3);margin-top:5px;line-height:1.45">{{ g.count }}</div>
+                  </div>
+                  <sc-for list="{{ g.cols }}" as="c" hint-placeholder-count="3">
+                    <div style="min-width:0">
+                      <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                        <input class="dr-input dr-num" style="padding:6px 7px;text-align:center;width:auto;min-width:70px;max-width:100%" value="{{ c.value }}">
+                        <span style="font-size:11.5px;color:var(--dr-ink-3);line-height:1.3;min-width:0">{{ c.unit }}</span>
+                      </div>
+                      <div style="font-size:11.5px;color:var(--dr-ink-2);line-height:1.5;margin-top:5px">{{ c.help }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </section>
+
+     </div>
+      </sc-if>
+
+      <!-- ============ CLUSTERS ============ -->
+      <sc-if value="{{ isClusters }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:18px">
+
+        <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
+          <div style="flex:1;min-width:300px">
+            <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+              <h2 style="font-size:21px;font-weight:600;margin:0">Clusters &amp; stage schedule</h2>
+              <span class="dr-badge dr-badge--brand">Step 2 · generated from your inputs</span>
+              <span class="dr-badge dr-badge--warn">Awaiting sign-off</span>
+            </div>
+            <p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:var(--dr-ink-2);max-width:860px">A cluster is a set of SKU × store pairs that behave alike, not a set of stores. A style whose best and worst stores are close sits in one cluster; a style with a wide spread is split across several. Approving this schedule is what releases the agent to recommend prices against it.</p>
+          </div>
+          <div style="display:flex;gap:8px;padding-top:6px">
+            <button class="dr-btn dr-btn--secondary" onClick="{{ goPlan }}">
+              <svg><use href="#i-back"></use></svg>Back to inputs</button>
+            <button class="dr-btn dr-btn--primary" onClick="{{ goRecs }}">
+              <svg><use href="#i-check"></use></svg>Approve plan</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px">
+          <sc-for list="{{ clusterStats }}" as="p" hint-placeholder-count="7">
+            <div class="dr-card" style="padding:14px 16px 15px">
+              <div class="dr-stat__label" style="font-size:11px">{{ p.label }}</div>
+              <div class="dr-num" style="font-family:var(--dr-font-display);font-size:24px;font-weight:600;line-height:1.1;margin-top:5px">{{ p.value }}</div>
+              <div style="font-size:11.5px;color:var(--dr-ink-3);margin-top:3px">{{ p.note }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <section class="dr-card">
+          <div class="dr-card__head" style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap">
+            <div>
+              <h3 style="font-size:15px;font-weight:600;margin:0">Clusters × review weeks</h3>
+              <div style="font-size:12px;color:var(--dr-ink-3);margin-top:2px">{{ matrixNote }}</div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;color:var(--dr-ink-2)">
+              <sc-for list="{{ legend }}" as="l" hint-placeholder-count="5">
+                <span style="display:inline-flex;align-items:center;gap:5px"><i style="{{ l.swatch }}"></i>{{ l.label }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div class="dr-card__body" style="overflow-x:auto">
+            <div style="{{ matrixWrapStyle }}">
+              <div style="{{ matrixHeadStyle }}">
+                <div style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);padding:0 0 6px;border-bottom:1px solid var(--dr-line)">Cluster</div>
+                <div style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);text-align:center;padding:0 0 6px;border-bottom:1px solid var(--dr-line)">SKUs</div>
+                <div style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);text-align:center;padding:0 0 6px;border-bottom:1px solid var(--dr-line)">Stores</div>
+                <div></div>
+                <sc-for list="{{ weeks }}" as="w" hint-placeholder-count="5">
+                  <div style="font-size:11.5px;line-height:1.35;color:var(--dr-ink-3);padding-bottom:5px;border-bottom:1px solid var(--dr-line)">
+                    <div style="font-family:var(--dr-font-display);font-size:13px;font-weight:600;color:var(--dr-ink)">{{ w.label }}</div>{{ w.sub }}
+                  </div>
+                </sc-for>
+              </div>
+              <sc-for list="{{ clusterRows }}" as="r" hint-placeholder-count="4">
+                <div style="{{ r.rowStyle }}">
+                  <div style="padding:8px 16px 8px 0">
+                    <div style="font-size:13.5px;font-weight:600;line-height:1.3">{{ r.name }}</div>
+                    <div style="font-size:11.5px;color:var(--dr-ink-3);margin-top:2px">{{ r.meta }}</div>
+                    <div style="font-size:11.5px;color:var(--dr-copper-800);font-weight:500;margin-top:2px">{{ r.residual }}</div>
+                  </div>
+                  <div class="dr-num" style="font-family:var(--dr-font-display);font-size:17px;font-weight:600;align-self:stretch;display:flex;align-items:center;justify-content:center;background:var(--dr-surface-2);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm)">{{ r.skus }}</div>
+                  <div class="dr-num" style="font-family:var(--dr-font-display);font-size:17px;font-weight:600;align-self:stretch;display:flex;align-items:center;justify-content:center;background:var(--dr-surface-2);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm)">{{ r.stores }}</div>
+                  <div></div>
+                  <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="5">
+                    <div style="{{ c.style }}">
+                      <div style="font-family:var(--dr-font-display);font-size:13px;font-weight:600">{{ c.stage }}</div>
+                      <div style="font-size:11px;opacity:.9">{{ c.detail }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div class="dr-card__body" style="border-top:1px solid var(--dr-line);font-size:12px;line-height:1.6;color:var(--dr-ink-3)">671 SKU × store pairs, 8 styles, 110 stores. Six of the eight styles span two or more clusters; the two slowest sit entirely in cluster D.</div>
+        </section>
+
+        <section class="dr-card" style="border-color:var(--dr-warn-line)">
+          <div class="dr-card__body" style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+            <div style="flex:1;min-width:300px">
+              <span class="dr-badge dr-badge--warn" style="margin-bottom:8px">Plan conflict — planner decision required</span>
+              <h3 style="font-family:var(--dr-font-display);font-size:17px;font-weight:600;line-height:1.35;margin:0 0 7px">A EOL week in week 1 costs the slowest pairs their MD4 — the stage falls past the exit date.</h3>
+              <p style="margin:0;font-size:13px;line-height:1.65;color:var(--dr-ink-2);max-width:840px">There are five stages and fewer review periods than that in this window. Spending week 1 on EOL leaves a pair needing the full ladder at MD3 and no further. The schedule skips EOL for clusters C and D — 317 SKU × store pairs whose prior-year trajectory misses the exit by more than 30% — and opens them at MD1 in week 1. Approving the plan approves that skip.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;min-width:196px">
+              <button class="dr-btn dr-btn--primary dr-btn--block" onClick="{{ noop }}">Skip EOL for C &amp; D</button>
+              <button class="dr-btn dr-btn--secondary dr-btn--block" onClick="{{ noop }}">Hold everywhere</button>
+              <button class="dr-btn dr-btn--ghost dr-btn--block" onClick="{{ goPlan }}">Extend exit date</button>
+            </div>
+          </div>
+        </section>
+      </div>
+      </sc-if>
+
+      <!-- ============ RECOMMENDATION — STYLE LEVEL ============ -->
+      <sc-if value="{{ isRecs }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end">
+          <div style="flex:1;min-width:300px">
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Recommendations · week 2 of 5</div>
+            <h2 style="font-size:20px;font-weight:600;margin:3px 0 0">By style</h2>
+            <div style="font-size:12.5px;color:var(--dr-ink-3);margin-top:3px">Reviewed against the approved plan. Open a style to see the store-level recommendations behind it.</div>
+          </div>
+          <div class="dr-search" style="max-width:230px;flex:1;min-width:190px">
+            <svg><use href="#i-search"></use></svg>
+            <input class="dr-input" placeholder="Search style…">
+          </div>
+        </div>
+
+        <div class="dr-card" style="padding:0;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))">
+          <sc-for list="{{ recStats }}" as="s" hint-placeholder-count="4">
+            <div style="padding:14px 18px;display:flex;flex-direction:column;gap:2px;min-width:0;box-shadow:inset 1px 0 0 var(--dr-line),inset 0 1px 0 var(--dr-line)">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">{{ s.label }}</div>
+              <div class="dr-num" style="font-family:var(--dr-font-display);font-size:26px;font-weight:600;line-height:1.15;{{ s.valStyle }}">{{ s.value }}</div>
+              <div style="font-size:11.5px;line-height:1.45;color:var(--dr-ink-3)">{{ s.note }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap">
+            <span style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Sales</span>
+            <sc-for list="{{ salesFilters }}" as="fl" hint-placeholder-count="4">
+              <button class="{{ fl.cls }}" onClick="{{ fl.go }}">{{ fl.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:9px;align-items:center">
+            <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ clearFilters }}">Clear filter</button>
+            <button class="dr-btn dr-btn--primary dr-btn--sm" onClick="{{ noop }}">
+              <svg><use href="#i-check"></use></svg>Approve every clear store</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px">
+          <sc-for list="{{ visibleStyles }}" as="st" hint-placeholder-count="8">
+            <div class="dr-card dr-card--interactive" style="display:flex;flex-direction:column">
+              <div class="dr-card__head" style="display:flex;gap:10px;align-items:flex-start">
+                <div style="flex:1;min-width:0">
+                  <div class="dr-num" style="font-size:11.5px;color:var(--dr-ink-3)">{{ st.id }}</div>
+                  <div style="font-family:var(--dr-font-display);font-size:15px;font-weight:600;line-height:1.3;margin-top:4px">{{ st.name }}</div>
+                </div>
+              </div>
+
+              <div class="dr-card__body" style="flex:1;display:flex;flex-direction:column;gap:13px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                  <div>
+                    <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Stores {{ st.pendingWord }}</div>
+                    <div class="dr-num" style="font-family:var(--dr-font-display);font-size:21px;font-weight:600;line-height:1;margin-top:4px">{{ st.pendingCount }}</div>
+                    <div style="font-size:11px;color:var(--dr-ink-3);margin-top:3px">of {{ st.storeCount }} ranged</div>
+                  </div>
+                  <div>
+                    <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Price across stores</div>
+                    <div class="dr-num" style="font-family:var(--dr-font-display);font-size:21px;font-weight:600;line-height:1;margin-top:4px">{{ st.priceSpread }}</div>
+                    <div style="font-size:11px;color:var(--dr-ink-3);margin-top:3px">{{ st.priceNote }}</div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:6px">Stores by markdown stage</div>
+                  <div style="display:flex;gap:2px;height:14px;overflow:hidden;border-radius:2px">
+                    <sc-for list="{{ st.mix }}" as="m" hint-placeholder-count="3">
+                      <div style="{{ m.style }}"></div>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:7px">
+                    <sc-for list="{{ st.mix }}" as="m" hint-placeholder-count="3">
+                      <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--dr-ink-2)">
+                        <i style="{{ m.swatch }}"></i>{{ m.stage }} <span class="dr-num" style="font-weight:600">{{ m.count }}</span>
+                      </span>
+                    </sc-for>
+                  </div>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:0">
+                  <sc-for list="{{ st.facts }}" as="ft" hint-placeholder-count="3">
+                    <div style="display:flex;gap:12px;align-items:baseline;justify-content:space-between;padding:6px 0;border-top:1px solid var(--dr-line)">
+                      <span style="font-size:12px;color:var(--dr-ink-3)">{{ ft.label }}</span>
+                      <span class="dr-num" style="font-size:12.5px;font-weight:600">{{ ft.value }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div class="dr-card__foot" style="display:flex;gap:9px;align-items:center">
+                <div style="min-width:0">
+                  <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Margin protected</div>
+                  <div class="dr-num" style="font-family:var(--dr-font-display);font-size:15px;font-weight:600;color:var(--dr-ok);margin-top:2px">{{ st.impactShort }}</div>
+                </div>
+                <button class="dr-btn dr-btn--secondary dr-btn--sm" style="margin-left:auto" onClick="{{ goStore }}">Review stores</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="font-size:12px;color:var(--dr-ink-3)">{{ bulkNote }}</div>
+
+        <sc-if value="{{ noStyles }}" hint-placeholder-val="{{ false }}">
+          <div class="dr-empty">No style matches both filters.</div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ============ LOGS ============ -->
+      <sc-if value="{{ isLogs }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div style="display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap">
+          <div style="flex:1;min-width:300px">
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Activity log · Halloween_AI_2026</div>
+            <h2 style="font-size:20px;font-weight:600;margin:3px 0 0">Runs and approved changes</h2>
+            <div style="font-size:12.5px;color:var(--dr-ink-3);margin-top:3px">Every agent run and every human decision, newest first. Each entry is the audit record for a price that shipped.</div>
+          </div>
+          <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ noop }}">
+            <svg><use href="#i-eye"></use></svg>Export log</button>
+        </div>
+
+        <div class="dr-card" style="padding:0;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))">
+          <sc-for list="{{ logStats }}" as="s" hint-placeholder-count="4">
+            <div style="padding:14px 18px;display:flex;flex-direction:column;gap:2px;min-width:0;box-shadow:inset 1px 0 0 var(--dr-line),inset 0 1px 0 var(--dr-line)">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">{{ s.label }}</div>
+              <div class="dr-num" style="font-family:var(--dr-font-display);font-size:26px;font-weight:600;line-height:1.15">{{ s.value }}</div>
+              <div style="font-size:11.5px;line-height:1.45;color:var(--dr-ink-3)">{{ s.note }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <sc-for list="{{ logKinds }}" as="lk" hint-placeholder-count="7">
+            <button class="{{ lk.cls }}" onClick="{{ lk.go }}">{{ lk.label }}</button>
+          </sc-for>
+        </div>
+
+        <div class="dr-card" style="padding:0;overflow:hidden">
+          <div style="display:grid;min-width:520px;grid-template-columns:76px minmax(220px,1fr) minmax(76px,.35fr) 92px;gap:14px;align-items:start;padding:10px 20px;background:var(--dr-surface-2);border-bottom:1px solid var(--dr-line-2)">
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">When</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Event</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">By</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Type</div>
+          </div>
+          <sc-for list="{{ logRows }}" as="e" hint-placeholder-count="10">
+            <div style="display:grid;min-width:520px;grid-template-columns:76px minmax(220px,1fr) minmax(76px,.35fr) 92px;gap:14px;align-items:start;padding:11px 20px;border-bottom:1px solid var(--dr-line)" style-hover="background:var(--dr-copper-050)">
+              <div class="dr-num" style="min-width:0;font-size:11.5px;color:var(--dr-ink-3);line-height:1.35">
+                <div style="font-weight:600;color:var(--dr-ink-2)">{{ e.day }}</div>
+                <div>{{ e.time }}</div>
+              </div>
+              <div style="min-width:0">
+                <div style="font-size:13px;font-weight:600;line-height:1.3;text-wrap:pretty">{{ e.title }}</div>
+                <div style="font-size:11.5px;color:var(--dr-ink-2);line-height:1.5;margin-top:2px;text-wrap:pretty">{{ e.detail }}</div>
+                <div style="font-size:11px;color:var(--dr-ink-3);margin-top:3px">{{ e.meta }}</div>
+              </div>
+              <div style="min-width:0;font-size:12px;line-height:1.35">{{ e.actor }}</div>
+              <div style="min-width:0"><span class="{{ e.kindCls }}">{{ e.kindLabel }}</span></div>
+            </div>
+          </sc-for>
+          <div style="display:flex;gap:12px;align-items:center;padding:11px 20px;background:var(--dr-surface-2)">
+            <span style="font-size:12px;color:var(--dr-ink-3)">Showing the last 10 of 412 recorded events · retained 24 months</span>
+            <button class="dr-btn dr-btn--secondary dr-btn--sm" style="margin-left:auto" onClick="{{ noop }}">Load older</button>
+          </div>
+        </div>
+
+        <sc-if value="{{ logEmpty }}" hint-placeholder-val="{{ false }}">
+          <div class="dr-empty">No events of this type in the retained window.</div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ============ REVIEW QUEUE ============ -->
+      <sc-if value="{{ isQueue }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div style="display:flex;gap:13px;align-items:flex-start;flex-wrap:wrap">
+          <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ goRecs }}">← Back</button>
+          <div style="flex:1;min-width:300px">
+            <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dr-ink-3)">Review queue · week 2 of 5</div>
+            <h2 style="font-size:20px;font-weight:600;margin:3px 0 0;line-height:1.25">Sour Patch Kids Zombie Kids 3.5oz Theater Box</h2>
+            <div style="font-size:12.5px;color:var(--dr-ink-3);margin-top:3px">Style 2809424 · 55 stores · selling at $4.99 · exit 14 Nov 2026</div>
+          </div>
+          <div class="dr-search" style="max-width:210px">
+            <svg><use href="#i-search"></use></svg>
+            <input class="dr-input" placeholder="Search store…">
+          </div>
+        </div>
+
+        <div class="dr-card" style="padding:0;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))">
+          <sc-for list="{{ qStats }}" as="s" hint-placeholder-count="4">
+            <div style="padding:14px 18px;display:flex;flex-direction:column;gap:2px;min-width:0;box-shadow:inset 1px 0 0 var(--dr-line),inset 0 1px 0 var(--dr-line)">
+              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">{{ s.label }}</div>
+              <div class="dr-num" style="font-family:var(--dr-font-display);font-size:26px;font-weight:600;line-height:1.15;{{ s.valStyle }}">{{ s.value }}</div>
+              <div style="font-size:11.5px;line-height:1.45;color:var(--dr-ink-3)">{{ s.note }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div class="dr-seg">
+            <sc-for list="{{ qTabs }}" as="t" hint-placeholder-count="3">
+              <button class="{{ t.cls }}" onClick="{{ t.go }}">{{ t.label }} <span class="dr-num" style="opacity:.6">{{ t.count }}</span></button>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+            <sc-for list="{{ clusterFilters }}" as="cf" hint-placeholder-count="5">
+              <button class="{{ cf.cls }}" onClick="{{ cf.go }}">{{ cf.label }}</button>
+            </sc-for>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:9px;align-items:center">
+            <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ expandAll }}">{{ expandLabel }}</button>
+            <button class="{{ bucketBtnCls }}" onClick="{{ noop }}">
+              <svg><use href="#i-check"></use></svg>{{ bucketAction }}</button>
+          </div>
+        </div>
+
+        <div class="dr-card" style="padding:0;overflow-x:auto;overflow-y:hidden">
+          <div style="display:grid;min-width:600px;grid-template-columns:20px minmax(152px,1.5fr) minmax(112px,.6fr) minmax(96px,.8fr) minmax(56px,.5fr) 100px;gap:12px;align-items:center;padding:10px 20px;background:var(--dr-surface-2);border-bottom:1px solid var(--dr-line-2)">
+            <button onClick="{{ toggleAll }}" style="{{ allBoxStyle }}">
+              <svg style="{{ allCheckStyle }}"><use href="#i-check"></use></svg>
+            </button>
+            <button onClick="{{ sortStore.go }}" style="{{ sortStore.btnStyle }}">Store<svg style="{{ sortStore.icoStyle }}"><use href="#{{ sortStore.icon }}"></use></svg></button>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);min-width:0">Now → recommend</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);min-width:0">Price</div>
+            <button onClick="{{ sortMargin.go }}" style="{{ sortMargin.btnStyle }}">Margin<svg style="{{ sortMargin.icoStyle }}"><use href="#{{ sortMargin.icon }}"></use></svg></button>
+            <div></div>
+          </div>
+
+          <sc-for list="{{ rows }}" as="q" hint-placeholder-count="8">
+            <div>
+              <sc-if value="{{ q.showHead }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;padding:9px 20px;background:var(--dr-surface-2);border-bottom:1px solid var(--dr-line);border-top:1px solid var(--dr-line)">
+                  <span style="font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink)">{{ q.headTitle }}</span>
+                  <span style="font-size:11.5px;color:var(--dr-ink-3)">{{ q.headNote }}</span>
+                </div>
+              </sc-if>
+
+              <article style="{{ q.rowStyle }}" style-hover="background:var(--dr-copper-050)">
+                <div style="display:grid;min-width:600px;grid-template-columns:20px minmax(152px,1.5fr) minmax(112px,.6fr) minmax(96px,.8fr) minmax(56px,.5fr) 100px;gap:12px;align-items:center;padding:11px 20px">
+                  <button onClick="{{ q.toggleSel }}" style="{{ q.boxStyle }}">
+                    <svg style="{{ q.checkStyle }}"><use href="#i-check"></use></svg>
+                  </button>
+
+                  <div style="min-width:0">
+                    <div style="font-size:13.5px;font-weight:600;line-height:1.25;text-wrap:pretty">{{ q.storeName }}</div>
+                    <div style="display:flex;gap:7px;align-items:center;margin-top:2px;min-width:0">
+                      <span class="dr-num" style="font-size:11.5px;color:var(--dr-ink-3);flex:none">{{ q.store }}</span>
+                      <span class="dr-num" style="flex:none;font-size:10px;font-weight:700;letter-spacing:.04em;padding:1px 5px;border-radius:3px;background:var(--dr-surface-2);border:1px solid var(--dr-line-2);color:var(--dr-ink-2)">{{ q.clusterKey }}</span>
+                    </div>
+                  </div>
+
+                  <div style="min-width:0;overflow:hidden;display:flex;align-items:center;gap:6px">
+                    <sc-if value="{{ q.isChange }}" hint-placeholder-val="{{ true }}">
+                      <span style="{{ q.curChipStyle }}">{{ q.curStage }}</span>
+                      <svg style="width:12px;height:12px;flex:none;color:var(--dr-ink-4)"><use href="#i-right"></use></svg>
+                      <span style="{{ q.recChipStyle }}">{{ q.recStage }}</span>
+                    </sc-if>
+                    <sc-if value="{{ q.isHold }}" hint-placeholder-val="{{ false }}">
+                      <span style="{{ q.recChipStyle }}">{{ q.recStage }}</span>
+                      <span style="font-size:11.5px;font-weight:600;color:var(--dr-ink-3);white-space:nowrap">hold</span>
+                    </sc-if>
+                  </div>
+
+                  <div style="min-width:0;overflow:hidden;display:flex;align-items:baseline;gap:7px">
+                    <span class="dr-num" style="flex:none;font-size:11.5px;color:var(--dr-ink-3);text-decoration:line-through;{{ q.fromStyle }}">{{ q.fromPrice }}</span>
+                    <span class="dr-num" style="flex:none;font-family:var(--dr-font-display);font-size:18px;font-weight:600;line-height:1">{{ q.toPrice }}</span>
+                  </div>
+
+                  <div class="dr-num" style="min-width:0;overflow:hidden;font-family:var(--dr-font-display);font-size:16px;font-weight:600;{{ q.impactStyle }}">{{ q.impact }}</div>
+
+                  <div style="min-width:0;display:flex;gap:6px;align-items:center;justify-content:flex-end">
+                    <button class="dr-btn dr-btn--primary dr-btn--sm" onClick="{{ noop }}">Approve</button>
+                    <button class="dr-icon-btn" onClick="{{ q.toggle }}" style="width:28px;height:28px;flex:none">
+                      <svg style="{{ q.chevStyle }}"><use href="#i-chev"></use></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top:1px solid var(--dr-line);background:var(--dr-surface-2);padding:14px 20px;display:flex;flex-direction:column;gap:12px">
+
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;align-items:start">
+                      <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+                        <div style="background:var(--dr-surface);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);padding:14px 16px">
+                          <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:12px">
+                            <div style="flex:1 1 260px;min-width:0">
+                              <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Sales history — units, price and $ sales per week, last 8 weeks</div>
+                              <div style="font-size:11.5px;color:var(--dr-ink-2);margin-top:3px;text-wrap:pretty">{{ q.salesNote }}</div>
+                            </div>
+                            <sc-if value="{{ q.hasSales }}" hint-placeholder-val="{{ true }}">
+                            <div style="display:flex;gap:18px;flex-wrap:wrap">
+                              <sc-for list="{{ q.salesFacts }}" as="sf" hint-placeholder-count="3">
+                                <div>
+                                  <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">{{ sf.label }}</div>
+                                  <div class="dr-num" style="font-family:var(--dr-font-display);font-size:16px;font-weight:600;margin-top:2px;{{ sf.valStyle }}">{{ sf.value }}</div>
+                                </div>
+                              </sc-for>
+                            </div>
+                            </sc-if>
+                          </div>
+
+                          <sc-if value="{{ q.hasSales }}" hint-placeholder-val="{{ true }}">
+                          <div style="display:flex;gap:10px;align-items:stretch">
+                            <div style="flex:none;width:44px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;height:72px">
+                              <span class="dr-num" style="font-size:9.5px;color:var(--dr-ink-3)">{{ q.salesMax }}</span>
+                              <span class="dr-num" style="font-size:9.5px;color:var(--dr-ink-3)">{{ q.salesMid }}</span>
+                              <span class="dr-num" style="font-size:9.5px;color:var(--dr-ink-3)">0</span>
+                            </div>
+                            <div style="flex:1 1 auto;min-width:0">
+                              <div style="position:relative;height:72px;border-top:1px solid var(--dr-line);border-bottom:1px solid var(--dr-line-2)">
+                                <div style="position:absolute;left:0;right:0;top:50%;border-top:1px dashed var(--dr-line)"></div>
+                                <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+                                  <path d="{{ q.salesArea }}" fill="var(--dr-copper-050)"></path>
+                                  <path d="{{ q.salesLine }}" fill="none" stroke="var(--dr-copper-500)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+                                </svg>
+                                <sc-for list="{{ q.sales }}" as="wk" hint-placeholder-count="8">
+                                  <div style="{{ wk.dotStyle }}"></div>
+                                </sc-for>
+                              </div>
+                            </div>
+                          </div>
+                          <div style="margin-top:6px">
+                          <div style="display:grid;grid-template-columns:54px repeat(8,minmax(0,1fr));align-items:end;padding-bottom:3px">
+                            <div style="font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);text-align:right;padding-right:10px;white-space:nowrap">Week</div>
+                            <sc-for list="{{ q.sales }}" as="wk" hint-placeholder-count="8">
+                              <div style="text-align:center;min-width:0">
+                                <div style="font-size:9.5px;color:var(--dr-ink-3);white-space:nowrap;overflow:hidden">{{ wk.label }}</div>
+                                <div style="{{ wk.stageStyle }}">{{ wk.stage }}</div>
+                              </div>
+                            </sc-for>
+                          </div>
+                          <div style="display:grid;grid-template-columns:54px repeat(8,minmax(0,1fr));align-items:center;padding:3px 0;border-top:1px solid var(--dr-line)">
+                            <div style="font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);text-align:right;padding-right:10px;white-space:nowrap">Price</div>
+                            <sc-for list="{{ q.sales }}" as="wk" hint-placeholder-count="8">
+                              <div class="dr-num" style="text-align:center;font-size:11px;line-height:1.3;white-space:nowrap;overflow:hidden;{{ wk.valStyle }}">{{ wk.price }}</div>
+                            </sc-for>
+                          </div>
+                          <div style="display:grid;grid-template-columns:54px repeat(8,minmax(0,1fr));align-items:center;padding:3px 0;border-top:1px solid var(--dr-line)">
+                            <div style="font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);text-align:right;padding-right:10px;white-space:nowrap">Units</div>
+                            <sc-for list="{{ q.sales }}" as="wk" hint-placeholder-count="8">
+                              <div class="dr-num" style="text-align:center;font-size:11px;line-height:1.3;white-space:nowrap;overflow:hidden;font-weight:600;{{ wk.valStyle }}">{{ wk.units }}</div>
+                            </sc-for>
+                          </div>
+                          <div style="display:grid;grid-template-columns:54px repeat(8,minmax(0,1fr));align-items:center;padding:3px 0;border-top:1px solid var(--dr-line)">
+                            <div style="font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);text-align:right;padding-right:10px;white-space:nowrap">$ Sales</div>
+                            <sc-for list="{{ q.sales }}" as="wk" hint-placeholder-count="8">
+                              <div class="dr-num" style="text-align:center;font-size:11px;line-height:1.3;white-space:nowrap;overflow:hidden;font-weight:600;{{ wk.valStyle }}">{{ wk.dollars }}</div>
+                            </sc-for>
+                          </div>
+                          </div>
+                          </sc-if>
+
+                          <sc-if value="{{ q.noSales }}" hint-placeholder-val="{{ false }}">
+                            <div style="display:flex;gap:18px;flex-wrap:wrap">
+                              <div><div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Units scanned</div>
+                                <div class="dr-num" style="font-family:var(--dr-font-display);font-size:16px;font-weight:600;margin-top:2px">0 in 8 weeks</div></div>
+                              <div><div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Cluster rate of sale</div>
+                                <div class="dr-num" style="font-family:var(--dr-font-display);font-size:16px;font-weight:600;margin-top:2px">{{ q.clusterRos }}</div></div>
+                              <div><div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3)">Priced on</div>
+                                <div style="font-size:13px;font-weight:600;margin-top:4px">Cluster {{ q.clusterKey }} behaviour</div></div>
+                            </div>
+                          </sc-if>
+                        </div>
+
+                        <div style="background:var(--dr-surface);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);padding:14px 16px;padding:12px 14px">
+                          <div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:9px">
+                            <span style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:8px;margin:0">Path to exit</span>
+                            <span class="{{ q.planCls }}">{{ q.planLabel }}</span>
+                            <span style="font-size:11.5px;color:var(--dr-ink-2);min-width:0">{{ q.trackNote }}</span>
+                          </div>
+                          <div style="{{ q.trackGrid }}">
+                            <sc-for list="{{ q.track }}" as="tw" hint-placeholder-count="5">
+                              <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                                <div style="font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--dr-ink-3);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ tw.label }}</div>
+                                <div style="{{ tw.chipStyle }}">{{ tw.stage }}</div>
+                                <div style="{{ tw.planStyle }}">plan {{ tw.planStage }}</div>
+                                <div class="dr-num" style="font-size:9.5px;color:var(--dr-ink-3);text-align:center">{{ tw.units }}</div>
+                              </div>
+                            </sc-for>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+                        <div style="background:var(--dr-surface);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);padding:14px 16px">
+                          <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:8px">Why the agent proposed this</div>
+                          <ul style="margin:0;padding-left:16px;font-size:12.5px;line-height:1.65;color:var(--dr-ink-2)">
+                            <sc-for list="{{ q.why }}" as="w" hint-placeholder-count="2"><li>{{ w }}</li></sc-for>
+                          </ul>
+                          <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:8px;margin-top:14px">How it prices</div>
+                          <ul style="margin:0;padding-left:16px;font-size:12.5px;line-height:1.65;color:var(--dr-ink-2)">
+                            <sc-for list="{{ q.how }}" as="h" hint-placeholder-count="2"><li>{{ h }}</li></sc-for>
+                          </ul>
+                        </div>
+
+                        <div style="background:var(--dr-surface);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);padding:14px 16px">
+                          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+                            <span style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:8px;margin:0">Guardrail checks</span>
+                            <span class="{{ q.guardCls }}">
+                              <svg style="width:12px;height:12px;flex:none"><use href="#{{ q.guardIcon }}"></use></svg>{{ q.guardLabel }}</span>
+                          </div>
+                          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:7px">
+                            <sc-for list="{{ q.checks }}" as="chk" hint-placeholder-count="3">
+                              <div class="{{ chk.cls }}">
+                                <svg style="width:14px;height:14px;flex:none;margin-top:1px"><use href="#{{ chk.icon }}"></use></svg>
+                                <div><strong>{{ chk.name }}</strong><div style="opacity:.9;margin-top:1px">{{ chk.detail }}</div></div>
+                              </div>
+                            </sc-for>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+                        <div style="background:var(--dr-surface);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);padding:14px 16px;padding:0">
+                          <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:8px;margin:0;padding:10px 14px 6px">Cluster &amp; recommendation</div>
+                          <sc-for list="{{ q.clusterFacts }}" as="ft" hint-placeholder-count="4">
+                            <div style="display:flex;gap:12px;align-items:baseline;padding:5px 14px;border-top:1px solid var(--dr-line)">
+                              <span style="font-size:12px;color:var(--dr-ink-3);flex:1 1 auto;min-width:0">{{ ft.label }}</span>
+                              <span class="dr-num" style="font-size:12.5px;font-weight:600;text-align:right">{{ ft.value }}</span>
+                            </div>
+                          </sc-for>
+                          <sc-for list="{{ q.facts }}" as="ft" hint-placeholder-count="8">
+                            <div style="display:flex;gap:12px;align-items:baseline;padding:5px 14px;border-top:1px solid var(--dr-line)">
+                              <span style="font-size:12px;color:var(--dr-ink-3);flex:1 1 auto;min-width:0">{{ ft.label }}</span>
+                              <span class="dr-num" style="font-size:12.5px;font-weight:600;text-align:right;white-space:nowrap">{{ ft.value }}</span>
+                            </div>
+                          </sc-for>
+                        </div>
+
+                        <div style="background:var(--dr-surface);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);padding:14px 16px">
+                          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px">
+                            <span style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dr-ink-3);margin-bottom:8px;margin:0">Confidence</span>
+                            <span class="dr-badge dr-badge--neutral">{{ q.confLabel }}</span>
+                          </div>
+                          <div class="dr-meter" style="margin-bottom:10px"><div class="dr-meter__fill" style="{{ q.confFill }}"></div></div>
+                          <ul style="margin:0;padding-left:16px;font-size:12.5px;line-height:1.6;color:var(--dr-ink-2)">
+                            <sc-for list="{{ q.confWhy }}" as="c" hint-placeholder-count="2"><li>{{ c }}</li></sc-for>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                      <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ noop }}">
+                        <svg><use href="#i-eye"></use></svg>Evidence &amp; lineage</button>
+                      <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+                        <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ noop }}">Reject</button>
+                        <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ noop }}">Escalate</button>
+                        <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ noop }}">Modify price</button>
+                        <button class="dr-btn dr-btn--primary dr-btn--sm" onClick="{{ noop }}">
+                          <svg><use href="#i-check"></use></svg>Approve this store</button>
+                      </div>
+                    </div>
+                  </div>
+                </sc-if>
+              </article>
+            </div>
+          </sc-for>
+
+          <sc-if value="{{ noRows }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:26px 20px;text-align:center;font-size:12.5px;color:var(--dr-ink-3)">No store in this confidence tier belongs to that cluster.</div>
+          </sc-if>
+          <div style="display:flex;gap:12px;align-items:center;padding:11px 20px;border-top:1px solid var(--dr-line-2);background:var(--dr-surface-2)">
+            <span style="font-size:12px;color:var(--dr-ink-3)">{{ pageNote }}</span>
+            <sc-if value="{{ hasRows }}" hint-placeholder-val="{{ true }}">
+              <button class="dr-btn dr-btn--secondary dr-btn--sm" style="margin-left:auto" onClick="{{ noop }}">Load 20 more</button>
+            </sc-if>
+          </div>
+        </div>
+
+        <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+          <div style="position:sticky;bottom:14px;z-index:5;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--dr-action);color:#fff;border-radius:var(--dr-r);padding:11px 16px;box-shadow:var(--dr-shadow-3)">
+            <span class="dr-num" style="font-family:var(--dr-font-display);font-size:14px;font-weight:600">{{ selNote }}</span>
+            <span style="font-size:12px;opacity:.72">{{ selImpact }}</span>
+            <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+              <button class="dr-btn dr-btn--ghost dr-btn--sm" style="color:#fff;border-color:rgba(255,255,255,.28)" onClick="{{ clearSel }}">Clear</button>
+              <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ noop }}">Reject selected</button>
+              <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ noop }}">
+                <svg><use href="#i-check"></use></svg>Approve selected</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+
+    </div>
+  </main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:940}}">
+const CP = n => 'var(--dr-copper-'+n+')';
+const STAGE_FILL = {
+  EOL:{background:'var(--dr-surface-2)',color:'var(--dr-ink-2)',border:'1px solid var(--dr-line)'},
+  MD1: {background:CP(100),color:CP(900),border:'1px solid '+CP(200)},
+  MD2: {background:CP(300),color:'#3A1F14',border:'1px solid '+CP(300)},
+  MD3: {background:CP(600),color:'#fff',border:'1px solid '+CP(600)},
+  MD4: {background:'var(--dr-action)',color:'#fff',border:'1px solid var(--dr-action)'}
+};
+function cell(stage, detail, kind){
+  return {stage, detail, style: Object.assign(
+    {padding:'8px 10px',minHeight:'48px',borderRadius:'var(--dr-r-sm)',display:'flex',flexDirection:'column',justifyContent:'center'},
+    STAGE_FILL[kind])};
+}
+const swatch = kind => Object.assign({width:'11px',height:'11px',display:'inline-block',borderRadius:'2px'}, STAGE_FILL[kind]);
+const CONF_CLS = {High:'dr-badge dr-badge--brand', Medium:'dr-badge dr-badge--neutral', Low:'dr-badge dr-badge--warn'};
+const SEL_BOX = on => ({width:'18px',height:'18px',flex:'none',display:'grid',placeItems:'center',padding:0,
+  cursor:'pointer',borderRadius:'4px',transition:'all 140ms',color:'#fff',
+  background: on?'var(--dr-action)':'var(--dr-surface)',
+  border:'1px solid '+(on?'var(--dr-action)':'var(--dr-line-2)')});
+const MONEY = n => n>=1000 ? '$'+(n/1000).toFixed(1)+'k' : '$'+Math.round(n);
+const CONF_PCT = {High:'92%', Medium:'68%', Low:'34%'};
+
+const STORES = ['Penn Station','JFK T4 Airside','Union Station Chicago','LAX Terminal 1','Grand Central','Boston South','Dallas Love Field','Denver Concourse B','Atlanta T-North','Seattle Central','Philadelphia 30th St','Newark C3','Phoenix Sky Harbor','Charlotte E','Houston Hobby','Miami Central','Detroit McNamara','Portland Main','San Diego T2','Nashville BNA','Minneapolis G','Salt Lake B','Austin South','Tampa Airside C','Raleigh T2','St Louis Main','Kansas City B','Pittsburgh Airside','Cleveland Main','Baltimore D','Orlando East','Sacramento B','Columbus Main','Indianapolis A','Milwaukee C','New Orleans West','Memphis B','Louisville Main','Richmond Central','Hartford Main','Providence Main','Albany Main','Buffalo Main','Rochester Main','Omaha Main','Tucson Main','Boise Main','Spokane Main','Reno Main','Des Moines Main','Little Rock Main','Jackson Main','Mobile Main','Savannah Main','Charleston Main'];
+const REGIONS = ['Northeast','Northeast','Midwest','West','Northeast','Northeast','South','West','South','West'];
+const CHK_OK = 'i-check';
+const CHK_WARN = 'i-alert';
+const chk = (name, detail, fail) => ({name, detail, fail, cls: fail?'dr-rule dr-rule--fail':'dr-rule', icon: fail?CHK_WARN:CHK_OK});
+
+const ARCH = {
+  High: [
+    {stage:'MD1', action:'Hold at MD1', priceMove:'$3.49 held', summary:'ahead of trajectory', attempt:1, impact:'$1.9k', onHand:12, wos:1.8,
+     why:['Sell-through since MD1 is 61% against a required 55% — the store is ahead of the trajectory that clears it by 14 Nov.','The forecast exists to stop us discounting early. Holding is the recommendation.'],
+     how:['Price stays at $3.49 (MD1).','Projected margin 41.2%, above the average unit cost floor.','No price change consumed.'],
+     confWhy:['12 weeks of store-level sales at three price points.','Prior-year Halloween comparator present for this store.','Forecast error last cycle: 4 units.'],
+     checks:[chk('Minimum margin after markdown','limit 40% · actual 41.2% after cut'),chk('Maximum markdown depth','limit 60% · actual 30%'),chk('One price change per week','last change 24 Oct · 7 days elapsed')]},
+    {stage:'MD1', action:'Advance to MD2 · 50% off', priceMove:'$3.49 → $2.49', summary:'on plan', attempt:2, impact:'$2.4k', onHand:24, wos:5.2,
+     why:['Sell-through since MD1 is 38% against a required 55% — the store misses the exit date by 9 units at the current rate.','The plan schedules MD2 for this cluster in week 3.'],
+     how:['Ticketed at $2.49 (MD2), uniform across the cluster.','Projected margin 30.4%, above the MD2 floor.','Expected to clear the residual by 7 Nov.'],
+     confWhy:['14 weeks of store-level sales across three price points.','Two prior-year comparators agree on the elasticity.','Forecast error last cycle: 2 units.'],
+     checks:[chk('Minimum margin after markdown','limit 30% · actual 30.4% after cut'),chk('Maximum markdown depth','limit 60% · actual 50%'),chk('Change cap','attempt 2 of 4')]},
+    {stage:'MD2', action:'Hold at MD2', priceMove:'$2.49 held', summary:'clearing', attempt:2, impact:'$1.4k', onHand:8, wos:2.1,
+     why:['The MD2 response was stronger than forecast — the store clears 4 days before the exit date.','A further markdown would give away margin the agent does not need to spend.'],
+     how:['Price stays at $2.49 (MD2).','Projected margin 30.4%. Residual at exit: 0 units.','Two attempts still available if the rate slows.'],
+     confWhy:['Dense weekly sales across the whole window.','Prior-year comparator at the same pack size.','Elasticity fit R² 0.84.'],
+     checks:[chk('Minimum margin after markdown','limit 30% · actual 30.4%'),chk('Residual at exit date','target 0 units · forecast 0 units'),chk('Change cap','attempt 2 of 4')]}
+  ],
+  Medium: [
+    {stage:'MD2', action:'Advance to MD3 · basket $1.75', priceMove:'$2.49 → $1.75', summary:'floor relaxed', attempt:3, impact:'$310', onHand:3, wos:0,
+     why:['No units sold in 3 weeks at MD2. Trajectory misses the exit date by the full residual.','{u} units in a store holding 41 units across all in-scope SKUs — inside the relaxation trigger.'],
+     how:['Priced into the consolidated clearance basket at $1.75; individual ticketing stops here.','Projected margin 3.0% — below the floor, permitted under conditional relaxation.','Exposure at risk if held: {exp}.'],
+     confWhy:['Zero sales gives a direction but no elasticity estimate.','Basket price is set at merch-area level, so the store response is inferred.','No prior-year comparator for this location type.'],
+     checks:[chk('Minimum margin after markdown','limit 0% · actual 3.0%'),chk('Below-cost bound','floor waived — 3 units, inside relaxation trigger', true),chk('Maximum markdown depth','limit 70% · actual 65%')]},
+    {stage:'MD1', action:'Advance to MD2 · 50% off', priceMove:'$3.49 → $2.49', summary:'borrowed elasticity', attempt:2, impact:'$1.1k', onHand:24, wos:9.4,
+     why:['Sell-through since MD1 is 31% against a required 55%.','The store has 9 weeks of cover against 3 weeks of window.'],
+     how:['Ticketed at $2.49 (MD2).','Projected margin 30.4%, above floor.','Expected units by 14 Nov: {sold} of {u}.'],
+     confWhy:['Only 6 weeks of store-level sales at this pack size.','Elasticity borrowed from the category, not fitted to this store.','One prior-year comparator, inconsistent ranging.'],
+     checks:[chk('Minimum margin after markdown','limit 30% · actual 30.4%'),chk('Elasticity source','category-level — no store-level fit available', true),chk('Change cap','attempt 2 of 4')]},
+    {stage:'MD2', action:'Hold at MD2', priceMove:'$2.49 held', summary:'inside error band', attempt:2, impact:'$640', onHand:6, wos:2.4,
+     why:['The store lands within 2 units of clearing at the current rate — inside forecast error either way.','The agent holds rather than spend an attempt on a coin-flip.'],
+     how:['Price stays at $2.49 (MD2).','Projected margin 30.4%. Residual at exit: 2 units.','Reassessed at the next review.'],
+     confWhy:['Sales are dense but the outcome sits inside the error band.','Single prior-year comparator.','A buyer with store knowledge may reasonably overrule.'],
+     checks:[chk('Minimum margin after markdown','limit 30% · actual 30.4%'),chk('Residual at exit date','target 0 units · forecast 2 units', true),chk('Change cap','attempt 2 of 4')]}
+  ],
+  Low: [
+    {stage:'EOL', action:'Start MD1 · 30% off', priceMove:'$4.99 → $3.49', summary:'pulled forward', attempt:1, impact:'$420', onHand:27, wos:0,
+     why:['{u} units and no recorded sale in 9 weeks. At the observed rate this store does not clear by any date.','Pulled forward from the plan: this store is in the slow cluster where MD1 opens in week 1.'],
+     how:['Price drops to $3.49 (MD1), uniform with the rest of the MD1 cohort.','Projected margin 41.2%. Expected units by 14 Nov: {sold} of {u}.','The agent expects two further attempts will be needed here.'],
+     confWhy:['Below the observation threshold — no sales to fit a curve to.','Recommendation is derived from cluster behaviour, not this store.','A buyer who knows this store should overrule the agent.'],
+     checks:[chk('Minimum margin after markdown','limit 40% · actual 41.2%'),chk('Store-level evidence','below observation threshold — cluster inference used', true),chk('Change cap','attempt 1 of 4')]},
+    {stage:'MD3', action:'Advance to MD4 · $1.00 final', priceMove:'$1.75 → $1.00', summary:'below cost', attempt:4, impact:'$40', onHand:2, wos:0,
+     why:['{u} units left and no movement at basket price. The residual is worth less than the reverse-logistics cost.','Last attempt available before the exit date.'],
+     how:['Final in-store price $1.00.','Margin −14% — below cost, inside the 20% bound under relaxation.','Exposure at risk if held: {exp}.'],
+     confWhy:['Two observations in the whole window.','No comparator at this price point.','Effectively a disposal decision, not a pricing one.'],
+     checks:[chk('Below-cost bound','limit 0.80× cost · actual 0.86× cost', true),chk('Reverse logistics test','markdown $2 better than return to DC'),chk('Change cap','attempt 4 of 4 — final')]},
+    {stage:'EOL', action:'Hold — first year ranged', priceMove:'$4.99 held', summary:'no history', attempt:0, impact:'$0', onHand:15, wos:0,
+     why:['First year this style has been ranged in this store — there is no history to project from.','Four weeks of window remain; the agent prefers one week of observation to a guess.'],
+     how:['Price stays at $4.99. No attempt consumed.','Re-evaluated at the next review with a week of actual sales.','If the rate is still zero, MD1 opens next week.'],
+     confWhy:['No store-level history at all.','No prior-year comparator.','The agent is honest that it is guessing.'],
+     checks:[chk('Store-level evidence','no history — first year ranged', true),chk('Change cap','attempt 0 of 4'),chk('One price change per week','no change proposed')]}
+  ]
+};
+
+const GUARD = [
+  {stage:'MD1', tone:'MD1', count:'445 pairs eligible',
+   cols:[
+     {value:'7', unit:'days after EOL', help:'Observation window before MD1 may open. Set to 0 to skip the EOL week.'},
+     {value:'30', unit:'% off retail', help:'One depth everywhere, rounded down onto a .49 or .99 ending.'},
+     {value:'1.40', unit:'× cost', help:'Hard floor. A pair that cannot clear it stays at EOL.'}
+   ]},
+  {stage:'MD2', tone:'MD2', count:'179 pairs eligible',
+   cols:[
+     {value:'7', unit:'days at MD1', help:'MD1 has been live this long and the pair is still behind its clearing rate.'},
+     {value:'40 / 50 / 60', unit:'% by cover band', help:'Under 6 wks / 6–12 wks / over 12 wks of cover. Depth in proportion to overstock.'},
+     {value:'1.30', unit:'× cost', help:'Hard floor. If it leaves under a 15% cut, the pair skips to MD3.'}
+   ]},
+  {stage:'MD3', tone:'MD3', count:'12 clearance baskets',
+   cols:[
+     {value:'2', unit:'weeks no sale', help:'Or cover still exceeding the remaining window by more than 8 weeks.'},
+     {value:'70', unit:'% off retail', help:'One depth for the whole clearance fixture; item ticketing stops here.'},
+     {value:'1.00', unit:'× cost', help:'Break even, waived when the residual meets the unit thresholds.'}
+   ]},
+  {stage:'MD4', tone:'MD4', count:'58 pairs · 3 escalated',
+   cols:[
+     {value:'7', unit:'days before exit', help:'Fires on the calendar whatever the pair has done.'},
+     {value:'85', unit:'% off retail', help:'The terminal depth for the event. Nothing is cut further.'},
+     {value:'0.80', unit:'× cost', help:'May price below cost, no further than a 20% loss. Past it a person decides.'}
+   ]}
+];
+
+const INPUT_FIELDS = [
+  {label:'Sales history lookback', value:'14', unit:'weeks', help:'How much store-level history feeds the rate-of-sale and elasticity fit.'},
+  {label:'Maximum clusters', value:'4', unit:'clusters', help:'Upper bound per event. More clusters mean more distinct price ladders to approve.'},
+  {label:'Waive the floor at or below', value:'5', unit:'units left', help:'Units of the item left in the store. Applies at MD3 and MD4 only.'}
+];
+
+const NAV = [
+  {label:'Profiles', icon:'i-layers'},
+  {label:'Connectors', icon:'i-plug'},
+  {label:'Data Explorer', icon:'i-db'},
+  {label:'DRI', icon:'i-gauge'},
+  {label:'D.A.V.E.', icon:'i-bot'},
+  {label:'Agent Workbench', icon:'i-node', active:true, badge:'4'},
+  {label:'AI Compass', icon:'i-compass'},
+  {label:'Settings', icon:'i-gear'}
+];
+
+const LOG = [
+  {t:'17 Oct · 09:02', kind:'run', actor:'Agent', title:'Run 17 completed', detail:'671 SKU × store pairs evaluated in 22.7s · 55 recommendations raised', meta:'Halloween_AI_2026 · week 2'},
+  {t:'17 Oct · 09:04', kind:'approve', actor:'M. Okafor', title:'31 high-confidence recommendations approved', detail:'Cluster A and B · $12.8k margin protected · prices effective 18 Oct', meta:'bulk approval'},
+  {t:'17 Oct · 09:11', kind:'reject', actor:'M. Okafor', title:'Rejected MD4 at Denver Concourse B', detail:'$1.75 → $1.00 declined — buyer holding stock for the 24 Oct promo window', meta:'store 0233 · cluster C'},
+  {t:'17 Oct · 09:19', kind:'edit', actor:'M. Okafor', title:'Modified price at JFK T4 Marketplace', detail:'Agent proposed $2.49 (MD2) · approved at $2.79 · margin floor re-checked and cleared', meta:'store 0231 · cluster B'},
+  {t:'17 Oct · 09:23', kind:'guard', actor:'System', title:'Guardrail blocked 3 recommendations', detail:'Minimum margin after markdown breached at MD3 · escalated to category lead', meta:'cluster D'},
+  {t:'16 Oct · 17:40', kind:'plan', actor:'R. Devi', title:'Plan signed off', detail:'4 clusters × 5 review weeks · EOL retained in week 1 · exit 14 Nov 2026', meta:'version 3'},
+  {t:'16 Oct · 17:12', kind:'edit', actor:'R. Devi', title:'Stage weighting changed', detail:'MD2 weight 0.55 → 0.40 — a mid-pace cluster now steps one stage every 2 reviews', meta:'config'},
+  {t:'16 Oct · 11:05', kind:'run', actor:'Agent', title:'Run 16 completed', detail:'671 pairs evaluated in 25.8s · 61 recommendations raised', meta:'week 1'},
+  {t:'16 Oct · 11:31', kind:'approve', actor:'M. Okafor', title:'44 recommendations approved', detail:'$9.4k margin protected · 12 stores reached MD1', meta:'bulk approval'},
+  {t:'12 Oct · 08:58', kind:'run', actor:'Agent', title:'Clusters regenerated', detail:'14-week lookback · 4 clusters cut on rate of sale and weeks of cover', meta:'671 pairs'}
+];
+
+const FLOW = [
+  {label:'Config', done:true}, {label:'Plan', done:true}, {label:'Approve', done:true},
+  {label:'Recommendation', done:true}, {label:'Review', done:true, now:true}
+];
+
+const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const STAGES = ['EOL','MD1','MD2','MD3','MD4'];
+const STAGE_PRICE = {EOL:4.99, MD1:3.49, MD2:2.49, MD3:1.75, MD4:1.00};
+const DEPTH = {EOL:'No change', MD1:'−30%', MD2:'−50%', MD3:'−70%', MD4:'−85%'};
+const MDS = ['MD1','MD2','MD3','MD4'];
+const W_DEFAULT = {MD1:100, MD2:63, MD3:50, MD4:30};
+const W_NOTE = {
+  MD1:'The first cut. There is time left, so margin still wins.',
+  MD2:'Mid-window. Trajectory starts to weigh against price.',
+  MD3:'Two reviews left. Clearance begins to outweigh margin.',
+  MD4:'Last cut before the exit date. The units have to move.'
+};
+const wChip = st => Object.assign({padding:'3px 9px',borderRadius:'4px',fontFamily:'var(--dr-font-display)',fontSize:'12px',fontWeight:600,lineHeight:1.3}, STAGE_FILL[st]);
+const CLUSTERS = [
+  {name:'Cluster A — clearing', meta:'WOS ≤ 3 · on trajectory', skus:5, stores:44, pairs:118, start:0, pace:3, residual:'0 units at exit'},
+  {name:'Cluster B — on plan', meta:'WOS 4–8', skus:7, stores:78, pairs:236, start:0, pace:2, residual:'0 units at exit'},
+  {name:'Cluster C — slow, high cover', meta:'WOS 9–20 · EOL skipped', skus:8, stores:96, pairs:214, start:1, pace:2, residual:'2% residual at exit'},
+  {name:'Cluster D — no sale recorded', meta:'zero sales in 9 weeks', skus:6, stores:61, pairs:103, start:1, pace:1, residual:'9% residual at exit'}
+];
+
+const DS_LIST = [{"id":"hw26","label":"Halloween Event 2026","meta":"Halloween_AI_2026 · 54 SKUs · Aptos"},{"id":"bts26","label":"Back to School 2026","meta":"BTS_AI_2026 · 212 SKUs · Aptos"},{"id":"xm25","label":"Christmas 2025 clearance","meta":"XMAS_AI_2025 · 388 SKUs · Aptos"}];
+class Component extends DCLogic {
+  state = { ds:'hw26', dsOpen:false, screen:'overview', cadence:7, conf:'All', sales:'All', qTab:'High', open:{}, allOpen:false, gView:'form',
+            sel:{}, qSort:'impact', qDir:'desc', qCluster:'All', logKind:'All',
+            weights:Object.assign({}, W_DEFAULT), exit:'2026-11-14' };
+
+  segBtn(on,label,go){ return {label, go, cls:'dr-seg__item'+(on?' dr-seg__item--active':'')}; }
+
+  startWeight(stage, e){
+    const rect = e.currentTarget.getBoundingClientRect();
+    const set = ev => {
+      let p = Math.round(((ev.clientX - rect.left) / rect.width) * 20) * 5;
+      p = Math.max(0, Math.min(100, p));
+      this.setState(st => ({weights: Object.assign({}, st.weights, {[stage]: p})}));
+    };
+    set(e);
+    const move = ev => set(ev);
+    const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+    e.preventDefault();
+  }
+
+  buildPlan(){
+    const s = this.state, w = s.weights, cad = s.cadence;
+    const aggr = (400 - MDS.reduce((a,k)=>a+w[k], 0)) / 400;
+    const EOL = new Date(2026, 9, 17);
+    const exitD = new Date(s.exit+'T00:00:00');
+    const span = Math.max(cad, Math.round((exitD - EOL) / 86400000));
+    const n = Math.max(3, Math.min(8, Math.ceil(span / cad)));
+    const fmt = d => d.getDate()+' '+MON[d.getMonth()];
+    const weeks = [];
+    for (let i=0; i<n; i++){
+      const a = new Date(EOL.getTime() + i*cad*86400000);
+      let b = new Date(a.getTime() + (cad-1)*86400000);
+      if (b > exitD) b = exitD;
+      weeks.push({label:'Wk '+(i+1), sub: fmt(a)+'–'+fmt(b) + (i===0 ? ' · EOL set' : i===n-1 ? ' · exit' : '')});
+    }
+
+    const cols = '236px 72px 72px 18px repeat('+n+', minmax(92px,1fr))';
+    const rowStyle = {display:'grid', gridTemplateColumns:cols, gap:'6px', alignItems:'stretch', marginBottom:'6px'};
+
+    let deepest = 0;
+    const clusterRows = CLUSTERS.map(c => {
+      const pace = Math.max(1, Math.min(4, Math.round(c.pace * (1.35 - 0.7*aggr))));
+      const cells = weeks.map((_, i) => {
+        const idx = Math.min(4, c.start + Math.floor(i / pace));
+        if (idx > deepest) deepest = idx;
+        return cell(STAGES[idx], DEPTH[STAGES[idx]], STAGES[idx]);
+      });
+      return {name:c.name, meta:c.pairs+' pairs · '+c.meta, skus:String(c.skus), stores:String(c.stores),
+              residual:c.residual, cells, rowStyle};
+    });
+
+    const midPace = Math.max(1, Math.min(4, Math.round(2 * (1.35 - 0.7*aggr))));
+    const residual = Math.max(0, 4.1 - (aggr - 0.375)*8).toFixed(1)+'%';
+    const margin = '$'+(41.2 + (0.375 - aggr)*14).toFixed(1)+'k';
+    const mix = MDS.map(k => k+' '+w[k]+'/'+(100-w[k])).join('  ·  ');
+
+    return {
+      weeks, clusterRows, weekCount:String(n), stagesReach:STAGES[deepest], residual, margin,
+      exitLabel: fmt(exitD)+' '+exitD.getFullYear(),
+      headStyle: {display:'grid', gridTemplateColumns:cols, gap:'6px', alignItems:'end', marginBottom:'8px'},
+      wrapStyle: {minWidth: (236+72+72+18+n*92+(n+3)*6)+'px'},
+      matrixNote: n+' review periods at '+cad+'-day cadence. A cluster advances one stage every '
+        + (midPace===1 ? 'review' : midPace+' reviews') + ' at this weighting.',
+      nonMonotonic: MDS.some((k,i) => i>0 && w[k] > w[MDS[i-1]]),
+      summary: 'Profit-led early, clearance-led late: a mid-pace cluster steps one stage every '
+        + (midPace===1 ? 'review period' : midPace+' review periods') + ', reaching '+STAGES[deepest]
+        + ' by the exit date and leaving a forecast '+residual+' residual at '+margin+' margin.',
+      weightRows: MDS.map(st => {
+        const p = w[st];
+        return {
+          stage: st, depth: DEPTH[st], note: W_NOTE[st], pair: p+' / '+(100-p), chipStyle: wChip(st),
+          fillStyle: {position:'absolute', top:0, bottom:0, left:0, width:p+'%',
+                      background:'linear-gradient(90deg,'+CP(400)+','+CP(600)+')'},
+          clearStyle: {position:'absolute', top:0, bottom:0, left:p+'%', right:0,
+                       background:'linear-gradient(90deg,#2E8A64,var(--dr-ok))'},
+          handleStyle: {position:'absolute', top:0, bottom:0, left:'calc('+p+'% - 12px)', width:'24px',
+                        background:'var(--dr-surface)', border:'1.5px solid var(--dr-ink)',
+                        borderRadius:'var(--dr-r-sm)', boxShadow:'0 1px 4px rgba(0,0,0,.3)',
+                        display:'flex', alignItems:'center', justifyContent:'center', gap:'3px',
+                        pointerEvents:'none', zIndex:2},
+          onDown: e => this.startWeight(st, e)
+        };
+      }),
+      inputChips: [
+        {label:'Expected exit', value: fmt(exitD)+' '+exitD.getFullYear(), note: n+' review periods left'},
+        {label:'Review cadence', value: cad+' days', note:'first review 17 Oct'},
+        {label:'Scope', value:'671 pairs', note:'8 styles · 110 stores'}
+      ],
+      weightMini: MDS.map(st => ({
+        stage: st, pair: w[st]+'/'+(100-w[st]), pct: w[st]+'%',
+        barStyle: {position:'absolute', top:0, bottom:0, left:0, width:w[st]+'%',
+                   background:'linear-gradient(90deg,'+CP(400)+','+CP(600)+')'}
+      })),
+      clusterStats: [
+        {label:'Clusters found', value:String(CLUSTERS.length), note:'A fastest → D slowest'},
+        {label:'Clearance window', value:n+' weeks', note:'17 Oct → '+fmt(exitD)+' '+exitD.getFullYear()},
+        {label:'SKU × store', value:'671', note:'8 styles · 110 stores'},
+        {label:'Deepest stage reached', value:STAGES[deepest], note:'of EOL → MD4 available'},
+        {label:'Forecast residual', value:residual, note:'at the exit date'},
+        {label:'Forecast margin', value:margin, note:'vs $96.4k at full price'},
+        {label:'Reverse logistics avoided', value:'$8.7k', note:'Reported context only'}
+      ]
+    };
+  }
+  sortCol(key){
+    const on = this.state.qSort===key, asc = on && this.state.qDir==='asc';
+    return {
+      go: ()=>this.setState(st=>({qSort:key, qDir: st.qSort===key ? (st.qDir==='asc'?'desc':'asc') : 'desc', sel:{}})),
+      btnStyle: {display:'flex', alignItems:'center', gap:'4px', minWidth:0, padding:0, border:'none',
+        background:'none', cursor:'pointer', font:'inherit', fontFamily:'var(--dr-font-body)',
+        fontSize:'10px', fontWeight:700, letterSpacing:'.07em', textTransform:'uppercase',
+        color: on ? 'var(--dr-ink)' : 'var(--dr-ink-3)', textAlign:'left'},
+      icon: on ? (asc ? 'i-sort-up' : 'i-sort-down') : 'i-sort',
+      icoStyle: {width:'12px', height:'12px', flex:'none', opacity: on?1:.45}
+    };
+  }
+  pillBtn(on,label,go){ return {label, go, cls:'dr-pill'+(on?' dr-pill--active':'')}; }
+
+  buildRows(plan){
+    const lvl = this.state.qTab;
+    const total = {High:31, Medium:16, Low:8}[lvl];
+    const offset = {High:0, Medium:31, Low:47}[lvl];
+    const n = Math.min(total, 12);
+    const weeks = plan.weeks;
+    const nowIdx = Math.min(1, weeks.length-1);
+    const pace = {High:2, Medium:2, Low:1}[lvl];
+    const RATE = {EOL:0.06, MD1:0.20, MD2:0.36, MD3:0.58, MD4:0.85};
+    const tBase = {fontFamily:'var(--dr-font-display)',fontSize:'10.5px',fontWeight:600,lineHeight:1,
+                   padding:'4px 2px',borderRadius:'3px',textAlign:'center'};
+    const fcChip = (stage, kind) => {
+      const st = Object.assign({}, tBase, STAGE_FILL[stage]);
+      if (kind==='past') return Object.assign(st, {opacity:.75});
+      if (kind==='now') return Object.assign(st, {boxShadow:'0 0 0 1.5px var(--dr-ink)'});
+      return Object.assign(st, {opacity:.58, borderStyle:'dashed'});
+    };
+    const doneChip = () => Object.assign({}, tBase, {background:'transparent', color:'var(--dr-ink-3)',
+      border:'1px solid var(--dr-line)', fontSize:'10.5px'});
+    const planChip = diff => Object.assign({}, tBase, {fontSize:'9.5px', padding:'3px 2px',
+      border:'1px dashed '+(diff?CP(400):'var(--dr-line-2)'),
+      color: diff?CP(800):'var(--dr-ink-3)',
+      background: diff?'var(--dr-copper-050)':'transparent'});
+    const trackGrid = {display:'grid', gridTemplateColumns:'repeat('+weeks.length+', minmax(0,1fr))',
+                       gap:'4px', alignItems:'start'};
+    let out = [];
+    for (let i=0;i<n;i++){
+      const idx = offset+i;
+      const a = ARCH[lvl][i % ARCH[lvl].length];
+      const id = lvl+'-'+i;
+      const isOpen = this.state.allOpen || !!this.state.open[id];
+      const rep = Math.floor(i / ARCH[lvl].length);
+      const SCALE = [1, 0.6, 1.7, 1.25];
+      const onHand = Math.max(1, Math.round(a.onHand * SCALE[rep % SCALE.length]));
+      // keep cover inside the band that put this archetype in its cluster
+      const band = a.wos === 0 ? [0,0] : a.wos <= 3 ? [0.4,3] : a.wos <= 8 ? [4,8] : [9,20];
+      const wosVal = a.wos === 0 ? 0
+        : +Math.min(band[1], Math.max(band[0], a.wos + (rep - 1.5) * (band[1]-band[0]) / 5)).toFixed(1);
+      const cIdx = wosVal === 0 ? 3 : wosVal <= 3 ? 0 : wosVal <= 8 ? 1 : 2;
+      const LADDER = ['EOL','MD1','MD2','MD3','MD4'];
+      const curIdx = Math.max(0, LADDER.indexOf(a.stage));
+      // same rule the Path-to-exit track uses: a stage holds for `pace` weeks, so the
+      // most recent `pace` weeks sit at a.stage and earlier weeks step back one stage each time
+      const NW = 8;
+      const hStages = Array.from({length:NW}, (_,k) =>
+        LADDER[Math.max(0, curIdx - Math.floor((NW-1-k)/pace))]);
+      // rate of sale implied by the store's own cover, then de-lifted to the stage it was at
+      const ros = wosVal===0 ? 0 : onHand / wosVal;
+      const LIFT = {EOL:1, MD1:1.5, MD2:2.1, MD3:2.7, MD4:3.3};
+      const hUnits = hStages.map((stg,k) => {
+        const seed = (idx*131 + k*k*37 + k*79) % 97;
+        const wave = 0.74 + (seed / 97) * 0.52;
+        return wosVal===0 ? 0
+          : Math.max(0, Math.round(ros * (LIFT[stg]/LIFT[a.stage]) * wave));
+      });
+      // the headline rate must equal what the row's own cover implies
+      const rosNow = wosVal===0 ? 0 : onHand / wosVal;
+      const hPeak = Math.max(1, ...hUnits);
+      const px = k => ((k+0.5)/NW*100);
+      const py = u => (100 - u/hPeak*100);
+      const salesLine = hUnits.map((u,k)=>(k?'L':'M')+px(k).toFixed(2)+','+py(u).toFixed(2)).join(' ');
+      const salesArea = salesLine+' L'+px(NW-1).toFixed(2)+',100 L'+px(0).toFixed(2)+',100 Z';
+      const salesSeries = hUnits.map((u,k) => ({
+        dotStyle: {position:'absolute', left:px(k)+'%', top:py(u)+'%', transform:'translate(-50%,-50%)',
+          width: k===NW-1 ? '10px' : '7px', height: k===NW-1 ? '10px' : '7px', borderRadius:'50%',
+          background: k===NW-1 ? 'var(--dr-action)' : 'var(--dr-surface)',
+          border: '2px solid '+(k===NW-1 ? 'var(--dr-action)' : 'var(--dr-copper-500)'), boxSizing:'border-box'},
+        units: String(u),
+        price: '$'+STAGE_PRICE[hStages[k]].toFixed(2),
+        dollars: '$'+Math.round(u*STAGE_PRICE[hStages[k]]),
+        label: k===NW-1 ? 'now' : '−'+(NW-1-k)+'w',
+        stage: hStages[k],
+        valStyle: k===NW-1 ? 'color:var(--dr-ink)' : 'color:var(--dr-ink-2)',
+        stageStyle: {fontFamily:'var(--dr-font-display)', fontSize:'10px', fontWeight:600, marginTop:'1px',
+          color: k===NW-1 ? 'var(--dr-ink)' : 'var(--dr-ink-3)'}
+      }));
+      const last4 = hUnits.slice(NW-4).reduce((t,u)=>t+u,0);
+      const prior4 = hUnits.slice(NW-8, NW-4).reduce((t,u)=>t+u,0);
+      const trend = prior4 === 0 ? null : Math.round((last4/prior4 - 1) * 100);
+      const cluster = CLUSTERS[cIdx];
+      const cShort = cluster.name.split(' — ')[0];
+      const cTrait = cluster.name.split(' — ')[1];
+      const planStages = plan.clusterRows[cIdx].cells.map(c=>c.stage);
+      const toStage = (a.action.match(/MD[1-4]/) || ['EOL'])[0];
+      let rem = onHand, clearWk = '';
+      const track = weeks.map((w, k) => {
+        const kind = k<nowIdx ? 'past' : k===nowIdx ? 'now' : 'future';
+        const planStage = planStages[k] || planStages[planStages.length-1];
+        const label = kind==='now' ? 'This week' : w.sub.split(' · ')[0];
+        const sub = w.label;
+        if (rem===0) return {label, sub, stage:'Cleared', planStage, done:true,
+                             chipStyle: doneChip(), planStyle: planChip(false), units:''};
+        const stage = kind==='past' ? a.stage
+          : kind==='now' ? toStage
+          : STAGES[Math.min(4, STAGES.indexOf(toStage) + Math.floor((k-nowIdx)/pace))];
+        let sold = Math.round(rem * RATE[stage]);
+        if (sold===0) sold = 1;
+        sold = Math.min(sold, rem);
+        rem -= sold;
+        if (rem===0) clearWk = w.label;
+        return {label, sub, stage, planStage, chipStyle: fcChip(stage, kind),
+                planStyle: planChip(planStage!==stage && kind!=='past'),
+                units: rem+' left'};
+      });
+      const dev = track.findIndex((c,k) => k>=nowIdx && !c.done && c.stage !== c.planStage);
+      const trackNote = (dev < 0
+        ? 'On the approved plan. '
+        : 'Off plan '+(dev===nowIdx ? 'this week' : 'from '+weeks[dev].label)
+          + ' — plan says '+track[dev].planStage+'. ')
+        + (clearWk ? 'Clears in '+clearWk+'.' : rem+' units residual at the exit date.');
+
+      const residUnits = rem;
+      const soldUnits = Math.max(0, onHand - residUnits);
+      const exposureNum = Math.round(residUnits * 1.4);
+      const fill = t => t.replace(/\{u\}/g, onHand)
+                         .replace(/\{sold\}/g, soldUnits)
+                         .replace(/\{resid\}/g, residUnits)
+                         .replace(/\{exp\}/g, '$'+exposureNum);
+      const pmParts = a.priceMove.split('→').map(x=>x.trim());
+      const held = pmParts.length===1;
+      const fromPrice = held ? '' : pmParts[0];
+      const toPrice = held ? pmParts[0].replace(/\s*held$/,'') : pmParts[1];
+      const fails = a.checks.filter(c=>c.fail);
+      const offPlan = dev >= 0;
+      const selOn = !!this.state.sel[id];
+      const pmNums = (a.priceMove.match(/\$[\d.]+/g) || []).map(t=>parseFloat(t.slice(1)));
+      const delta = pmNums.length>1 ? Math.max(0, pmNums[0]-pmNums[1]) : 0;
+      const belowCost = a.how.join(' ').indexOf('below cost') >= 0;
+      // what this recommendation actually produces: protected margin, avoided exposure, or nothing
+      const effect = delta === 0 ? 'none' : belowCost ? 'disposal' : 'margin';
+      const impactNum = effect === 'margin' ? Math.round(soldUnits * delta) : 0;
+      const impactText = effect === 'margin' ? MONEY(impactNum)
+        : effect === 'disposal' ? MONEY(Math.round(soldUnits * (pmNums[1] || 1))) : '—';
+      const impactLabel = effect === 'margin' ? 'Margin protected'
+        : effect === 'disposal' ? 'Cash recovered' : 'No change proposed';
+      const impactStyle = effect === 'margin' ? 'color:var(--dr-ok)'
+        : effect === 'disposal' ? 'color:var(--dr-ink-2)' : 'color:var(--dr-ink-3)';
+      const mini = track.map((c,k)=>({style: Object.assign(
+        {height:'15px',flex:'1 1 0',minWidth:0,borderRadius:'2px',display:'block'},
+        c.done ? {background:'transparent',border:'1px dashed var(--dr-line-2)'} : STAGE_FILL[c.stage],
+        k===nowIdx ? {boxShadow:'0 0 0 1.5px var(--dr-ink)'} : k>nowIdx ? {opacity:.45} : {opacity:.8})}));
+
+      out.push(Object.assign({}, a, {
+        track, trackGrid, trackNote,
+        fromPrice, toPrice,
+        fromStyle: held ? 'display:none' : '',
+        depth: held ? 'no change' : DEPTH[toStage],
+        depthStyle: Object.assign({fontFamily:'var(--dr-font-display)',fontSize:'11px',fontWeight:600,
+          lineHeight:1,padding:'4px 6px',borderRadius:'3px',whiteSpace:'nowrap'},
+          held ? {background:'var(--dr-surface-2)',color:'var(--dr-ink-2)',border:'1px solid var(--dr-line)'}
+               : STAGE_FILL[toStage]),
+        verbLong: (held ? 'Hold at '+a.stage : 'Cut to '+toStage) + ' · attempt '+a.attempt+'/4',
+        why: a.why.map(fill),
+        how: a.how.map(fill),
+        clusterKey: cShort.replace('Cluster ',''),
+        clusterShort: cShort,
+        clusterTrait: cTrait,
+        sales: salesSeries, salesLine, salesArea,
+        salesMax: String(hPeak),
+        salesMid: String(+(hPeak/2).toFixed(1)),
+        hasSales: wosVal > 0,
+        noSales: wosVal === 0,
+        clusterRos: '0.8/wk',
+        salesFacts: [
+          {label:'Sold last 4 wks', valStyle:'', value: last4+' units'},
+          {label:'$ Sales last 4 wks', valStyle:'', value: '$'+Math.round(hUnits.slice(NW-4).reduce((t,u,j)=>t+u*STAGE_PRICE[hStages[NW-4+j]],0))},
+          {label:'Rate of sale now', valStyle:'', value: rosNow.toFixed(1)+'/wk'},
+          {label:'Vs prior 4 wks', value: trend===null ? 'n/a' : (trend>=0?'+':'')+trend+'%',
+           valStyle: trend===null ? 'color:var(--dr-ink-3)' : 'color:'+(trend>=0 ? 'var(--dr-ok)' : 'var(--dr-warn)')}
+        ],
+        salesNote: wosVal===0
+          ? 'No units scanned since the style landed — the agent is pricing on cluster behaviour, not this store'
+          : 'Units scanned per week. The filled point is this week; the stage beneath each point is the markdown stage in force that week.',
+        clusterFacts: [
+          {label:'Cluster', value: cShort.replace('Cluster ','')+' — '+cTrait},
+          {label:'Cut on', value: cluster.meta},
+          {label:'Size', value: cluster.pairs+' pairs · '+cluster.stores+' stores'},
+          {label:'Cluster at exit', value: cluster.residual}
+        ],
+        curStage: a.stage,
+        recStage: toStage,
+        curChipStyle: Object.assign({fontFamily:'var(--dr-font-display)',fontSize:'11.5px',fontWeight:600,
+          lineHeight:1,padding:'4px 7px',borderRadius:'3px',display:'inline-block',whiteSpace:'nowrap',
+          background:'transparent',color:'var(--dr-ink-2)',border:'1px solid var(--dr-line-2)'}),
+        recChipStyle: Object.assign({fontFamily:'var(--dr-font-display)',fontSize:'11.5px',fontWeight:600,
+          lineHeight:1,padding:'4px 7px',borderRadius:'3px',display:'inline-block',whiteSpace:'nowrap'},
+          STAGE_FILL[toStage]),
+        guardLabel: fails.length ? fails.length+(fails.length>1 ? ' checks need a waiver' : ' check needs a waiver') : 'All checks clear',
+        guardCls: 'dr-badge '+(fails.length ? 'dr-badge--warn' : 'dr-badge--ok'),
+        guardIcon: fails.length ? 'i-alert' : 'i-shield',
+        planLabel: offPlan
+          ? (dev===nowIdx ? 'Off plan — plan says '+track[dev].planStage : 'Off plan from '+weeks[dev].label)
+          : 'On the approved plan',
+        planCls: 'dr-badge '+(offPlan ? 'dr-badge--brand' : 'dr-badge--neutral'),
+        mini,
+        impact: effect === 'none' ? 'no change' : impactText,
+        impactLabel, effect,
+        isChange: effect !== 'none',
+        isHold: effect === 'none',
+        impactStyle: effect === 'none'
+          ? 'color:var(--dr-ink-3);font-family:var(--dr-font-body);font-size:11.5px;font-weight:600'
+          : impactStyle,
+        outcome: clearWk ? 'clears '+clearWk : rem+' left at exit',
+        flagged: fails.length>0,
+        offPlan, impactNum,
+        risk: fails.length*10 + (offPlan?4:0) + {High:1,Medium:2,Low:3}[lvl],
+        selected: selOn,
+        boxStyle: SEL_BOX(selOn),
+        checkStyle: {width:'11px',height:'11px',opacity:selOn?1:0},
+        toggleSel: ()=>this.setState(st=>{
+          const sel = Object.assign({}, st.sel);
+          if (sel[id]) delete sel[id]; else sel[id] = true;
+          return {sel};
+        }),
+        id,
+        store: 100 + idx*3,
+        storeName: STORES[idx % STORES.length],
+        region: REGIONS[idx % REGIONS.length],
+        onHand,
+        wos: wosVal===0 ? 'no cover — nothing scanned' : 'WOS '+wosVal.toFixed(1),
+        confLabel: lvl,
+        open: isOpen,
+        exposure: '$'+exposureNum,
+        cadence: 'Next eligible price change: '+(i%2 ? '31 Oct' : '7 Nov'),
+        confFill: {width:CONF_PCT[lvl], background:'linear-gradient(90deg,'+CP(500)+','+CP(700)+')'},
+        toggle: ()=>this.setState(s=>({allOpen:false, open:Object.assign({}, s.open, {[id]: !(s.allOpen || s.open[id])})})),
+        chevStyle: {width:'13px',height:'13px',transform: isOpen?'rotate(180deg)':'none',transition:'transform 140ms'},
+        cardCls: 'dr-card'+(isOpen?' dr-card--selected':' dr-card--interactive')
+      }));
+    }
+    if (this.state.qCluster !== 'All') out = out.filter(r => r.clusterKey === this.state.qCluster);
+    const sk = this.state.qSort, dir = this.state.qDir==='asc' ? -1 : 1;
+    out.sort((x,y) => dir * (sk==='store' ? y.storeName.localeCompare(x.storeName)
+      : sk==='units' ? (y.onHand-x.onHand) || (y.impactNum-x.impactNum)
+      : (y.impactNum-x.impactNum)));
+    const flag = out.filter(r=>r.flagged), routine = out.filter(r=>!r.flagged);
+    const ordered = flag.concat(routine);
+    if (flag.length) Object.assign(flag[0], {showHead:true, headTitle:'Needs your judgement',
+      headNote: flag.length+' of '+ordered.length+' shown — a guardrail is waived or breached; read before approving'});
+    if (routine.length && flag.length) Object.assign(routine[0], {showHead:true, headTitle:'Consistent with the plan',
+      headNote: routine.length+' of '+ordered.length+' shown — every check clear, safe to clear in bulk'});
+    ordered.forEach(r => { r.facts = [
+      {label:'On hand', value: r.onHand+' units'},
+      {label:'Cover', value: r.wos.indexOf('WOS')===0 ? r.wos.replace('WOS ','')+' weeks' : 'no sale recorded'},
+      {label:'Stage', value: r.curStage+' → '+r.recStage},
+      {label:'Price', value: r.fromPrice ? r.fromPrice+' → '+r.toPrice : r.toPrice+' held'},
+      {label:'Markdown depth', value: r.depth},
+      {label: r.impactLabel, value: r.effect==='none' ? 'nothing given away' : r.impact},
+      {label:'Change attempt', value: r.attempt+' of 4'},
+      {label:'Next eligible change', value: r.cadence.replace('Next eligible price change: ','')},
+      {label:'Exposure at risk', value: r.exposure}
+    ]; });
+    ordered.forEach((r,i) => { r.rowStyle = {
+      borderLeft: '3px solid '+(r.selected ? 'var(--dr-action)' : r.flagged ? 'var(--dr-warn)' : 'transparent'),
+      borderBottom: i===ordered.length-1 ? 'none' : '1px solid var(--dr-line)',
+      background: r.selected ? 'var(--dr-copper-050)' : r.open ? 'var(--dr-surface-2)' : 'transparent',
+      transition: 'background 140ms'
+    }; });
+    const selRows = ordered.filter(r=>r.selected);
+    return {rows: ordered, shown: n, total, flagCount: flag.length,
+      atStake: ordered.reduce((t,r)=>t+r.impactNum, 0),
+      selCount: selRows.length, selSum: selRows.reduce((t,r)=>t+r.impactNum, 0),
+      allSel: selRows.length>0 && selRows.length===ordered.length, ids: ordered.map(r=>r.id)};
+  }
+
+  renderVals(){
+    const s = this.state;
+    const cadenceMeta = {
+      7:  {label:'7 days', reason:'The window is five review weeks and there are five stages — EOL, MD1, MD2, MD3, MD4. A seven-day review is the shortest legal interval and the only one that gets a slow store all the way to MD4 before the exit date.', attempts:4, next:'Sat 31 Oct 2026', left:'3 remaining'},
+      10: {label:'10 days', reason:'Ten days halves the operational load on store teams but drops the window to three stages after EOL — MD4 becomes unreachable. The agent proposes this only when prior-year trajectory variance is low.', attempts:3, next:'Tue 3 Nov 2026', left:'2 remaining'},
+      14: {label:'14 days', reason:'A fortnightly review suits long clearance windows. Against a 14 Nov exit it allows two stages after EOL, so the agent flags it as unsafe for this event.', attempts:2, next:'Sat 7 Nov 2026', left:'1 remaining'}
+    }[s.cadence];
+
+    const meterFill = (pct,tone) => ({width:pct, background:'linear-gradient(90deg,'+CP(500)+','+CP(700)+')'});
+
+    const styles = [
+      {id:'1386384', name:'Reeses Halloween Peanut Butter Cup', velocity:'163.3', margin:'11.4%', onHand:'20,531', selling:'36 / 110', conf:'High', sales:'High', sellPrice:'$1.29', priceNote:'MD1 · was $1.79', stage:'MD1', impact:'$6.2k protected', driver:'Three prior-year events at SKU × store, elasticity fit R² 0.81, all 110 stores ranged.', pending:'110 pending', sellPct:'33%', coverPct:'78%'},
+      {id:'2867882', name:'Nerds Spooky Gummy Clusters', velocity:'86.8', margin:'0.4%', onHand:'9,913', selling:'41 / 96', conf:'High', sales:'High', sellPrice:'$2.49', priceNote:'MD2 · was $4.99', stage:'MD2', impact:'$4.1k protected', driver:'Dense weekly sales; margin already at the floor, so depth is bounded and the answer is stable.', pending:'96 pending', sellPct:'43%', coverPct:'62%'},
+      {id:'2867883', name:'KitKat Ghost Toast 1.5oz', velocity:'71.5', margin:'44.7%', onHand:'5,102', selling:'34 / 93', conf:'Medium', sales:'Moderate', sellPrice:'$1.49', priceNote:'MD1 · was $2.19', stage:'MD1', impact:'$2.8k protected', driver:'Strong volume but no prior-year comparator for this pack size; elasticity borrowed from the category.', pending:'12 approved', sellPct:'37%', coverPct:'55%'},
+      {id:'2809418', name:'Snickers Ghoulish Green', velocity:'66.5', margin:'−1.0%', onHand:'3,290', selling:'37 / 93', conf:'Medium', sales:'Moderate', sellPrice:'$1.75', priceNote:'MD3 basket · was $3.49', stage:'MD3', impact:'$1.9k protected', driver:'Negative starting margin — every stage sits below floor, so all 93 stores route through relaxation logic.', pending:'93 pending', sellPct:'40%', coverPct:'71%'},
+      {id:'2867876', name:'Skittles Shriekers Sour', velocity:'62.0', margin:'13.0%', onHand:'1,739', selling:'28 / 89', conf:'Medium', sales:'Moderate', sellPrice:'$2.09', priceNote:'MD1 · was $2.99', stage:'MD1', impact:'$1.4k protected', driver:'Sales concentrated in 28 of 89 stores; the long tail has too few observations to model individually.', pending:'89 pending', sellPct:'31%', coverPct:'66%'},
+      {id:'2867884', name:'M&M Halloween Mix Share Bag', velocity:'44.1', margin:'22.6%', onHand:'2,864', selling:'32 / 84', conf:'Medium', sales:'Moderate', sellPrice:'$3.99', priceNote:'EOL · full price', stage:'EOL', impact:'$1.1k protected', driver:'Two prior events with inconsistent ranging between them.', pending:'84 pending', sellPct:'38%', coverPct:'48%'},
+      {id:'2809424', name:'Sour Patch Kids Zombie Kids 3.5oz', velocity:'4.8', margin:'68.3%', onHand:'305', selling:'10 / 55', conf:'Low', sales:'Low', sellPrice:'$4.99', priceNote:'EOL · full price', stage:'EOL', impact:'$610 protected', driver:'4.8 units a week across 55 stores and 45 sell nothing — below the observation threshold for a store-level read.', pending:'8 approved', sellPct:'18%', coverPct:'93%'},
+      {id:'2867885', name:'Twix Ghoul Bites 2.8oz', velocity:'6.2', margin:'51.2%', onHand:'418', selling:'10 / 51', conf:'Low', sales:'Low', sellPrice:'$3.29', priceNote:'EOL · full price', stage:'EOL', impact:'$380 protected', driver:'First year ranged; no comparator and no store-level history.', pending:'51 pending', sellPct:'20%', coverPct:'88%'}
+    ].map((x,i,arr) => {
+      const parts = x.selling.split('/').map(t=>t.trim());
+      const was = (x.priceNote.match(/\$[\d.,]+/) || [''])[0];
+      const pend = x.pending.split(' ');
+      return Object.assign(x, {
+        confLabel: x.conf+' confidence',
+        confCls: CONF_CLS[x.conf],
+        sellingCount: parts[0],
+        storeCount: parts[1],
+        pendingCount: pend[0],
+        pendingWord: pend[1],
+        wasPrice: was,
+        wasStyle: was ? '' : 'display:none',
+        impactShort: x.impact.replace(' protected',''),
+        stageStyle: Object.assign({fontFamily:'var(--dr-font-display)',fontSize:'11px',fontWeight:600,
+          lineHeight:1,padding:'4px 6px',borderRadius:'3px',flex:'none',whiteSpace:'nowrap'}, STAGE_FILL[x.stage]),
+        priceSpread: was && was !== x.sellPrice ? x.sellPrice+'–'+was : x.sellPrice,
+        priceNote: was && was !== x.sellPrice ? 'deepest cut to full price' : 'no cut taken yet',
+        mix: (()=>{
+          const total = parseInt(parts[1], 10);
+          const d = Math.max(0, STAGES.indexOf(x.stage));
+          const shares = STAGES.map((st,k) => Math.max(0, 1 - Math.abs(k-d)*0.55));
+          const sum = shares.reduce((t,v)=>t+v, 0);
+          let left = total;
+          return STAGES.map((st,k) => {
+            const isLast = k===STAGES.length-1;
+            let c = isLast ? left : Math.round(total*shares[k]/sum);
+            c = Math.min(c, left); left -= c;
+            return {
+stage: st, count: c, share: c/total,
+              style: Object.assign({flex: c, minWidth: c ? '2px' : '0'}, STAGE_FILL[st]),
+              swatch: Object.assign({width:'9px',height:'9px',borderRadius:'2px',flex:'none'}, STAGE_FILL[st])};
+          }).filter(m => m.count > 0);
+        })(),
+        facts: [
+          {label:'Stores selling', value: parts[0]+' of '+parts[1]},
+          {label:'Units on hand', value: x.onHand},
+          {label:'Avg margin', value: x.margin},
+          {label:'Rate of sale', value: x.velocity+' units/wk'}
+        ]
+      });
+    });
+
+    const cCount = l => styles.filter(x=>x.conf===l).length;
+    const sCount = l => styles.filter(x=>x.sales===l).length;
+    const visibleStyles = styles.filter(x =>
+      (s.conf==='All' || x.conf===s.conf) && (s.sales==='All' || x.sales===s.sales));
+
+    const plan = this.buildPlan();
+    const q = this.buildRows(plan);
+    const bucketMeta = {
+      High:   {rule:'Dense store-level history and a prior-year comparator behind every one. Bulk-approvable by stage or by store cluster.', action:'Approve all 31 high-confidence', primary:true},
+      Medium: {rule:'Category-borrowed elasticity, or a floor breach that conditional relaxation permits. Expand and read the reason before approving.', action:'Approve selected', primary:false},
+      Low:    {rule:'Too few observations to model these stores. The agent is reasoning from its cluster and says so. Individual approval only — never bulk, never automatic.', action:'Approve selected', primary:false}
+    }[s.qTab];
+
+    return {
+      dsOpen: this.state.dsOpen, dsExpanded: this.state.dsOpen ? 'true' : 'false',
+      hasDs: !!this.state.ds,
+      dsLabel: (DS_LIST.find(d=>d.id===this.state.ds)||{}).label || 'Select a data source',
+      dsTextStyle: {flex:1,minWidth:0,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis',fontSize:'13px',fontWeight:this.state.ds?600:400,color:this.state.ds?'var(--dr-ink)':'var(--dr-ink-3)'},
+      toggleDs: () => this.setState(s=>({dsOpen:!s.dsOpen})),
+      clearDs: () => this.setState({ds:null, dsOpen:false}),
+      dsOptions: DS_LIST.map(d=>({label:d.label, meta:d.meta, selected:d.id===this.state.ds,
+        pick: () => this.setState({ds:d.id, dsOpen:false}),
+        style:{width:'100%',display:'flex',alignItems:'flex-start',gap:'10px',padding:'8px 10px',border:0,borderRadius:'6px',background:d.id===this.state.ds?'var(--dr-copper-050)':'transparent',font:'inherit',textAlign:'left',cursor:'pointer'}})),
+
+      noop: ()=>{},
+      goPlan: ()=>this.setState({screen:'plan'}),
+      goRecs: ()=>this.setState({screen:'recs'}),
+      goStore: ()=>this.setState({screen:'queue', qTab:'High', open:{}, allOpen:false, sel:{}}),
+      clearFilters: ()=>this.setState({conf:'All', sales:'All'}),
+      expandAll: ()=>this.setState(st=>({allOpen:!st.allOpen, open:{}})),
+      expandLabel: s.allOpen ? 'Collapse all' : 'Expand all',
+
+      isOverview: s.screen==='overview', isPlan: s.screen==='plan', isRecs: s.screen==='recs',
+      isQueue: s.screen==='queue', isClusters: s.screen==='clusters', isLogs: s.screen==='logs',
+      goClusters: ()=>this.setState({screen:'clusters'}),
+      resetWeights: ()=>this.setState({weights:Object.assign({}, W_DEFAULT)}),
+      setExit: e=>this.setState({exit:e.target.value}),
+      exitVal: s.exit,
+      weightRows: plan.weightRows, weightSummary: plan.summary, nonMonotonic: plan.nonMonotonic,
+      weekCount: plan.weekCount, stagesReach: plan.stagesReach,
+      clusterRows: plan.clusterRows, clusterStats: plan.clusterStats, inputChips: plan.inputChips,
+      weightMini: plan.weightMini,
+      matrixNote: plan.matrixNote, matrixHeadStyle: plan.headStyle, matrixWrapStyle: plan.wrapStyle,
+
+      nav: NAV.map(n=>({
+        label:n.label, icon:n.icon,
+        cls:'dr-nav__item'+(n.active?' dr-nav__item--active':''),
+        badge: n.badge || '',
+        badgeCls: n.badge ? 'dr-badge dr-badge--brand' : ''
+      })),
+
+      flow: FLOW.map((x,i)=>({
+        label:x.label,
+        num: x.done ? '✓' : String(i+1),
+        cls:'dr-flow__step'+(x.done?' dr-flow__step--done':'')+(x.now?' dr-flow__step--now':''),
+        sepStyle: i===FLOW.length-1 ? {display:'none'} : {}
+      })),
+
+      logStats: [
+        {label:'Runs completed', value:'17', note:'every run since 12 Aug without a retry'},
+        {label:'Changes approved', value:'412', note:'368 bulk · 44 store by store'},
+        {label:'Rejected or modified', value:'27', note:'buyer overruled the agent'},
+        {label:'Margin protected', value:'$41.2k', note:'against $96.4k at full price'}
+      ],
+      logKinds: [['All','All activity'],['run','Runs'],['approve','Approvals'],['reject','Rejections'],['edit','Changes'],['guard','Guardrails'],['plan','Plan']]
+        .map(o => this.pillBtn(s.logKind===o[0], o[1], ()=>this.setState({logKind:o[0]}))),
+      logRows: LOG.filter(e => s.logKind==='All' || e.kind===s.logKind).map(e => Object.assign({}, e, {
+        day: e.t.split(' · ')[0],
+        time: e.t.split(' · ')[1],
+        kindLabel: {run:'Run', approve:'Approved', reject:'Rejected', edit:'Modified', guard:'Guardrail', plan:'Plan'}[e.kind],
+        kindCls: 'dr-badge '+{run:'dr-badge--neutral', approve:'dr-badge--ok', reject:'dr-badge--warn',
+                              edit:'dr-badge--brand', guard:'dr-badge--warn', plan:'dr-badge--neutral'}[e.kind]
+      })),
+      logEmpty: LOG.filter(e => s.logKind==='All' || e.kind===s.logKind).length===0,
+
+      tabs: [
+        {label:'Overview', id:'overview'}, {label:'Config', id:'plan'}, {label:'Plan', id:'clusters'}, {label:'Recommendations', id:'recs'},
+        {label:'Review queue', id:'queue'}, {label:'Logs', id:'logs'}
+      ].map(t=>({label:t.label, go:()=>this.setState({screen:t.id}), cls:'dr-tab'+(s.screen===t.id?' dr-tab--active':'')})),
+
+      kpis: [
+        {label:'Total runs', value:'17', delta:'+4 this week', deltaCls:'dr-delta dr-delta--up', bench:'Every run since 12 Aug completed without a retry.'},
+        {label:'Avg runtime', value:'22.7s', delta:'−3.1s', deltaCls:'dr-delta dr-delta--up', bench:'671 SKU × store evaluated per run.'},
+        {label:'Success rate', value:'100%', delta:'no failures', deltaCls:'dr-delta', bench:'Guardrail rejections are outcomes, not failures.'},
+        {label:'Potential margin protected · all runs', value:'$41.2k', delta:'+$8.7k this week', deltaCls:'dr-delta dr-delta--up', bench:'Cumulative across 17 runs, against $96.4k at full price.'}
+      ],
+
+      steps: [
+        {name:'Scope & Sync Data', icon:'i-bot'},
+        {name:'Inventory & Demand Signal', icon:'i-cpu'},
+        {name:'Pricing & Governance', icon:'i-layers'},
+        {name:'Reason', icon:'i-branch'},
+        {name:'Persist for Buyer Review', icon:'i-usercheck', kind:'human'},
+        {name:'Build the Report', icon:'i-bot'},
+        {name:'Send Notification', icon:'i-barrier', kind:'soon'}
+      ].map((x,i,a)=>({
+        num:String(i+1).padStart(2,'0'), name:x.name, icon:x.icon,
+        isPlain:!x.kind, isHuman:x.kind==='human', isSoon:x.kind==='soon',
+        nextSolid:i<a.length-1 && a[i+1].kind!=='soon', nextSoon:i<a.length-1 && a[i+1].kind==='soon'
+      })),
+
+      reviewsLeft: cadenceMeta.left,
+
+
+      legend: [
+        {label:'EOL', swatch:swatch('EOL')}, {label:'MD1', swatch:swatch('MD1')},
+        {label:'MD2', swatch:swatch('MD2')}, {label:'MD3', swatch:swatch('MD3')}, {label:'MD4', swatch:swatch('MD4')}
+      ],
+
+      weeks: plan.weeks,
+
+      confFilters: [
+        this.pillBtn(s.conf==='All','All',()=>this.setState({conf:'All'})),
+        this.pillBtn(s.conf==='High','High ('+cCount('High')+')',()=>this.setState({conf:'High'})),
+        this.pillBtn(s.conf==='Medium','Medium ('+cCount('Medium')+')',()=>this.setState({conf:'Medium'})),
+        this.pillBtn(s.conf==='Low','Low ('+cCount('Low')+')',()=>this.setState({conf:'Low'}))
+      ],
+      salesFilters: [
+        this.pillBtn(s.sales==='All','All',()=>this.setState({sales:'All'})),
+        this.pillBtn(s.sales==='Low','Low ('+sCount('Low')+')',()=>this.setState({sales:'Low'})),
+        this.pillBtn(s.sales==='Moderate','Moderate ('+sCount('Moderate')+')',()=>this.setState({sales:'Moderate'})),
+        this.pillBtn(s.sales==='High','High ('+sCount('High')+')',()=>this.setState({sales:'High'}))
+      ],
+      visibleStyles,
+      recStats: (()=>{
+        const pending = styles.filter(x=>x.pendingWord==='pending')
+          .reduce((t,x)=>t+parseInt(x.pendingCount,10), 0);
+        const money = styles.reduce((t,x)=>{
+          const v = parseFloat(x.impact.replace(/[^\d.]/g,'')) || 0;
+          return t + (/k/.test(x.impact) ? v*1000 : v);
+        }, 0);
+        const high = styles.filter(x=>x.conf==='High').length;
+        return [
+          {cellStyle:'', valStyle:'', label:'Styles in this run', value:String(styles.length),
+           note:'8 styles · 110 stores · 671 pairs'},
+          {cellStyle:'border-left:1px solid var(--dr-line)', valStyle:'', label:'Stores awaiting decision',
+           value:String(pending), note:'across every style in scope'},
+          {cellStyle:'border-left:1px solid var(--dr-line)', valStyle:'color:var(--dr-ok)', label:'Margin at stake',
+           value:MONEY(money), note:'if approved exactly as proposed'},
+          {cellStyle:'border-left:1px solid var(--dr-line)', valStyle:'color:var(--dr-warn)',
+           label:'Stores needing a read', value:'14',
+           note:'a guardrail is waived or breached'}
+        ];
+      })(),
+      noStyles: visibleStyles.length===0,
+      bulkNote: visibleStyles.length+' of '+styles.length+' styles · confidence '+s.conf+' · sales '+s.sales,
+
+      qStats: [
+        {cellStyle:'', label:'Stores awaiting decision', value:'55', valStyle:'', note:'31 high · 16 medium · 8 low confidence'},
+        {cellStyle:'border-left:1px solid var(--dr-line)', label:'Margin at stake', value: MONEY(q.atStake), valStyle:'color:var(--dr-ok)', note:'if every store shown is approved as proposed'},
+        {cellStyle:'', label:'Needs your judgement', value:String(q.flagCount),
+         valStyle: q.flagCount ? 'color:var(--dr-warn)' : 'color:var(--dr-ink-3)',
+         note: q.flagCount ? 'a guardrail is waived or breached' : 'every store in this tier is clear'},
+        {cellStyle:'border-left:1px solid var(--dr-line)', label:'Time to exit', value:'21 days', valStyle:'', note:'3 reviews left · hard exit 14 Nov'}
+      ],
+      sortStore: this.sortCol('store'), sortUnits: this.sortCol('units'), sortMargin: this.sortCol('impact'),
+      toggleAll: ()=>this.setState(st=>{
+        if (q.allSel) return {sel:{}};
+        const sel = {}; q.ids.forEach(id=>{ sel[id]=true; }); return {sel};
+      }),
+      allBoxStyle: SEL_BOX(q.allSel),
+      allCheckStyle: {width:'11px',height:'11px',opacity:q.allSel?1:0},
+      clusterFilters: [{k:'All', l:'All clusters'}].concat(CLUSTERS.map(c=>{
+        const key = c.name.split(' — ')[0].replace('Cluster ','');
+        return {k:key, l:key+' · '+c.name.split(' — ')[1]};
+      })).map(o => this.pillBtn(s.qCluster===o.k, o.l, ()=>this.setState({qCluster:o.k, sel:{}}))),
+      hasSel: q.selCount>0,
+      selNote: q.selCount+' selected',
+      selImpact: MONEY(q.selSum)+' projected margin · '+s.qTab.toLowerCase()+' confidence tier',
+      clearSel: ()=>this.setState({sel:{}}),
+
+      qTabs: ['High','Medium','Low'].map(l=>({
+        label: l+' confidence',
+        count: {High:31, Medium:16, Low:8}[l],
+        go: ()=>this.setState({qTab:l, open:{}, allOpen:false, sel:{}}),
+        cls: 'dr-seg__item'+(s.qTab===l?' dr-seg__item--active':'')
+      })),
+      bucketRule: bucketMeta.rule,
+      bucketAction: bucketMeta.action,
+      bucketBtnCls: bucketMeta.primary ? 'dr-btn dr-btn--primary' : 'dr-btn dr-btn--secondary',
+      rows: q.rows,
+      pageNote: q.rows.length===0
+        ? 'No stores match the cluster filter in this tier'
+        : 'Showing '+q.rows.length+(q.rows.length===q.shown ? ' of '+q.total : ' filtered')+' stores in this bucket',
+      noRows: q.rows.length===0,
+      hasRows: q.rows.length>0,
+
+      ladderRows: GUARD.map(g=>Object.assign({}, g, {chipStyle: wChip(g.tone)})),
+      inputFields: INPUT_FIELDS
+    };
+  }
+}
+
+</script>
+</body>
+</html>

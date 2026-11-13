@@ -1,0 +1,107 @@
+{
+  "name": "DeepRoot",
+  "slug": "deeproot",
+  "version": "1.0.0",
+  "description": "The visual and written language of deeproot.ai and its DataLLM product. Warm neutrals on paper, a copper hexagon for every object, achromatic graphite for every commit action.",
+  "derivedFrom": {
+    "note": "Not generated from parameters — extracted from a shipped product redesign. Every value traces to one of these artefacts.",
+    "artefacts": [
+      "deeproot-theme.css — the canonical 688-line token + component layer",
+      "deeproot-ui-redesign.html — a clickable 10-screen prototype (component inventory + copy)",
+      "INTEGRATION.md — colour measurement, the CVD problem, two shipped bug fixes",
+      "scheme-a-deuteranopia-check.png — the simulation justifying graphite actions",
+      "DeepRoot logo lockup + 54-symbol icon sprite"
+    ]
+  },
+  "principle": {
+    "statement": "Copper is identity and selection. Graphite is every commit action.",
+    "reasoning": "Copper sits at hue 15deg, between amber and red. As a button fill it placed commit in the same hue band as alarm — measured 39 apart under deuteranopia, below the 40 confusion threshold.",
+    "statusEncoding": "Warn and risk are separated by luminance, not hue. Worst-case pair separation is 53, up from 29."
+  },
+  "ground": "light",
+  "colors": {
+    "canvas": "#FAF8F6",
+    "surface": "#FFFFFF",
+    "text": "#1C1917",
+    "action": {
+      "base": "#2A2522",
+      "hover": "#1C1917",
+      "pressed": "#14110F",
+      "role": "every committing action; achromatic by design"
+    },
+    "accent": {
+      "base": "#C07860",
+      "role": "identity and selection only — never a button fill",
+      "ramp": {
+        "50": "#FBF1EC",
+        "100": "#F4E1D8",
+        "200": "#E9C6B6",
+        "300": "#E0A890",
+        "400": "#D8A088",
+        "500": "#C07860",
+        "600": "#B87058",
+        "700": "#9E5942",
+        "800": "#8C4C36",
+        "900": "#7C4230"
+      }
+    },
+    "shell": {
+      "base": "#1C1917",
+      "role": "the nav rail; dark in BOTH light and dark themes"
+    },
+    "status": {
+      "ok": "#1F6B4C",
+      "warn": "#A36A09",
+      "danger": "#8E2F1C"
+    }
+  },
+  "type": {
+    "display": "Poppins 500/600/700, tracked -0.015em at every size",
+    "body": "Inter 400/500/600/700",
+    "mono": "JetBrains Mono — identifiers, shortcuts, rule expressions",
+    "bodySizes": [
+      15,
+      13.5,
+      12.5,
+      11.5
+    ],
+    "floor": "11.5px on screen; 24px in slides and print",
+    "uppercase": "exactly one style — .dr-field-label at 11px/700/.08em",
+    "tabularFigures": ".dr-num, mandatory in any column of numbers",
+    "substitutionFlagged": "No font binaries were supplied. Loaded from Google Fonts; self-host for enterprise."
+  },
+  "shape": {
+    "radii": {
+      "control": "6px",
+      "callout": "10px",
+      "card": "14px",
+      "modal": "18px",
+      "pill": "999px"
+    },
+    "shadows": "three, warm-tinted rgba(24,16,16,…) — never neutral black"
+  },
+  "motion": {
+    "duration": "140ms",
+    "easing": "cubic-bezier(.4,0,.2,1)",
+    "reducedMotion": "every duration collapses to 0.01ms"
+  },
+  "signature": "The hexagon. The logo mark is a hexagon, so every object — source, agent, profile, workflow stage — wears one instead of a rounded square.",
+  "icons": {
+    "set": "the product's own sprite",
+    "count": 54,
+    "file": "assets/dr-icons.svg",
+    "style": "thin-stroke outline, 24x24 viewBox, stroke-width 1.7-2.0",
+    "rule": "never hand-roll a path, never substitute an emoji"
+  },
+  "integration": {
+    "stylesheet": "styles.css",
+    "required": ".dr, .dr *, .dr *::before, .dr *::after { box-sizing: border-box } — the theme does not set it",
+    "scope": "class=\"dr\" on an ancestor; the whole component layer is scoped to it"
+  },
+  "knownGaps": [
+    "no font binaries",
+    "no dark-ground logo asset",
+    "all figures in kits and specimens are illustrative"
+  ],
+  "currency": "GBP"
+}

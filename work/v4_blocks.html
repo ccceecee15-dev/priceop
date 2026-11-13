@@ -1,0 +1,489 @@
+      <!-- EVENTS HOME -->
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+        <div data-screen-label="Events home" style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:stretch;gap:12px 14px;flex-wrap:wrap">
+            <div role="group" aria-label="Portfolio summary" style="flex:1 1 620px;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1px solid var(--dr-line);border-radius:var(--dr-r);background:var(--dr-surface);overflow:hidden">
+              <sc-for list="{{ hSum }}" as="k" hint-placeholder-count="4">
+                <button onClick="{{ k.pick }}" aria-pressed="{{ k.pressed }}" style="{{ k.style }}" style-hover="background:var(--dr-surface-2)">
+                  <span style="display:flex;align-items:baseline;gap:8px"><span class="dr-num" style="{{ k.nStyle }}">{{ k.n }}</span><span style="font-size:12.5px;font-weight:600;color:var(--dr-ink-2)">{{ k.label }}</span></span>
+                  <span style="font-size:11.5px;color:var(--dr-ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ k.sub }}</span>
+                </button>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center"><button class="dr-btn dr-btn--primary" onClick="{{ newEvent }}"><svg><use href="#i-plus"></use></svg>New event</button></div>
+          </div>
+
+          <section data-screen-label="Needs attention" class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 18px"><h2 style="margin:0;font-size:14px;font-weight:600">Needs attention</h2><span style="font-size:12px;color:var(--dr-ink-3)">{{ attnCount }}</span></div>
+            <sc-for list="{{ attn }}" as="a" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;padding:9px 18px;border-top:1px solid var(--dr-line)">
+                <svg style="{{ a.iconStyle }}"><use href="#{{ a.icon }}"></use></svg>
+                <div style="flex:0 1 190px;min-width:150px"><div style="font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3)">{{ a.kind }}</div><div style="font-size:13px;font-weight:600;color:var(--dr-ink)">{{ a.ev }}</div></div>
+                <div style="flex:1 1 340px;min-width:0"><div style="font-size:13px;font-weight:500;color:var(--dr-ink);text-wrap:pretty">{{ a.t }}</div><div style="font-size:12px;color:var(--dr-ink-3);text-wrap:pretty">{{ a.sub }}</div></div>
+                <span class="dr-num" style="font-size:12px;color:var(--dr-ink-2);white-space:nowrap">{{ a.due }}</span>
+                <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ a.go }}">{{ a.cta }}<svg><use href="#i-right"></use></svg></button>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noAttn }}" hint-placeholder-val="{{ false }}"><div style="padding:14px 18px;border-top:1px solid var(--dr-line);font-size:13px;color:var(--dr-ink-2)">Nothing needs attention across the portfolio.</div></sc-if>
+          </section>
+
+          <section data-screen-label="Events" class="dr-card">
+            <div style="display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--dr-line)">
+              <div class="dr-seg" role="tablist" aria-label="Filter events"><sc-for list="{{ hFilters }}" as="f" hint-placeholder-count="5"><button role="tab" aria-selected="{{ f.active }}" class="{{ f.cls }}" onClick="{{ f.pick }}" style="padding:6px 12px;display:inline-flex;gap:6px">{{ f.label }}<span class="dr-num" style="color:var(--dr-ink-3);font-weight:500">{{ f.n }}</span></button></sc-for></div>
+              <sc-if value="{{ hAttnOn }}" hint-placeholder-val="{{ false }}"><button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ hClearAttn }}"><svg><use href="#i-x"></use></svg>Needs attention only</button></sc-if>
+              <span style="font-size:12px;color:var(--dr-ink-3)">{{ hCountT }}</span>
+              <div class="dr-search" style="flex:0 1 280px;min-width:180px;margin-left:auto"><svg><use href="#i-search"></use></svg><input class="dr-input" type="search" placeholder="Search events" aria-label="Search events" value="{{ hQ }}" onChange="{{ setHQ }}" style="padding-top:7px;padding-bottom:7px"></div>
+            </div>
+            <div style="overflow-x:auto">
+              <table class="dr-table" style="min-width:1220px;font-size:13px">
+                <thead><tr>
+                  <sc-for list="{{ hHeads }}" as="h" hint-placeholder-count="10"><th style="{{ h.thStyle }}" aria-sort="{{ h.ariaSort }}"><sc-if value="{{ h.sortable }}" hint-placeholder-val="{{ true }}"><button style="{{ h.btnStyle }}" onClick="{{ h.pick }}">{{ h.label }}<svg style="width:12px;height:12px;flex:none"><use href="#{{ h.icon }}"></use></svg></button></sc-if><sc-if value="{{ h.notSortable }}" hint-placeholder-val="{{ false }}">{{ h.label }}</sc-if></th></sc-for>
+                  <th style="width:28px;padding:9px 12px"></th>
+                </tr></thead>
+                <tbody>
+                  <sc-for list="{{ hTable }}" as="r" hint-placeholder-count="8">
+                    <tr onClick="{{ r.open }}" style="cursor:pointer">
+                      <td style="padding:9px 12px;min-width:220px"><div style="display:flex;align-items:center;gap:6px"><span style="font-weight:600">{{ r.name }}</span><sc-if value="{{ r.attn }}" hint-placeholder-val="{{ false }}"><span title="Needs attention" style="width:7px;height:7px;border-radius:50%;background:var(--dr-warn);flex:none"></span></sc-if></div><div class="dr-table__meta">{{ r.scope }}</div></td>
+                      <td style="padding:9px 12px;color:var(--dr-ink-2)">{{ r.type }}</td>
+                      <td class="dr-num" style="padding:9px 12px;white-space:nowrap">{{ r.start }}</td>
+                      <td class="dr-num" style="padding:9px 12px;white-space:nowrap">{{ r.end }}</td>
+                      <td style="padding:9px 12px;white-space:nowrap"><span class="{{ r.lifeCls }}">{{ r.life }}</span></td>
+                      <td class="dr-num" style="padding:9px 12px;text-align:right">{{ r.stores }}</td>
+                      <td class="dr-num" style="padding:9px 12px;text-align:right">{{ r.skus }}</td>
+                      <td class="dr-num" style="padding:9px 12px;white-space:nowrap"><span style="{{ r.perfStyle }}">{{ r.perf }}</span></td>
+                      <td style="padding:9px 12px"><span style="{{ r.pendingStyle }}">{{ r.pending }}</span></td>
+                      <td style="padding:9px 12px"><div>{{ r.next }}</div><div class="dr-table__meta dr-num">{{ r.nextD }}</div></td>
+                      <td style="padding:9px 12px;color:var(--dr-ink-4)"><svg style="width:14px;height:14px"><use href="#i-right"></use></svg></td>
+                    </tr>
+                  </sc-for>
+                  <sc-if value="{{ hEmpty }}" hint-placeholder-val="{{ false }}"><tr><td colspan="11" style="padding:24px 16px;text-align:center;color:var(--dr-ink-3)">No events match these filters.</td></tr></sc-if>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section data-screen-label="Event timeline" class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">Timeline</h2><span style="font-size:12px;color:var(--dr-ink-3)">Aug 2026 – Jan 2027 · bar marks the event day</span></div>
+            <div style="overflow-x:auto">
+              <div style="min-width:980px;padding:6px 0 10px">
+                <div style="display:grid;grid-template-columns:260px minmax(0,1fr);padding:0 18px">
+                  <span></span>
+                  <div style="position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));height:24px;align-items:end">
+                    <sc-for list="{{ tlMonths }}" as="m" hint-placeholder-count="6"><span style="font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dr-ink-3);padding:0 0 4px 6px;border-left:1px solid var(--dr-line);white-space:nowrap;overflow:hidden">{{ m.label }}</span></sc-for>
+                    <span style="{{ hTodayLabelStyle }}">Today</span>
+                  </div>
+                </div>
+                <sc-for list="{{ hTl }}" as="r" hint-placeholder-count="6">
+                  <button onClick="{{ r.open }}" style="{{ r.rowStyle }}" style-hover="{{ r.hover }}">
+                    <span style="min-width:0;display:flex;align-items:center;gap:6px;padding-right:12px"><span style="font-size:13px;font-weight:600;color:var(--dr-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><span class="{{ r.badgeCls }}" style="font-size:10px;padding:2px 6px;flex:none">{{ r.life }}</span></span>
+                    <span style="position:relative;display:block;height:32px;background-image:linear-gradient(to right, var(--dr-line) 1px, transparent 1px);background-size:calc(100% / 6) 100%">
+                      <span style="{{ r.barStyle }}">{{ r.barLabel }}</span>
+                      <span style="{{ r.dayStyle }}"></span>
+                      <span style="{{ r.edgeStyle }}">{{ r.edgeLabel }}</span>
+                      <span style="{{ hTodayStyle }}"></span>
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </section>
+        </div>
+      </sc-if>
+
+      <!-- WORKSPACE · NOT STARTED -->
+      <sc-if value="{{ showWsStart }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Event not started" class="dr-card">
+          <div class="dr-card__body" style="display:flex;gap:16px 28px;flex-wrap:wrap;align-items:flex-start">
+            <div style="flex:1 1 380px;min-width:0">
+              <div class="dr-stat__label">Not set up yet</div>
+              <p style="margin:6px 0 0;font-size:13px;line-height:1.6;color:var(--dr-ink-2);max-width:620px;text-wrap:pretty">{{ wsStartWhy }}</p>
+              <button class="dr-btn dr-btn--primary dr-btn--sm" style="margin-top:12px" onClick="{{ wsStartGo }}">Start planning<svg><use href="#i-right"></use></svg></button>
+            </div>
+            <div style="flex:1 1 360px;min-width:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1px;background:var(--dr-line);border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);overflow:hidden">
+              <sc-for list="{{ wsStartFacts }}" as="f" hint-placeholder-count="4"><div style="background:var(--dr-surface);padding:8px 12px;min-width:0"><div style="font-size:11px;color:var(--dr-ink-3)">{{ f.label }}</div><div class="dr-num" style="font-size:13.5px;font-weight:600;margin-top:2px">{{ f.value }}</div></div></sc-for>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+
+      <!-- WORKSPACE · DRAFT SETUP PROGRESS -->
+      <sc-if value="{{ showWsSetup }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Setup progress" class="dr-card">
+          <div class="dr-card__head" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 18px">
+            <div><h2 style="margin:0;font-size:14px;font-weight:600">Setup progress</h2><div style="font-size:12px;color:var(--dr-ink-3);margin-top:2px">{{ wsSetupT }}</div></div>
+            <button class="dr-btn dr-btn--primary dr-btn--sm" onClick="{{ wsContinue }}">Continue setup<svg><use href="#i-right"></use></svg></button>
+          </div>
+          <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+            <sc-for list="{{ wsSteps }}" as="w" hint-placeholder-count="7">
+              <li style="min-width:0;box-shadow:0 0 0 0.5px var(--dr-line)">
+                <button onClick="{{ w.go }}" style="width:100%;display:flex;align-items:center;gap:10px;padding:11px 14px;border:0;background:transparent;font:inherit;text-align:left;cursor:pointer" style-hover="background:var(--dr-surface-2)">
+                  <span style="{{ w.numStyle }}"><sc-if value="{{ w.showCheck }}" hint-placeholder-val="{{ false }}"><svg style="width:11px;height:11px"><use href="#i-check"></use></svg></sc-if><sc-if value="{{ w.showNum }}" hint-placeholder-val="{{ true }}">{{ w.n }}</sc-if></span>
+                  <span style="min-width:0"><span style="display:block;font-size:12.5px;font-weight:600;color:var(--dr-ink)">{{ w.label }}</span><span style="{{ w.stStyle }}">{{ w.status }}</span></span>
+                </button>
+              </li>
+            </sc-for>
+          </ol>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ showEligSeg }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap">
+          <div class="dr-seg" role="tablist" aria-label="Scope"><sc-for list="{{ eligSegs }}" as="t" hint-placeholder-count="3"><button role="tab" aria-selected="{{ t.active }}" class="{{ t.cls }}" onClick="{{ t.pick }}" style="padding:6px 14px">{{ t.label }}</button></sc-for></div>
+          <sc-if value="{{ eligLiveNote }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--dr-ink-2)"><svg style="width:14px;height:14px;color:var(--dr-copper-600)"><use href="#i-info"></use></svg>The event is live. Changes apply from the next weekly re-optimisation.</span></sc-if>
+        </div>
+      </sc-if>
+
+      <!-- SETUP · STEP 1 -->
+      <sc-if value="{{ showS1 }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Step 1 · Details &amp; objectives" style="display:flex;flex-direction:column;gap:16px">
+          <sc-if value="{{ wzErrShow }}" hint-placeholder-val="{{ false }}"><div role="alert" style="display:flex;gap:8px;align-items:center;padding:9px 14px;border:1px solid var(--dr-danger-line);border-radius:var(--dr-r-sm);background:var(--dr-danger-bg);font-size:13px;color:var(--dr-danger)"><svg style="width:15px;height:15px;flex:none"><use href="#i-alert"></use></svg>{{ wzErr }}</div></sc-if>
+          <section class="dr-card">
+            <div class="dr-card__head" style="padding:12px 18px"><h2 style="margin:0;font-size:14px;font-weight:600">Event details</h2></div>
+            <div class="dr-card__body" style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;gap:14px 18px;flex-wrap:wrap;align-items:flex-end">
+                <div style="flex:2 1 280px;min-width:0;max-width:460px"><label class="dr-field-label" for="wz-name">Event name</label><input id="wz-name" class="dr-input" type="text" placeholder="e.g. Christmas 2026" value="{{ runName }}" onChange="{{ setRunName }}"></div>
+                <div style="flex:1 1 300px;min-width:0"><div class="dr-field-label">Event type</div><div class="dr-seg" role="radiogroup" aria-label="Event type"><sc-for list="{{ wzTypes }}" as="t" hint-placeholder-count="3"><button role="radio" aria-checked="{{ t.active }}" class="{{ t.cls }}" onClick="{{ t.pick }}" style="padding:7px 14px">{{ t.label }}</button></sc-for></div></div>
+              </div>
+              <div style="display:flex;gap:14px 18px;flex-wrap:wrap;align-items:flex-end">
+                <div style="flex:1 1 170px;min-width:0;max-width:220px"><label class="dr-field-label" for="wz-start">Start date</label><input id="wz-start" type="date" class="dr-input" value="{{ start }}" onChange="{{ setStart }}"></div>
+                <div style="flex:1 1 170px;min-width:0;max-width:220px"><label class="dr-field-label" for="wz-end">End date (exit)</label><input id="wz-end" type="date" class="dr-input" value="{{ end }}" onChange="{{ setEnd }}"></div>
+                <sc-if value="{{ wzShowEvDay }}" hint-placeholder-val="{{ true }}"><div style="flex:1 1 170px;min-width:0;max-width:220px"><label class="dr-field-label" for="wz-day">Event day (demand peak)</label><input id="wz-day" type="date" class="dr-input" value="{{ wzEvDay }}" onChange="{{ setWzEvDay }}"></div></sc-if>
+              </div>
+              <sc-if value="{{ wzShowClr }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;gap:12px 18px;flex-wrap:wrap;align-items:flex-end">
+                  <button role="switch" aria-checked="{{ wzClrOn }}" onClick="{{ wzClrToggle }}" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);background:var(--dr-surface);font:inherit;text-align:left;cursor:pointer" style-hover="background:var(--dr-surface-2)"><span style="{{ wzClrTrack }}"><span style="{{ wzClrKnob }}"></span></span><span style="font-size:13px;font-weight:600">Clearance period after selling</span></button>
+                  <sc-if value="{{ wzShowSellEnd }}" hint-placeholder-val="{{ true }}"><div style="flex:0 1 220px;min-width:170px"><label class="dr-field-label" for="wz-sell">Selling period ends</label><input id="wz-sell" type="date" class="dr-input" value="{{ wzSellEnd }}" onChange="{{ setWzSellEnd }}"></div></sc-if>
+                </div>
+              </sc-if>
+              <div style="font-size:12.5px;color:var(--dr-ink-2)"><strong style="font-weight:600;color:var(--dr-ink)">{{ periodSummary }}</strong> · {{ wzPeriodT }}</div>
+            </div>
+          </section>
+          <section class="dr-card">
+            <div class="dr-card__head" style="padding:12px 18px"><h2 style="margin:0;font-size:14px;font-weight:600">Objective &amp; commercial guardrails</h2></div>
+            <div class="dr-card__body" style="display:flex;flex-direction:column;gap:18px">
+              <div style="display:flex;flex-direction:column;gap:8px"><div class="dr-field-label" style="margin:0">Primary objective</div><div role="radiogroup" aria-label="Primary objective" style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ comObj }}" as="o" hint-placeholder-count="2"><button role="radio" aria-checked="{{ o.pressed }}" onClick="{{ o.pick }}" style="{{ o.style }}"><span style="{{ o.dotStyle }}"></span><span style="min-width:0"><span style="display:block;font-size:13px;font-weight:600;color:var(--dr-ink)">{{ o.label }}</span><span style="display:block;font-size:12px;line-height:1.45;color:var(--dr-ink-3);margin-top:1px">{{ o.desc }}</span></span></button></sc-for></div></div>
+              <div style="display:flex;gap:14px 18px;flex-wrap:wrap;align-items:flex-end">
+                <div style="flex:1 1 170px;min-width:0;max-width:220px"><label class="dr-field-label" for="wz-floor">Price floor</label><select id="wz-floor" class="dr-input" style="cursor:pointer" value="{{ wzFloor }}" onChange="{{ setWzFloor }}"><option value="cost">Cost price</option><option value="cost10">Cost + 10%</option><option value="cost25">Cost + 25%</option></select></div>
+                <div style="flex:1 1 140px;min-width:0;max-width:180px"><label class="dr-field-label" for="wz-maxd">Maximum discount</label><div style="display:flex;align-items:center;gap:6px"><input id="wz-maxd" type="number" min="0" max="90" class="dr-input dr-num" value="{{ wzMaxDisc }}" onChange="{{ setMaxDisc }}"><span style="color:var(--dr-ink-3)">%</span></div></div>
+                <div style="flex:1 1 300px;min-width:0"><div class="dr-field-label">Price change frequency</div><div class="dr-seg" role="radiogroup" aria-label="Price change frequency"><sc-for list="{{ wzFreq }}" as="t" hint-placeholder-count="3"><button role="radio" aria-checked="{{ t.active }}" class="{{ t.cls }}" onClick="{{ t.pick }}" style="padding:7px 12px">{{ t.label }}</button></sc-for></div></div>
+                <div style="flex:1 1 200px;min-width:0;max-width:260px"><label class="dr-field-label" for="wz-auth">Approval authority</label><select id="wz-auth" class="dr-input" style="cursor:pointer" value="{{ wzAuth }}" onChange="{{ setWzAuth }}"><option value="buyer">Category buyer</option><option value="head">Head of trading</option><option value="director">Commercial director</option></select></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;max-width:640px">
+                <label class="dr-field-label" for="wz-wo" style="margin:0">Write-off tolerance</label>
+                <div style="display:flex;align-items:center;gap:12px"><input id="wz-wo" type="range" min="0" max="20" step="1" value="{{ comWo }}" onChange="{{ setComWo }}" style="flex:1;min-width:0;accent-color:var(--dr-copper-600)"><div style="display:flex;align-items:center;gap:4px"><input type="number" min="0" max="20" aria-label="Write-off tolerance percent" class="dr-input dr-num" style="width:64px;padding:7px 8px" value="{{ comWo }}" onChange="{{ setComWo }}"><span style="color:var(--dr-ink-3)">%</span></div></div>
+                <div style="font-size:12px;line-height:1.5;color:var(--dr-ink-2);text-wrap:pretty">{{ woHelp }}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline"><div class="dr-field-label" style="margin:0">Price consistency · the level at which prices may vary</div><span style="font-size:11.5px;color:var(--dr-ink-3)">More consistent ← → more flexible</span></div><div role="radiogroup" aria-label="Price consistency" style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ comCons }}" as="o" hint-placeholder-count="4"><button role="radio" aria-checked="{{ o.pressed }}" onClick="{{ o.pick }}" style="{{ o.style }}"><span style="{{ o.dotStyle }}"></span><span style="min-width:0"><span style="display:block;font-size:13px;font-weight:600;color:var(--dr-ink)">{{ o.label }}</span><span style="display:block;font-size:12px;line-height:1.45;color:var(--dr-ink-3);margin-top:1px">{{ o.desc }}</span></span></button></sc-for></div></div>
+              <div style="display:flex;flex-direction:column;gap:8px"><div class="dr-field-label" style="margin:0">Pricing flexibility</div><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ flexRows }}" as="fx" hint-placeholder-count="2"><button role="switch" aria-checked="{{ fx.on }}" onClick="{{ fx.toggle }}" style="flex:1 1 280px;display:flex;align-items:center;gap:12px;padding:9px 12px;border:1px solid var(--dr-line);border-radius:var(--dr-r-sm);background:var(--dr-surface);font:inherit;text-align:left;cursor:pointer" style-hover="background:var(--dr-surface-2)"><span style="{{ fx.trackStyle }}"><span style="{{ fx.knobStyle }}"></span></span><span style="min-width:0"><span style="display:block;font-size:13px;font-weight:600;color:var(--dr-ink)">{{ fx.label }}</span><span style="display:block;font-size:12px;color:var(--dr-ink-3)">{{ fx.desc }}</span></span></button></sc-for></div></div>
+            </div>
+          </section>
+        </div>
+      </sc-if>
+
+      <!-- SETUP · STEP 2 · ELIGIBLE STORES -->
+      <sc-if value="{{ showStoresBlk }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Eligible stores" style="display:flex;flex-direction:column;gap:14px">
+          <section class="dr-card">
+            <div role="group" aria-label="Store eligibility summary" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
+              <sc-for list="{{ stSum }}" as="k" hint-placeholder-count="6"><div style="padding:10px 16px;box-shadow:0 0 0 0.5px var(--dr-line);min-width:0"><div class="dr-stat__label">{{ k.label }}</div><div class="dr-num" style="{{ k.vStyle }}">{{ k.value }}</div><div style="font-size:11.5px;color:var(--dr-ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ k.sub }}</div></div></sc-for>
+            </div>
+            <div style="padding:9px 16px;border-top:1px solid var(--dr-line);display:flex;gap:6px 18px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--dr-ink-2);background:var(--dr-surface-2);border-radius:0 0 var(--dr-r-lg) var(--dr-r-lg)">
+              <svg style="width:14px;height:14px;color:var(--dr-copper-600);flex:none"><use href="#i-info"></use></svg><span style="flex:1 1 360px;min-width:0;text-wrap:pretty">{{ stRuleT }}</span>
+              <sc-for list="{{ stByFmt }}" as="f" hint-placeholder-count="3"><span class="dr-num" style="white-space:nowrap"><strong style="font-weight:600;color:var(--dr-ink)">{{ f.n }}</strong> {{ f.label }}</span></sc-for>
+            </div>
+          </section>
+          <section class="dr-card">
+            <div style="display:flex;align-items:flex-end;gap:10px 12px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--dr-line)">
+              <div class="dr-search" style="flex:1 1 220px;min-width:180px;max-width:300px"><svg><use href="#i-search"></use></svg><input class="dr-input" type="search" placeholder="Store, number or property" aria-label="Search stores" value="{{ sfQ }}" onChange="{{ setSfQ }}" style="padding-top:7px;padding-bottom:7px"></div>
+              <div style="flex:0 1 160px;min-width:130px"><label class="dr-field-label" for="sf-st" style="font-size:11px">Status</label><select id="sf-st" class="dr-input" style="padding:7px 10px;cursor:pointer" value="{{ sfSt }}" onChange="{{ setSfSt }}"><sc-for list="{{ stFilterOpts }}" as="o" hint-placeholder-count="7"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+              <div style="flex:0 1 160px;min-width:130px"><label class="dr-field-label" for="sf-fmt" style="font-size:11px">Format</label><select id="sf-fmt" class="dr-input" style="padding:7px 10px;cursor:pointer" value="{{ sfFmt }}" onChange="{{ setSfFmt }}"><option value="All">All formats</option><sc-for list="{{ fmtOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o.value }}">{{ o.label }}</option></sc-for></select></div>
+              <div style="flex:0 1 170px;min-width:130px"><label class="dr-field-label" for="sf-reg" style="font-size:11px">Region</label><select id="sf-reg" class="dr-input" style="padding:7px 10px;cursor:pointer" value="{{ sfRegion }}" onChange="{{ setSfRegion }}"><option value="All">All regions</option><sc-for list="{{ regionOpts }}" as="o" hint-placeholder-count="6"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+              <div><div class="dr-field-label" style="font-size:11px">Group by</div><div class="dr-seg" role="radiogroup" aria-label="Group stores"><sc-for list="{{ stGroupSeg }}" as="t" hint-placeholder-count="4"><button role="radio" aria-checked="{{ t.active }}" class="{{ t.cls }}" onClick="{{ t.pick }}" style="padding:5px 10px;font-size:12.5px">{{ t.label }}</button></sc-for></div></div>
+              <span style="margin-left:auto;font-size:12px;color:var(--dr-ink-3);padding-bottom:8px">{{ stShownT }}</span>
+            </div>
+            <sc-if value="{{ stHasSel }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 14px;border-bottom:1px solid var(--dr-copper-200);background:var(--dr-copper-050);font-size:12.5px">
+                <strong style="font-weight:600">{{ stSelT }}</strong>
+                <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ stBulkInc }}">Include</button>
+                <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ stBulkExc }}">Exclude</button>
+                <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ stClearSel }}">Clear selection</button>
+              </div>
+            </sc-if>
+            <div style="overflow-x:auto">
+              <table class="dr-table" style="min-width:1180px;font-size:12.5px">
+                <thead><tr>
+                  <th style="width:36px;padding:9px 12px"><input type="checkbox" aria-label="Select all shown stores" checked="{{ stAllSel }}" onChange="{{ stToggleAll }}" style="accent-color:var(--dr-copper-600)"></th>
+                  <sc-for list="{{ stHeads }}" as="h" hint-placeholder-count="8"><th style="{{ h.thStyle }}" aria-sort="{{ h.ariaSort }}"><sc-if value="{{ h.sortable }}" hint-placeholder-val="{{ true }}"><button style="{{ h.btnStyle }}" onClick="{{ h.pick }}">{{ h.label }}<svg style="width:12px;height:12px;flex:none"><use href="#{{ h.icon }}"></use></svg></button></sc-if><sc-if value="{{ h.notSortable }}" hint-placeholder-val="{{ false }}">{{ h.label }}</sc-if></th></sc-for>
+                  <th style="padding:9px 12px;text-align:right">Action</th>
+                </tr></thead>
+                <tbody>
+                  <sc-for list="{{ stGroups }}" as="g" hint-placeholder-count="1">
+                    <sc-if value="{{ g.showHead }}" hint-placeholder-val="{{ false }}"><tr style="background:var(--dr-surface-2)"><td colspan="10" style="padding:7px 12px;font-size:12px;font-weight:700;color:var(--dr-ink)">{{ g.label }} <span style="font-weight:500;color:var(--dr-ink-3)">· {{ g.sub }}</span></td></tr></sc-if>
+                    <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="10">
+                      <tr style="{{ r.trStyle }}">
+                        <td style="padding:6px 12px"><input type="checkbox" aria-label="{{ r.selAria }}" checked="{{ r.checked }}" onChange="{{ r.toggleSel }}" style="accent-color:var(--dr-copper-600)"></td>
+                        <td class="dr-num" style="padding:6px 12px">{{ r.no }}</td>
+                        <td style="padding:6px 12px;font-weight:600;white-space:nowrap">{{ r.name }}</td>
+                        <td style="padding:6px 12px">{{ r.prop }}</td>
+                        <td style="padding:6px 12px;white-space:nowrap">{{ r.fmt }}</td>
+                        <td style="padding:6px 12px;white-space:nowrap">{{ r.region }}</td>
+                        <td style="padding:6px 12px;white-space:nowrap">{{ r.ly }}</td>
+                        <td style="padding:6px 12px"><div style="display:flex;gap:4px;flex-wrap:wrap"><span class="{{ r.recCls }}">{{ r.recT }}</span><sc-if value="{{ r.isOvr }}" hint-placeholder-val="{{ false }}"><span class="dr-badge dr-badge--warn">{{ r.ovrT }}</span></sc-if></div></td>
+                        <td style="padding:6px 12px;min-width:240px;text-wrap:pretty">{{ r.reason }}</td>
+                        <td style="padding:6px 12px;text-align:right;white-space:nowrap"><div style="display:inline-flex;gap:4px"><sc-if value="{{ r.isOvr }}" hint-placeholder-val="{{ false }}"><button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ r.revert }}">Revert</button></sc-if><button class="{{ r.actCls }}" onClick="{{ r.act }}">{{ r.actT }}</button></div></td>
+                      </tr>
+                    </sc-for>
+                  </sc-for>
+                  <sc-if value="{{ stEmpty }}" hint-placeholder-val="{{ false }}"><tr><td colspan="10" style="padding:22px 16px;text-align:center;color:var(--dr-ink-3)">No stores match these filters.</td></tr></sc-if>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </sc-if>
+
+      <!-- SETUP · STEP 3 · ELIGIBLE SKUS -->
+      <sc-if value="{{ showSkusBlk }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Eligible SKUs" style="display:flex;flex-direction:column;gap:14px">
+          <section data-screen-label="Assortment distribution" class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">Assortment distribution</h2><span class="dr-num" style="font-size:12.5px;color:var(--dr-ink-2)">{{ kDistT }}</span></div>
+            <div style="overflow-x:auto">
+              <table class="dr-table" style="min-width:700px;font-size:12.5px">
+                <thead><tr><th style="padding:8px 14px">Merch area</th><th style="padding:8px 14px;text-align:right">SKUs</th><sc-for list="{{ kFmtHeads }}" as="f" hint-placeholder-count="3"><th style="padding:8px 14px">{{ f.label }} <span style="font-weight:500;text-transform:none;letter-spacing:0">· {{ f.n }}</span></th></sc-for><th style="padding:8px 14px;text-align:right">Combinations</th></tr></thead>
+                <tbody>
+                  <sc-for list="{{ kDist }}" as="d" hint-placeholder-count="3">
+                    <tr>
+                      <td style="padding:7px 14px;font-weight:600">{{ d.merch }}</td>
+                      <td class="dr-num" style="padding:7px 14px;text-align:right">{{ d.n }}</td>
+                      <sc-for list="{{ d.cells }}" as="c" hint-placeholder-count="3"><td style="padding:7px 14px"><div style="display:flex;align-items:center;gap:8px"><span class="dr-num" style="width:32px;text-align:right">{{ c.v }}</span><span style="flex:1;min-width:60px;height:6px;border-radius:999px;background:var(--dr-surface-3);overflow:hidden"><span style="{{ c.fill }}"></span></span></div></td></sc-for>
+                      <td class="dr-num" style="padding:7px 14px;text-align:right;font-weight:600">{{ d.combos }}</td>
+                    </tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="dr-card">
+            <div style="display:flex;align-items:flex-end;gap:10px 12px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--dr-line)">
+              <div class="dr-search" style="flex:1 1 220px;min-width:180px;max-width:300px"><svg><use href="#i-search"></use></svg><input class="dr-input" type="search" placeholder="SKU, description or subcategory" aria-label="Search SKUs" value="{{ kfQ }}" onChange="{{ setKfQ }}" style="padding-top:7px;padding-bottom:7px"></div>
+              <div style="flex:0 1 160px;min-width:130px"><label class="dr-field-label" for="kf-st" style="font-size:11px">Status</label><select id="kf-st" class="dr-input" style="padding:7px 10px;cursor:pointer" value="{{ kfSt }}" onChange="{{ setKfSt }}"><sc-for list="{{ kFilterOpts }}" as="o" hint-placeholder-count="8"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+              <div style="flex:0 1 180px;min-width:140px"><label class="dr-field-label" for="kf-m" style="font-size:11px">Merch area</label><select id="kf-m" class="dr-input" style="padding:7px 10px;cursor:pointer" value="{{ kfMerch }}" onChange="{{ setKfMerch }}"><option value="All">All merch areas</option><sc-for list="{{ merchOpts }}" as="o" hint-placeholder-count="4"><option value="{{ o }}">{{ o }}</option></sc-for></select></div>
+              <span style="display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--dr-ink-3);padding-bottom:9px"><span style="display:inline-flex;align-items:center;gap:5px"><i style="width:14px;height:6px;border-radius:999px;background:var(--dr-copper-500)"></i>Recommended stores</span><span style="display:inline-flex;align-items:center;gap:5px"><i style="width:2px;height:12px;background:var(--dr-ink-2)"></i>Last year</span></span>
+              <span style="margin-left:auto;font-size:12px;color:var(--dr-ink-3);padding-bottom:8px">{{ kShownT }}</span>
+            </div>
+            <sc-if value="{{ kHasSel }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 14px;border-bottom:1px solid var(--dr-copper-200);background:var(--dr-copper-050);font-size:12.5px">
+                <strong style="font-weight:600">{{ kSelT }}</strong>
+                <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ kBulkInc }}">Include</button>
+                <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ kBulkExc }}">Exclude</button>
+                <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ kClearSel }}">Clear selection</button>
+              </div>
+            </sc-if>
+            <div style="overflow-x:auto">
+              <table class="dr-table" style="min-width:1320px;font-size:12.5px">
+                <thead><tr>
+                  <th style="width:36px;padding:9px 12px"><input type="checkbox" aria-label="Select all shown SKUs" checked="{{ kAllSel }}" onChange="{{ kToggleAll }}" style="accent-color:var(--dr-copper-600)"></th>
+                  <sc-for list="{{ kHeads }}" as="h" hint-placeholder-count="9"><th style="{{ h.thStyle }}" aria-sort="{{ h.ariaSort }}"><sc-if value="{{ h.sortable }}" hint-placeholder-val="{{ true }}"><button style="{{ h.btnStyle }}" onClick="{{ h.pick }}">{{ h.label }}<svg style="width:12px;height:12px;flex:none"><use href="#{{ h.icon }}"></use></svg></button></sc-if><sc-if value="{{ h.notSortable }}" hint-placeholder-val="{{ false }}">{{ h.label }}</sc-if></th></sc-for>
+                  <th style="padding:9px 12px;text-align:right">Action</th>
+                </tr></thead>
+                <tbody>
+                  <sc-for list="{{ kRows }}" as="r" hint-placeholder-count="10">
+                    <tr style="{{ r.trStyle }}">
+                      <td style="padding:6px 12px"><input type="checkbox" aria-label="{{ r.selAria }}" checked="{{ r.checked }}" onChange="{{ r.toggleSel }}" style="accent-color:var(--dr-copper-600)"></td>
+                      <td style="padding:6px 12px;min-width:200px"><div style="font-weight:600">{{ r.name }}</div><div class="dr-table__meta dr-num">{{ r.id }}</div></td>
+                      <td style="padding:6px 12px;white-space:nowrap"><div>{{ r.cat }}</div><div class="dr-table__meta">{{ r.sub }}</div></td>
+                      <td style="padding:6px 12px;white-space:nowrap">{{ r.merch }}</td>
+                      <td style="padding:6px 12px">{{ r.life }}</td>
+                      <td class="dr-num" style="padding:6px 12px;text-align:right">{{ r.ly }}</td>
+                      <td class="dr-num" style="padding:6px 12px;text-align:right;font-weight:600">{{ r.rec }}</td>
+                      <td style="padding:6px 12px"><div title="{{ r.barTitle }}" style="position:relative;width:110px;height:8px;border-radius:999px;background:var(--dr-surface-3)"><span style="{{ r.fill }}"></span><span style="{{ r.tick }}"></span></div><div class="dr-table__meta" style="font-size:11px">{{ r.recSub }}</div></td>
+                      <td style="padding:6px 12px"><div style="display:flex;gap:4px;flex-wrap:wrap"><span class="{{ r.recCls }}">{{ r.recT }}</span><sc-if value="{{ r.isOvr }}" hint-placeholder-val="{{ false }}"><span class="dr-badge dr-badge--warn">{{ r.ovrT }}</span></sc-if></div></td>
+                      <td style="padding:6px 12px;min-width:220px;text-wrap:pretty">{{ r.reason }}</td>
+                      <td style="padding:6px 12px;text-align:right;white-space:nowrap"><div style="display:inline-flex;gap:4px"><sc-if value="{{ r.isOvr }}" hint-placeholder-val="{{ false }}"><button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ r.revert }}">Revert</button></sc-if><button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ r.act }}">{{ r.actT }}</button></div></td>
+                    </tr>
+                  </sc-for>
+                  <sc-if value="{{ kEmpty }}" hint-placeholder-val="{{ false }}"><tr><td colspan="11" style="padding:22px 16px;text-align:center;color:var(--dr-ink-3)">No SKUs match these filters.</td></tr></sc-if>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </sc-if>
+
+      <!-- SETUP · STEP 4 · PROMOTION MECHANICS -->
+      <sc-if value="{{ showMechBlk }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Promotion mechanics" style="display:flex;flex-direction:column;gap:14px">
+          <section class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">Permitted mechanics</h2><span style="font-size:12px;color:var(--dr-ink-3)">Mechanics turned off here can’t be assigned to any SKU group</span></div>
+            <div class="dr-card__body" style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ comMech }}" as="m" hint-placeholder-count="6"><button aria-pressed="{{ m.pressed }}" onClick="{{ m.pick }}" style="{{ m.style }}"><span style="display:flex;align-items:center;gap:6px"><span style="{{ m.swatch }}"></span><span style="{{ m.labelStyle }}">{{ m.label }}</span></span><span style="font-size:11px;color:var(--dr-ink-3)">{{ m.desc }}</span></button></sc-for>
+            </div>
+          </section>
+          <section class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">Mechanics by SKU group</h2><span class="dr-num" style="font-size:12px;color:var(--dr-ink-2)">{{ mxDates }}</span></div>
+            <div style="overflow-x:auto">
+              <table class="dr-table" style="min-width:1100px;font-size:12.5px">
+                <thead><tr>
+                  <th style="padding:8px 14px">SKU group</th>
+                  <sc-for list="{{ mxHeads }}" as="h" hint-placeholder-count="6"><th style="padding:8px 8px"><span style="display:inline-flex;align-items:center;gap:5px;white-space:nowrap"><span style="{{ h.swatch }}"></span>{{ h.label }}</span></th></sc-for>
+                  <th style="padding:8px 14px;min-width:200px"><div style="{{ mxGrid }}"><sc-for list="{{ mxWeeks }}" as="w" hint-placeholder-count="6"><span title="{{ w.title }}" style="{{ w.style }}">{{ w.label }}</span></sc-for></div></th>
+                </tr></thead>
+                <tbody>
+                  <sc-for list="{{ mxRows }}" as="r" hint-placeholder-count="3">
+                    <tr>
+                      <td style="padding:8px 14px;white-space:nowrap"><div style="font-weight:600">{{ r.label }}</div><div class="dr-table__meta">{{ r.sub }}</div></td>
+                      <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="6"><td style="padding:8px 8px"><button aria-pressed="{{ c.pressed }}" aria-label="{{ c.aria }}" disabled="{{ c.disabled }}" onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</button></td></sc-for>
+                      <td style="padding:8px 14px"><div style="{{ mxGrid }}"><sc-for list="{{ r.strip }}" as="w" hint-placeholder-count="6"><span title="{{ w.title }}" style="{{ w.style }}"></span></sc-for></div></td>
+                    </tr>
+                  </sc-for>
+                  <sc-if value="{{ mxEmpty }}" hint-placeholder-val="{{ false }}"><tr><td colspan="8" style="padding:22px 16px;text-align:center;color:var(--dr-ink-3)">Include SKUs in step 3 to assign mechanics.</td></tr></sc-if>
+                </tbody>
+              </table>
+            </div>
+            <div style="padding:9px 18px;border-top:1px solid var(--dr-line);font-size:12px;color:var(--dr-ink-3)">The weekly sequence uses the lightest assigned mechanic around the event day and the deepest in clearance. The pricing strategy in step 6 can refine it.</div>
+          </section>
+          <section data-screen-label="Conflicts" class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 18px"><h2 style="margin:0;font-size:14px;font-weight:600">Conflicts with markdowns, price floors and other events</h2><span style="font-size:12px;color:var(--dr-ink-3)">{{ cflCount }}</span></div>
+            <sc-for list="{{ cflRows }}" as="c" hint-placeholder-count="2">
+              <div style="display:flex;gap:10px 14px;align-items:flex-start;flex-wrap:wrap;padding:10px 18px;border-top:1px solid var(--dr-line)">
+                <svg style="{{ c.iconStyle }}"><use href="#{{ c.icon }}"></use></svg>
+                <div style="flex:1 1 420px;min-width:0"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="font-size:13px;font-weight:600">{{ c.t }}</span><span class="{{ c.tagCls }}" style="font-size:10.5px;padding:3px 7px">{{ c.tag }}</span></div><div style="font-size:12px;line-height:1.5;color:var(--dr-ink-2);margin-top:2px;text-wrap:pretty">{{ c.d }}</div></div>
+                <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ c.fix }}">{{ c.fixT }}<svg><use href="#i-right"></use></svg></button>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noCfl }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;align-items:center;padding:12px 18px;border-top:1px solid var(--dr-line);font-size:13px;color:var(--dr-ink-2)"><svg style="width:15px;height:15px;color:var(--dr-ok)"><use href="#i-checkc"></use></svg>No conflicts with markdown pricing, price floors or other events.</div></sc-if>
+          </section>
+        </div>
+      </sc-if>
+
+      <!-- SETUP · STEP 5 · FORECAST -->
+      <sc-if value="{{ showFcBlk }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Event forecast" style="display:flex;flex-direction:column;gap:14px">
+          <section class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid var(--dr-line)">
+              <div><h2 style="margin:0;font-size:14px;font-weight:600">Event forecast</h2><div class="dr-num" style="font-size:12px;color:var(--dr-ink-3);margin-top:2px">{{ fcSub }}</div></div>
+              <div style="display:flex;gap:6px 14px;flex-wrap:wrap;font-size:11.5px;color:var(--dr-ink-2)">
+                <span style="display:inline-flex;align-items:center;gap:6px"><i style="width:10px;height:10px;border-radius:50%;border:2px solid var(--dr-ink);background:var(--dr-surface);box-sizing:border-box"></i>Historical actual · last year</span>
+                <span style="display:inline-flex;align-items:center;gap:6px"><i style="width:12px;height:10px;border:1.5px dashed var(--dr-ink-4);box-sizing:border-box"></i>Forecast · baseline at full price</span>
+                <span style="display:inline-flex;align-items:center;gap:6px"><i style="width:12px;height:10px;background:var(--dr-copper-500)"></i>AI projection · with promotions</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
+              <sc-for list="{{ fcKpis }}" as="k" hint-placeholder-count="8"><div style="padding:10px 16px;box-shadow:0 0 0 0.5px var(--dr-line);min-width:0"><div style="{{ k.srcStyle }}">{{ k.src }}</div><div class="dr-stat__label" style="margin-top:2px">{{ k.label }}</div><div class="dr-num" style="font-family:var(--dr-font-display);font-size:19px;font-weight:600;margin-top:2px">{{ k.value }}</div><div style="font-size:11.5px;color:var(--dr-ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ k.sub }}</div></div></sc-for>
+            </div>
+            <div style="padding:14px 18px 12px;border-top:1px solid var(--dr-line)">
+              <div style="display:flex;align-items:flex-end;gap:6px;height:150px;border-bottom:1px solid var(--dr-line-2);background-image:linear-gradient(to bottom, var(--dr-line) 1px, transparent 1px);background-size:100% 25%">
+                <sc-for list="{{ fcChart }}" as="c" hint-placeholder-count="6"><div title="{{ c.title }}" style="position:relative;flex:1 1 0;min-width:0;height:100%"><span style="{{ c.bStyle }}"></span><span style="{{ c.aStyle }}"></span><span style="{{ c.lStyle }}"></span></div></sc-for>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:4px"><sc-for list="{{ fcChart }}" as="c" hint-placeholder-count="6"><div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center"><span style="{{ c.labStyle }}">{{ c.label }}</span><span class="dr-num" style="font-size:10.5px;color:var(--dr-ink-4);white-space:nowrap">{{ c.sub }}</span></div></sc-for></div>
+            </div>
+          </section>
+          <section class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">By merch area and SKU</h2><span style="font-size:12px;color:var(--dr-ink-3)">Expand a merch area, then pick a SKU for its store-level forecast</span></div>
+            <div style="overflow-x:auto">
+              <table class="dr-table" style="min-width:1240px;font-size:12.5px">
+                <thead>
+                  <tr>
+                    <th style="padding:6px 12px;background:var(--dr-surface)"></th>
+                    <th style="padding:6px 12px;text-align:right;background:var(--dr-surface);border-top:2px solid var(--dr-ink-2)">Actual</th>
+                    <th style="padding:6px 12px;text-align:right;background:var(--dr-surface);border-top:2px dashed var(--dr-ink-4)">Forecast</th>
+                    <th colspan="7" style="padding:6px 12px;text-align:center;background:var(--dr-surface);border-top:2px solid var(--dr-copper-500);color:var(--dr-copper-800)">AI projection</th>
+                    <th style="padding:6px 12px;background:var(--dr-surface)"></th>
+                  </tr>
+                  <tr><th style="padding:8px 12px">Merch area / SKU</th><th style="padding:8px 12px;text-align:right">LY units</th><th style="padding:8px 12px;text-align:right">Baseline units</th><th style="padding:8px 12px;text-align:right">Uplift</th><th style="padding:8px 12px;text-align:right">Cannibalisation</th><th style="padding:8px 12px;text-align:right">Units</th><th style="padding:8px 12px;text-align:right">Sales</th><th style="padding:8px 12px;text-align:right">Gross profit</th><th style="padding:8px 12px;text-align:right">Sell-through</th><th style="padding:8px 12px;text-align:right">Remaining</th><th style="padding:8px 12px">Confidence</th></tr>
+                </thead>
+                <tbody>
+                  <sc-for list="{{ fcRowsV }}" as="r" hint-placeholder-count="5">
+                    <tr style="{{ r.trStyle }}">
+                      <td style="padding:7px 12px;min-width:230px">
+                        <sc-if value="{{ r.isCat }}" hint-placeholder-val="{{ true }}"><button aria-expanded="{{ r.expanded }}" onClick="{{ r.toggle }}" style="display:flex;align-items:center;gap:6px;border:0;background:transparent;padding:0;font:inherit;font-weight:600;color:var(--dr-ink);cursor:pointer;text-align:left"><svg style="{{ r.chevStyle }}"><use href="#i-chev"></use></svg><span>{{ r.name }}</span><span style="font-weight:400;color:var(--dr-ink-3)">· {{ r.sub }}</span></button></sc-if>
+                        <sc-if value="{{ r.isSku }}" hint-placeholder-val="{{ false }}"><button onClick="{{ r.pick }}" style="display:block;border:0;background:transparent;padding:0 0 0 20px;font:inherit;color:var(--dr-ink);cursor:pointer;text-align:left"><span style="display:block;font-weight:500;text-decoration:underline;text-decoration-color:var(--dr-line-2);text-underline-offset:3px">{{ r.name }}</span><span class="dr-num" style="display:block;font-size:11px;color:var(--dr-ink-3)">{{ r.sub }}</span></button></sc-if>
+                      </td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right">{{ r.ly }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right;color:var(--dr-ink-2)">{{ r.base }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right">{{ r.up }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right">{{ r.cann }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right;font-weight:600">{{ r.units }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right">{{ r.rev }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right">{{ r.gp }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right">{{ r.st }}</td>
+                      <td class="dr-num" style="padding:7px 12px;text-align:right">{{ r.left }}</td>
+                      <td style="padding:7px 12px"><span class="{{ r.confCls }}">{{ r.conf }}</span></td>
+                    </tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <sc-if value="{{ fcHasSel }}" hint-placeholder-val="{{ false }}">
+            <section data-screen-label="Store-level forecast" class="dr-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">Store-level forecast · {{ fcSelT }}</h2><button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ fcCloseSel }}"><svg><use href="#i-x"></use></svg>Close</button></div>
+              <div style="overflow-x:auto;max-height:360px;overflow-y:auto">
+                <table class="dr-table" style="min-width:720px;font-size:12.5px">
+                  <thead><tr><th style="padding:8px 12px">Store</th><th style="padding:8px 12px">Format</th><th style="padding:8px 12px;text-align:right">Baseline units</th><th style="padding:8px 12px;text-align:right">AI projected units</th><th style="padding:8px 12px;text-align:right">Sell-through</th><th style="padding:8px 12px;text-align:right">Remaining</th></tr></thead>
+                  <tbody><sc-for list="{{ fcStores }}" as="x" hint-placeholder-count="6"><tr><td style="padding:6px 12px"><span class="dr-num" style="color:var(--dr-ink-3)">{{ x.no }}</span> · <strong style="font-weight:600">{{ x.name }}</strong></td><td style="padding:6px 12px">{{ x.fmt }}</td><td class="dr-num" style="padding:6px 12px;text-align:right">{{ x.base }}</td><td class="dr-num" style="padding:6px 12px;text-align:right;font-weight:600">{{ x.units }}</td><td class="dr-num" style="padding:6px 12px;text-align:right">{{ x.st }}</td><td class="dr-num" style="padding:6px 12px;text-align:right">{{ x.left }}</td></tr></sc-for></tbody>
+                </table>
+              </div>
+            </section>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- SETUP · STEP 7 / APPROVAL -->
+      <sc-if value="{{ showRvBlk }}" hint-placeholder-val="{{ false }}">
+        <div data-screen-label="Review &amp; approval" style="display:flex;flex-direction:column;gap:14px">
+          <sc-if value="{{ rvLocked }}" hint-placeholder-val="{{ false }}">
+            <section role="status" style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;padding:14px 18px;border:1px solid var(--dr-ok-line);border-radius:var(--dr-r);background:var(--dr-ok-bg)">
+              <svg style="width:18px;height:18px;flex:none;margin-top:1px;color:var(--dr-ok)"><use href="#i-lock"></use></svg>
+              <div style="flex:1 1 420px;min-width:0"><div style="font-size:14px;font-weight:600">Plan approved and locked · {{ rvLockWhen }}</div><div style="font-size:12.5px;line-height:1.55;color:var(--dr-ink-2);margin-top:2px;text-wrap:pretty">{{ rvLockT }}</div></div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <sc-if value="{{ rvCanUnlock }}" hint-placeholder-val="{{ false }}"><button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ rvUnlock }}">Unlock to change</button></sc-if>
+                <sc-if value="{{ rvShowOpen }}" hint-placeholder-val="{{ false }}"><button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ goHome }}">All events</button><button class="dr-btn dr-btn--primary dr-btn--sm" onClick="{{ rvOpenWs }}">Open event workspace<svg><use href="#i-right"></use></svg></button></sc-if>
+              </div>
+            </section>
+          </sc-if>
+          <section class="dr-card">
+            <div style="padding:11px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">Setup summary</h2></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))">
+              <sc-for list="{{ rvBlocks }}" as="b" hint-placeholder-count="7">
+                <div style="padding:11px 16px 13px;box-shadow:0 0 0 0.5px var(--dr-line);min-width:0">
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:26px"><h3 style="margin:0;font-size:13px;font-weight:600">{{ b.title }}</h3><sc-if value="{{ b.canEdit }}" hint-placeholder-val="{{ true }}"><button class="dr-btn dr-btn--ghost dr-btn--sm" style="padding:4px 6px" onClick="{{ b.edit }}"><svg><use href="#i-edit"></use></svg>Edit</button></sc-if></div>
+                  <dl style="margin:6px 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:4px 12px;font-size:12.5px"><sc-for list="{{ b.rows }}" as="r" hint-placeholder-count="4"><dt style="color:var(--dr-ink-3)">{{ r.k }}</dt><dd class="dr-num" style="margin:0;font-weight:600;text-align:right;text-wrap:pretty">{{ r.v }}</dd></sc-for></dl>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+          <section class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 18px"><h2 style="margin:0;font-size:14px;font-weight:600">Exceptions &amp; overrides</h2><span style="font-size:12px;color:var(--dr-ink-3)">{{ rvExcCount }}</span></div>
+            <sc-for list="{{ rvExc }}" as="x" hint-placeholder-count="3">
+              <div style="display:flex;gap:8px 14px;align-items:flex-start;flex-wrap:wrap;padding:9px 18px;border-top:1px solid var(--dr-line)">
+                <span class="{{ x.tagCls }}" style="flex:none;font-size:10.5px;padding:3px 7px;min-width:110px;justify-content:center">{{ x.tag }}</span>
+                <div style="flex:1 1 420px;min-width:0"><div style="font-size:13px;font-weight:600">{{ x.t }}</div><div style="font-size:12px;line-height:1.5;color:var(--dr-ink-2);text-wrap:pretty">{{ x.d }}</div></div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noRvExc }}" hint-placeholder-val="{{ false }}"><div style="padding:12px 18px;border-top:1px solid var(--dr-line);font-size:13px;color:var(--dr-ink-2)">No overrides or conflicts. The plan follows every recommendation.</div></sc-if>
+          </section>
+          <section data-screen-label="Approval status" class="dr-card">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 18px;border-bottom:1px solid var(--dr-line)"><h2 style="margin:0;font-size:14px;font-weight:600">Approval</h2><span style="font-size:12px;color:var(--dr-ink-3)">Approval authority · {{ rvAuth }}</span></div>
+            <div class="dr-card__body" style="display:flex;flex-direction:column;gap:12px">
+              <ol style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <sc-for list="{{ apprSteps }}" as="a" hint-placeholder-count="3">
+                  <li style="display:flex;align-items:center;gap:8px;min-width:0"><span style="{{ a.dotStyle }}"><sc-if value="{{ a.showCheck }}" hint-placeholder-val="{{ false }}"><svg style="width:10px;height:10px"><use href="#i-check"></use></svg></sc-if></span><span style="min-width:0"><span style="display:block;font-size:12.5px;font-weight:600">{{ a.label }}</span><span class="dr-num" style="display:block;font-size:11.5px;color:var(--dr-ink-3)">{{ a.when }}</span></span></li>
+                  <li aria-hidden="true" style="{{ a.lineStyle }}"></li>
+                </sc-for>
+              </ol>
+              <sc-if value="{{ rvHasBlockers }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:9px 12px;border:1px solid var(--dr-warn-line);border-radius:var(--dr-r-sm);background:var(--dr-warn-bg);font-size:12.5px;color:var(--dr-ink-2)"><strong style="font-weight:600;color:var(--dr-ink)">Before this plan can be approved</strong><sc-for list="{{ rvBlockers }}" as="b" hint-placeholder-count="1"><div style="margin-top:3px">· {{ b }}</div></sc-for></div>
+              </sc-if>
+              <sc-if value="{{ rvShowActions }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+                  <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ wzSave }}">Save draft</button>
+                  <button class="{{ wzSubmitCls }}" onClick="{{ wzSubmit }}">{{ wzSubmitT }}</button>
+                  <button class="{{ wzApproveCls }}" onClick="{{ wzApprove }}"><svg><use href="#i-lock"></use></svg>{{ wzApproveT }}</button>
+                </div>
+              </sc-if>
+            </div>
+          </section>
+        </div>
+      </sc-if>
+

@@ -1,0 +1,84 @@
+    <header class="dr-topbar">
+      <nav aria-label="Breadcrumb" style="flex:1;min-width:0;display:flex;align-items:center;gap:8px">
+        <button onClick="{{ goHome }}" style="{{ crumbHomeStyle }}">Events</button>
+        <sc-if value="{{ hasCrumb }}" hint-placeholder-val="{{ false }}">
+          <svg style="width:14px;height:14px;flex:none;color:var(--dr-ink-4)"><use href="#i-right"></use></svg>
+          <span style="min-width:0;font-size:14px;font-weight:600;color:var(--dr-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ crumbT }}</span>
+        </sc-if>
+      </nav>
+      <span class="dr-badge dr-badge--neutral">Pricing Optimization Agent · v2.0</span>
+    </header>
+
+    <sc-if value="{{ isWs }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Event header" style="padding:14px 26px 0;background:var(--dr-surface);border-bottom:1px solid var(--dr-line)">
+        <div style="display:flex;gap:10px 20px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1 1 420px;min-width:0">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <h1 style="margin:0;font-family:var(--dr-font-display);font-size:19px;font-weight:600;line-height:1.25">{{ wh.name }}</h1>
+              <span class="{{ wh.lifeCls }}">{{ wh.life }}</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:6px;font-size:12.5px;color:var(--dr-ink-3)">
+              <sc-for list="{{ wh.facts }}" as="f" hint-placeholder-count="5"><span style="white-space:nowrap">{{ f.label }} <strong class="dr-num" style="font-weight:600;color:var(--dr-ink)">{{ f.value }}</strong></span></sc-for>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <sc-if value="{{ wh.showDs }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span id="ds-label" style="font-size:12px;color:var(--dr-ink-3)">Data source</span>
+                <div style="position:relative">
+                  <div style="display:flex;align-items:center;width:220px;height:32px;border:1px solid var(--dr-line-2);border-radius:var(--dr-r-sm);background:var(--dr-surface)">
+                    <button aria-labelledby="ds-label" aria-haspopup="listbox" aria-expanded="{{ dsExpanded }}" onClick="{{ toggleDs }}" style="flex:1;min-width:0;height:100%;display:flex;align-items:center;gap:8px;padding:0 4px 0 10px;border:0;background:transparent;font:inherit;cursor:pointer;text-align:left">
+                      <svg style="width:14px;height:14px;flex:none;color:var(--dr-ink-3)"><use href="#i-file"></use></svg>
+                      <span style="{{ dsTextStyle }}">{{ dsLabel }}</span>
+                    </button>
+                    <sc-if value="{{ hasDs }}" hint-placeholder-val="{{ true }}">
+                      <button aria-label="Clear data source" onClick="{{ clearDs }}" style="width:24px;height:24px;flex:none;display:grid;place-items:center;border:0;border-radius:4px;background:transparent;color:var(--dr-ink-3);cursor:pointer" style-hover="background:var(--dr-surface-2);color:var(--dr-ink)"><svg style="width:12px;height:12px"><use href="#i-x"></use></svg></button>
+                    </sc-if>
+                    <button aria-label="Open data sources" tabindex="-1" onClick="{{ toggleDs }}" style="width:26px;height:100%;flex:none;display:grid;place-items:center;border:0;background:transparent;color:var(--dr-ink-3);cursor:pointer"><svg style="width:14px;height:14px"><use href="#i-chev"></use></svg></button>
+                  </div>
+                  <sc-if value="{{ dsOpen }}" hint-placeholder-val="{{ false }}">
+                    <div role="listbox" aria-labelledby="ds-label" style="position:absolute;top:calc(100% + 4px);right:0;z-index:30;width:300px;padding:4px;border:1px solid var(--dr-line);border-radius:var(--dr-r);background:var(--dr-surface);box-shadow:var(--dr-shadow-2)">
+                      <sc-for list="{{ dsOptions }}" as="o" hint-placeholder-count="3">
+                        <button role="option" aria-selected="{{ o.selected }}" onClick="{{ o.pick }}" style="{{ o.style }}" style-hover="background:var(--dr-surface-2)">
+                          <svg style="width:15px;height:15px;flex:none;margin-top:1px;color:var(--dr-ink-3)"><use href="#i-file"></use></svg>
+                          <span style="flex:1;min-width:0"><span style="display:block;font-size:13px;font-weight:500;color:var(--dr-ink)">{{ o.label }}</span><span style="display:block;font-size:11.5px;color:var(--dr-ink-3);margin-top:1px">{{ o.meta }}</span></span>
+                        </button>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ wh.hasSecondary }}" hint-placeholder-val="{{ false }}"><button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ wh.secondaryGo }}"><svg><use href="#i-edit"></use></svg>{{ wh.secondaryLabel }}</button></sc-if>
+            <sc-if value="{{ wh.hasPrimary }}" hint-placeholder-val="{{ true }}"><button class="dr-btn dr-btn--primary dr-btn--sm" onClick="{{ wh.primaryGo }}">{{ wh.primaryLabel }}<svg><use href="#i-right"></use></svg></button></sc-if>
+          </div>
+        </div>
+        <div class="dr-tabs" role="tablist" aria-label="Event workspace" style="margin-top:8px;border-bottom:0;gap:22px;overflow-x:auto">
+          <sc-for list="{{ wsTabs }}" as="t" hint-placeholder-count="7"><button role="tab" aria-selected="{{ t.active }}" class="{{ t.cls }}" onClick="{{ t.pick }}" style="white-space:nowrap;display:inline-flex;align-items:center;gap:6px">{{ t.label }}<sc-if value="{{ t.hasCount }}" hint-placeholder-val="{{ false }}"><span class="dr-badge dr-badge--warn" style="font-size:10.5px;padding:2px 6px">{{ t.count }}</span></sc-if></button></sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isWiz }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Setup progress" style="position:sticky;top:0;z-index:8;padding:14px 26px 0;background:var(--dr-surface);border-bottom:1px solid var(--dr-line)">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <h1 style="margin:0;font-family:var(--dr-font-display);font-size:19px;font-weight:600;line-height:1.25">{{ wzTitle }}</h1>
+          <span class="{{ wzLifeCls }}">{{ wzLife }}</span>
+          <span style="margin-left:auto;font-size:12px;color:var(--dr-ink-3)">{{ wzSavedT }}</span>
+        </div>
+        <ol aria-label="Setup steps" style="list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(96px,1fr));gap:8px;overflow-x:auto">
+          <sc-for list="{{ wzSteps }}" as="w" hint-placeholder-count="7">
+            <li style="min-width:0">
+              <button onClick="{{ w.go }}" aria-current="{{ w.cur }}" style="{{ w.style }}" style-hover="opacity:.85">
+                <span style="{{ w.barStyle }}"></span>
+                <span style="display:flex;align-items:center;gap:6px;min-width:0">
+                  <span style="{{ w.numStyle }}"><sc-if value="{{ w.showCheck }}" hint-placeholder-val="{{ false }}"><svg style="width:11px;height:11px"><use href="#i-check"></use></svg></sc-if><sc-if value="{{ w.showNum }}" hint-placeholder-val="{{ true }}">{{ w.n }}</sc-if></span>
+                  <span style="{{ w.labelStyle }}">{{ w.label }}</span>
+                </span>
+                <span style="{{ w.subStyle }}">{{ w.sub }}</span>
+              </button>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </sc-if>

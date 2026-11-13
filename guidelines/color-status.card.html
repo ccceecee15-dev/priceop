@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Semantic status" subtitle="Separated by luminance, not hue." -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;padding:18px;background:var(--dr-canvas);font-family:var(--dr-font-body);color:var(--dr-ink)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:10px}
+.sw{display:flex;flex-direction:column;gap:0;flex:1;min-width:0}
+.sw i{height:44px;display:block;border-radius:var(--dr-r-sm) var(--dr-r-sm) 0 0}
+.sw b{font-family:var(--dr-font-mono);font-size:9.5px;font-weight:400;color:var(--dr-ink-3);padding:5px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sw em{font-style:normal;font-size:9.5px;color:var(--dr-ink-4);white-space:nowrap}
+.note{font-size:11.5px;color:var(--dr-ink-3);line-height:1.5}
+</style></head><body class="dr"><div class="row" style="gap:8px">
+<span class="dr-badge dr-badge--ok"><i class="dr-dot"></i>Connected</span>
+<span class="dr-badge dr-badge--warn">Archive</span>
+<span class="dr-badge dr-badge--danger">Blocked</span>
+<span class="dr-badge dr-badge--brand">Agent-ready</span>
+<span class="dr-badge dr-badge--neutral">v1.2.0</span>
+</div>
+<div class="row" style="gap:4px;align-items:stretch;margin-top:14px">
+<div class="sw"><i style="background:var(--dr-ok)"></i><b>ok</b><em>6.4:1</em></div>
+<div class="sw"><i style="background:var(--dr-warn)"></i><b>warn</b><em>deliberately light</em></div>
+<div class="sw"><i style="background:var(--dr-danger)"></i><b>danger</b><em>deliberately dark</em></div>
+<div class="sw"><i style="background:var(--dr-ok-bg);border:1px solid var(--dr-ok-line)"></i><b>ok-bg</b></div>
+<div class="sw"><i style="background:var(--dr-warn-bg);border:1px solid var(--dr-warn-line)"></i><b>warn-bg</b></div>
+<div class="sw"><i style="background:var(--dr-danger-bg);border:1px solid var(--dr-danger-line)"></i><b>danger-bg</b></div>
+</div>
+<div class="note" style="margin-top:10px">Warn is light amber, danger is dark rust. Under colour-vision deficiency hue separation collapses and luminance survives — a "more yellow" warning scored 3. Worst-case pair separation is now 53, up from 29.</div></body></html>

@@ -1,0 +1,41 @@
+/* ==========================================================================
+   6. Pills, badges, status
+   ========================================================================== */
+.dr-pill {
+  font-family: var(--dr-font-body);
+  font-size: 12.5px; font-weight: 500;
+  padding: 7px 14px; border-radius: 999px;
+  border: 1px solid var(--dr-line-2);
+  background: var(--dr-surface); color: var(--dr-ink-2);
+  cursor: pointer; white-space: nowrap; transition: all var(--dr-t);
+}
+.dr-pill:hover { border-color: var(--dr-copper-300); color: var(--dr-copper-700); }
+.dr-pill--active {
+  background: var(--dr-copper-050); border-color: var(--dr-copper-300);
+  color: var(--dr-copper-800); font-weight: 600;   /* 5.90:1 */
+  box-shadow: inset 0 0 0 1px var(--dr-copper-200);
+}
+/* Must out-specify .dr-pill:hover (0,2,0) or the label repaints on hover */
+.dr-pill--active:hover { background: var(--dr-copper-100); border-color: var(--dr-copper-400); color: var(--dr-copper-800); }
+.dr-pill[disabled] { pointer-events: none; }
+
+.dr-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 600; line-height: 1;
+  padding: 5px 9px; border-radius: 999px;
+  border: 1px solid transparent;
+}
+.dr-badge--ok      { background: var(--dr-ok-bg);      color: var(--dr-ok);         border-color: var(--dr-ok-line); }
+.dr-badge--warn    { background: var(--dr-warn-bg);    color: var(--dr-warn);       border-color: var(--dr-warn-line); }
+.dr-badge--danger  { background: var(--dr-danger-bg);  color: var(--dr-danger);     border-color: var(--dr-danger-line); }
+.dr-badge--brand   { background: var(--dr-copper-050); color: var(--dr-copper-800); border-color: var(--dr-copper-200); }
+.dr-badge--neutral { background: var(--dr-surface-2);  color: var(--dr-ink-2);      border-color: var(--dr-line); }
+.dr-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+
+.dr-kbd {
+  font-family: var(--dr-font-mono); font-size: 10.5px;
+  padding: 2px 6px; border-radius: 4px;
+  background: var(--dr-surface-2); border: 1px solid var(--dr-line-2); color: var(--dr-ink-3);
+}
+
+/* ==========================================================================

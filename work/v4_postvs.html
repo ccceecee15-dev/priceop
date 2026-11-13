@@ -1,0 +1,12 @@
+          <sc-if value="{{ postHasVs }}" hint-placeholder-val="{{ true }}">
+            <section id="post-vs" data-screen-label="Actual vs plan and last year" class="dr-card">
+              <div class="dr-card__head" style="padding:12px 18px"><h3 style="margin:0;font-size:15px;font-weight:600">Actual vs plan and last year</h3></div>
+              <div style="overflow-x:auto">
+                <table class="dr-table" style="min-width:680px;font-size:13px">
+                  <thead><tr><th style="padding:8px 16px">Measure</th><th style="padding:8px 16px;text-align:right">Actual</th><th style="padding:8px 16px;text-align:right">Plan</th><th style="padding:8px 16px;text-align:right">Vs plan</th><th style="padding:8px 16px;text-align:right">Last year</th><th style="padding:8px 16px;text-align:right">Vs last year</th></tr></thead>
+                  <tbody><sc-for list="{{ postVs }}" as="r" hint-placeholder-count="4"><tr><td style="padding:8px 16px;font-weight:500">{{ r.k }}</td><td class="dr-num" style="padding:8px 16px;text-align:right;font-weight:600">{{ r.a }}</td><td class="dr-num" style="padding:8px 16px;text-align:right;color:var(--dr-ink-2)">{{ r.p }}</td><td class="dr-num" style="padding:8px 16px;text-align:right"><span style="{{ r.dpStyle }}">{{ r.dp }}</span></td><td class="dr-num" style="padding:8px 16px;text-align:right;color:var(--dr-ink-2)">{{ r.l }}</td><td class="dr-num" style="padding:8px 16px;text-align:right"><span style="{{ r.dlStyle }}">{{ r.dl }}</span></td></tr></sc-for></tbody>
+                </table>
+              </div>
+            </section>
+          </sc-if>
+

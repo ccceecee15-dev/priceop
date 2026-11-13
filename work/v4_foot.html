@@ -1,0 +1,14 @@
+
+    <sc-if value="{{ isWiz }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Setup actions" style="position:sticky;bottom:0;z-index:9;margin-top:auto;display:flex;align-items:center;gap:8px 10px;flex-wrap:wrap;padding:11px 26px;border-top:1px solid var(--dr-line);background:var(--dr-surface);box-shadow:0 -6px 16px rgba(28,25,23,.05)">
+        <button class="dr-btn dr-btn--ghost dr-btn--sm" onClick="{{ wzExit }}"><svg><use href="#i-back"></use></svg>Save &amp; exit</button>
+        <div class="dr-num" style="flex:1 1 280px;min-width:0;font-size:12.5px;color:var(--dr-ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ wzFootT }}</div>
+        <sc-if value="{{ wzHasBack }}" hint-placeholder-val="{{ false }}"><button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ wzBack }}">Back</button></sc-if>
+        <button class="dr-btn dr-btn--secondary dr-btn--sm" onClick="{{ wzSave }}">Save draft</button>
+        <sc-if value="{{ wzNotLast }}" hint-placeholder-val="{{ true }}"><button class="{{ wzNextCls }}" onClick="{{ wzNext }}">{{ wzNextT }}<svg><use href="#i-right"></use></svg></button></sc-if>
+        <sc-if value="{{ wzIsLast }}" hint-placeholder-val="{{ false }}">
+          <button class="{{ wzSubmitCls }}" onClick="{{ wzSubmit }}">{{ wzSubmitT }}</button>
+          <button class="{{ wzApproveCls }}" onClick="{{ wzApprove }}"><svg><use href="#i-lock"></use></svg>{{ wzApproveT }}</button>
+        </sc-if>
+      </div>
+    </sc-if>
